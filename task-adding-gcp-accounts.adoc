@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: task-adding-gcp-accounts.html 
+keywords: permissions, gcp, marketplace, gcp subscription, subscription, gcp marketplace, subscribe, data tiering, tiering, setup, requirements, account for data tiering, account for tiering, interoperable, interoperability, interoperable storage access keys, access keys 
+summary: Sie können die Anmeldeinformationen verwalten, die der Connector-VM-Instanz zugeordnet sind. 
+---
+= Verwalten von Google Cloud-Anmeldeinformationen und -Abonnements für BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können die Anmeldeinformationen verwalten, die der Connector-VM-Instanz zugeordnet sind.
+
+
+
+== Verknüpfen eines Marketplace-Abonnements mit GCP-Zugangsdaten
+
+Wenn Sie einen Connector in GCP bereitstellen, erstellt BlueXP einen Standardsatz von Anmeldeinformationen, die der Connector-VM-Instanz zugeordnet sind. Dies sind die Anmeldeinformationen, die BlueXP zur Bereitstellung von Cloud Volumes ONTAP verwendet.
+
+Sie können das Marketplace-Abonnement jederzeit ändern, das mit diesen Anmeldedaten verknüpft ist. Mithilfe des Abonnements können Sie ein nutzungsbasiertes Cloud Volumes ONTAP System erstellen und andere NetApp Cloud-Services nutzen.
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen und wählen Sie *Anmeldeinformationen*.
+. Klicken Sie auf das Aktionsmenü für eine Reihe von Anmeldeinformationen und wählen Sie dann *Abonnement verknüpfen*.
++
+image:screenshot_gcp_add_subscription.png["Ein Screenshot des Aktionsmenüs für einen Satz vorhandener Anmeldedaten."]
+
+. Wählen Sie ein Google Cloud-Projekt und ein Abonnement aus der Down-Liste aus.
++
+image:screenshot_gcp_associate.gif["Ein Screenshot eines Google Cloud-Projekts und Abonnements, das für Google Cloud-Anmeldedaten ausgewählt wurde."]
+
+. Klicken Sie Auf *Mitarbeiter*.
+. Wenn Sie noch kein Abonnement haben, klicken Sie auf *Abonnement hinzufügen* und führen Sie die folgenden Schritte aus, um ein neues Abonnement zu erstellen.
++
+
+NOTE: Bevor Sie die folgenden Schritte durchführen, stellen Sie sicher, dass Sie sowohl Billing Admin-Berechtigungen in Ihrem Google Cloud-Konto als auch BlueXP-Login haben.
+
+. Führen Sie die Schritte des Abonnements durch und klicken Sie auf *Weiter*.
++
+image:screenshot_gcp_sub_popup.png["Ein Screenshot eines Popup-Abonnements"]
+
+. Nachdem Sie auf die umgeleitet wurden https://console.cloud.google.com/marketplace/product/netapp-cloudmanager/cloud-manager["Seite zu NetApp BlueXP im Google Cloud Marketplace"^], Stellen Sie sicher, dass das richtige Projekt im oberen Navigationsmenü ausgewählt ist.
++
+image:screenshot_gcp_cvo_marketplace.png["Screenshot der GCP CVO Marketplace-Seite"]
+
+. Klicken Sie Auf *Abonnieren*.
+. Wählen Sie das entsprechende Rechnungskonto aus und stimmen Sie den allgemeinen Geschäftsbedingungen zu.
++
+image:screenshot_gcp_terms_and_conditions.png["Einen Screenshot der Teilnahmebedingungen für GCP"]
+
+. Klicken Sie Auf *Abonnieren*.
++
+Dieser Schritt sendet Ihre Transferanfrage an NetApp.
+
+. Klicken Sie im Popup-Dialogfeld auf *mit NetApp registrieren, Inc.*, um zur NetApp BlueXP Website umgeleitet zu werden.
++
+image:screenshot_gcp_marketplace_register.png["Ein Screenshot eines Pop-up-Pop-ups für die Registrierung."]
+
++
+
+NOTE: Mit diesem Schritt müssen Sie das GCP-Abonnement mit Ihrem NetApp Konto verknüpfen. Der Vorgang der Verknüpfung eines Abonnements ist erst abgeschlossen, wenn Sie von dieser Seite umgeleitet und dann bei BlueXP angemeldet sind.
+
+. Nachdem Sie zu BlueXP umgeleitet wurden, melden Sie sich an oder registrieren Sie sich, und klicken Sie dann auf *Fertig*, um fortzufahren.
++
+Das GCP-Abonnement ist mit allen NetApp Konten verknüpft, mit denen Ihre Benutzeranmeldung verknüpft ist.
+
++
+image:screenshot_gcp_sub_mapping.png["Ein Screenshot, wie ein GCP-Abonnement für ein NetApp Konto zugeordnet wird"]
+
++
+
+NOTE: Wenn ein Mitarbeiter Ihres Unternehmens bereits über Ihr Rechnungskonto das NetApp BlueXP Abonnement abonniert hat, werden Sie weitergeleitet https://cloud.netapp.com/ontap-cloud?x-gcp-marketplace-token=["Die Cloud Volumes ONTAP-Seite auf der BlueXP-Website"^] Stattdessen. Sollte dies nicht unerwartet sein, wenden Sie sich an Ihr NetApp Vertriebsteam. Google ermöglicht nur ein Abonnement pro Google-Abrechnungskonto.
+
+. Navigieren Sie nach Abschluss dieses Vorgangs zur Seite Anmeldeinformationen in BlueXP, und wählen Sie dieses neue Abonnement aus.
++
+image:screenshot_gcp_associate.gif["Ein Screenshot der Abonnementzuordnungsseite."]
+
+
+
+
+
+== Fehlerbehebung beim Marketplace-Abonnementprozess
+
+Manchmal kann das Abonnieren von Cloud Volumes ONTAP über den Google Cloud Marketplace fragmentiert werden aufgrund falscher Berechtigungen oder versehentlich nicht nach der Umleitung zur BlueXP-Website. Wenn dies geschieht, führen Sie die folgenden Schritte aus, um den Abonnementprozess abzuschließen.
+
+.Schritte
+. Navigieren Sie zum https://console.cloud.google.com/marketplace/product/netapp-cloudmanager/cloud-manager["Seite zu NetApp BlueXP im Google Cloud Marketplace"^] Um den Status der Bestellung zu überprüfen. Wenn auf der Seite *auf Anbieter verwalten* steht, scrollen Sie nach unten und klicken Sie auf *Bestellungen verwalten*.
++
+image:screenshot_gcp_manage_orders.png["Ein Screenshot der Marktplatz-Seite nach dem Abonnement."]
+
++
+.. Wenn der Auftrag ein grünes Häkchen anzeigt und dies unerwartet ist, kann bereits ein anderer Mitarbeiter des Unternehmens, der dasselbe Rechnungskonto verwendet, abonniert werden. Wenn das unerwartete vorbereitet ist oder wenn Sie die Details zu diesem Abonnement benötigen, wenden Sie sich an Ihr NetApp Vertriebsteam.
++
+image:screenshot_gcp_green_marketplace.png["Ein Screenshot einer akzeptierten Berechtigung."]
+
+.. Wenn der Auftrag einen Clock- und *Ausstehend*-Status anzeigt, gehen Sie zurück zur Marktplatzseite und wählen Sie *auf Anbieter verwalten*, um den Prozess wie oben beschrieben abzuschließen.
++
+image:screenshot_gcp_pending_marketplace.png["Ein Screenshot einer ausstehenden Marktberechtigung."]
+
+
+
+

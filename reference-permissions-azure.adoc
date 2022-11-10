@@ -1,0 +1,743 @@
+---
+sidebar: sidebar 
+permalink: reference-permissions-azure.html 
+keywords: permissions, azure, azure permissions 
+summary: Beim Start der Connector-VM in Azure wird von BlueXP eine benutzerdefinierte Rolle an die VM angehängt, die dem Connector Berechtigungen für das Management von Ressourcen und Prozessen innerhalb des Azure-Abonnements bietet. Der Connector nutzt die Berechtigungen, um API-Aufrufe an mehrere Azure-Services durchzuführen. 
+---
+= Azure-Berechtigungen für den Connector
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Beim Start der Connector-VM in Azure wird von BlueXP eine benutzerdefinierte Rolle an die VM angehängt, die dem Connector Berechtigungen für das Management von Ressourcen und Prozessen innerhalb des Azure-Abonnements bietet. Der Connector nutzt die Berechtigungen, um API-Aufrufe an mehrere Azure-Services durchzuführen.
+
+
+
+== Berechtigungen für benutzerdefinierte Rollen
+
+Die unten aufgeführte benutzerdefinierte Rolle stellt die Berechtigungen bereit, die ein Connector zur Verwaltung von Ressourcen und Prozessen in Ihrem Azure-Netzwerk benötigt.
+
+Wenn Sie einen Connector direkt aus BlueXP erstellen, wendet BlueXP diese benutzerdefinierte Rolle automatisch auf den Connector an.
+
+Wenn Sie den Connector über den Azure Marketplace bereitstellen oder den Connector manuell auf einem Linux-Host installieren, müssen Sie die benutzerdefinierte Rolle selbst einrichten.
+
+Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, wenn neue Berechtigungen in nachfolgenden Releases hinzugefügt werden.
+
+[source, json]
+----
+{
+    "Name": "BlueXP Operator",
+    "Actions": [
+                   "Microsoft.Compute/disks/delete",
+                    "Microsoft.Compute/disks/read",
+                    "Microsoft.Compute/disks/write",
+                    "Microsoft.Compute/locations/operations/read",
+                    "Microsoft.Compute/locations/vmSizes/read",
+                    "Microsoft.Resources/subscriptions/locations/read",
+                    "Microsoft.Compute/operations/read",
+                    "Microsoft.Compute/virtualMachines/instanceView/read",
+                    "Microsoft.Compute/virtualMachines/powerOff/action",
+                    "Microsoft.Compute/virtualMachines/read",
+                    "Microsoft.Compute/virtualMachines/restart/action",
+                    "Microsoft.Compute/virtualMachines/deallocate/action",
+                    "Microsoft.Compute/virtualMachines/start/action",
+                    "Microsoft.Compute/virtualMachines/vmSizes/read",
+                    "Microsoft.Compute/virtualMachines/write",
+                    "Microsoft.Compute/images/write",
+                    "Microsoft.Compute/images/read",
+                    "Microsoft.Network/locations/operationResults/read",
+                    "Microsoft.Network/locations/operations/read",
+                    "Microsoft.Network/networkInterfaces/read",
+                    "Microsoft.Network/networkInterfaces/write",
+                    "Microsoft.Network/networkInterfaces/join/action",
+                    "Microsoft.Network/networkSecurityGroups/read",
+                    "Microsoft.Network/networkSecurityGroups/write",
+                    "Microsoft.Network/networkSecurityGroups/join/action",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+                    "Microsoft.Network/virtualNetworks/subnets/read",
+                    "Microsoft.Network/virtualNetworks/subnets/write",
+                    "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+                    "Microsoft.Network/virtualNetworks/virtualMachines/read",
+                    "Microsoft.Network/virtualNetworks/subnets/join/action",
+                    "Microsoft.Resources/deployments/operations/read",
+                    "Microsoft.Resources/deployments/read",
+                    "Microsoft.Resources/deployments/write",
+                    "Microsoft.Resources/resources/read",
+                    "Microsoft.Resources/subscriptions/operationresults/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/delete",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Storage/checknameavailability/read",
+                    "Microsoft.Storage/operations/read",
+                    "Microsoft.Storage/storageAccounts/listkeys/action",
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.Storage/storageAccounts/delete",
+                    "Microsoft.Storage/storageAccounts/regeneratekey/action",
+                    "Microsoft.Storage/storageAccounts/write",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                    "Microsoft.Storage/usages/read",
+                    "Microsoft.Compute/snapshots/write",
+                    "Microsoft.Compute/snapshots/read",
+                    "Microsoft.Compute/availabilitySets/write",
+                    "Microsoft.Compute/availabilitySets/read",
+                    "Microsoft.Compute/disks/beginGetAccess/action",
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+                    "Microsoft.Network/loadBalancers/read",
+                    "Microsoft.Network/loadBalancers/write",
+                    "Microsoft.Network/loadBalancers/delete",
+                    "Microsoft.Network/loadBalancers/backendAddressPools/read",
+                    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+                    "Microsoft.Network/loadBalancers/frontendIPConfigurations/read",
+                    "Microsoft.Network/loadBalancers/loadBalancingRules/read",
+                    "Microsoft.Network/loadBalancers/probes/read",
+                    "Microsoft.Network/loadBalancers/probes/join/action",
+                    "Microsoft.Authorization/locks/*",
+                    "Microsoft.Network/routeTables/join/action",
+                    "Microsoft.NetApp/netAppAccounts/read",
+                    "Microsoft.NetApp/netAppAccounts/capacityPools/read",
+                    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write",
+                    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read",
+                    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete",
+                    "Microsoft.Network/privateEndpoints/write",
+                    "Microsoft.Storage/storageAccounts/PrivateEndpointConnectionsApproval/action",
+                    "Microsoft.Storage/storageAccounts/privateEndpointConnections/read",
+                    "Microsoft.Storage/storageAccounts/managementPolicies/read",
+                    "Microsoft.Storage/storageAccounts/managementPolicies/write",
+                    "Microsoft.Network/privateEndpoints/read",
+                    "Microsoft.Network/privateDnsZones/write",
+                    "Microsoft.Network/privateDnsZones/virtualNetworkLinks/write",
+                    "Microsoft.Network/virtualNetworks/join/action",
+                    "Microsoft.Network/privateDnsZones/A/write",
+                    "Microsoft.Network/privateDnsZones/read",
+                    "Microsoft.Network/privateDnsZones/virtualNetworkLinks/read",
+                    "Microsoft.Resources/deployments/operationStatuses/read",
+                    "Microsoft.Insights/Metrics/Read",
+                    "Microsoft.Compute/virtualMachines/extensions/write",
+                    "Microsoft.Compute/virtualMachines/extensions/delete",
+                    "Microsoft.Compute/virtualMachines/extensions/read",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Network/networkInterfaces/delete",
+                    "Microsoft.Network/networkSecurityGroups/delete",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Compute/diskEncryptionSets/read",
+                    "Microsoft.Compute/snapshots/delete",
+                    "Microsoft.Network/privateEndpoints/delete",
+                    "Microsoft.Compute/availabilitySets/delete",
+                    "Microsoft.Network/loadBalancers/delete",
+                    "Microsoft.KeyVault/vaults/read",
+                    "Microsoft.KeyVault/vaults/accessPolicies/write",
+                    "Microsoft.Compute/diskEncryptionSets/write",
+                    "Microsoft.KeyVault/vaults/deploy/action",
+                    "Microsoft.Compute/diskEncryptionSets/delete",
+                    "Microsoft.Resources/tags/read",
+                    "Microsoft.Resources/tags/write",
+                    "Microsoft.Resources/tags/delete",
+                    "Microsoft.Network/applicationSecurityGroups/write",
+                    "Microsoft.Network/applicationSecurityGroups/read",
+                    "Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/write",
+                    "Microsoft.Network/applicationSecurityGroups/delete",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+                    "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+                    "Microsoft.ContainerService/managedClusters/read",
+                    "Microsoft.Synapse/workspaces/write",
+                    "Microsoft.Synapse/workspaces/read",
+                    "Microsoft.Synapse/workspaces/delete",
+                    "Microsoft.Synapse/register/action",
+                    "Microsoft.Synapse/checkNameAvailability/action",
+                    "Microsoft.Synapse/workspaces/operationStatuses/read",
+                    "Microsoft.Synapse/workspaces/firewallRules/read",
+                    "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
+                    "Microsoft.Synapse/workspaces/operationResults/read",
+                    "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "BlueXP Permissions",
+    "IsCustom": "true"
+}
+----
+
+
+== Verwendung von Azure Berechtigungen
+
+In den folgenden Abschnitten wird die Nutzung der Berechtigungen für den jeweiligen NetApp Cloud-Service beschrieben. Diese Informationen können hilfreich sein, wenn Ihre Unternehmensrichtlinien vorschreiben, dass Berechtigungen nur bei Bedarf bereitgestellt werden.
+
+
+
+=== AppTemplate-Tags
+
+Der Connector stellt bei Verwendung des AppTemplate Tagging-Dienstes folgende API-Anforderungen zur Verwaltung von Tags auf Azure-Ressourcen bereit:
+
+* Microsoft.Ressourcen/Ressourcen/Lesen
+* Microsoft.Ressourcen/Abonnements/Operationsergebnisse/Lesen
+* Microsoft.Resources/Subskriptionen/resourceGroups/read
+* Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen
+* Microsoft.Ressourcen/Tags/lesen
+* Microsoft.Ressourcen/Tags/schreiben
+
+
+
+
+=== Azure NetApp Dateien
+
+Der Connector stellt folgende API-Anforderungen zur Verwaltung von Azure NetApp Files-Arbeitsumgebungen vor:
+
+* Microsoft.NetApp/netAppAccounts/read
+* Microsoft.NetApp/netAppAccounts/capacityPools/read
+* Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write
+* Microsoft.NetApp/netAppAccounts/capacityPools/volumes/read
+* Microsoft.NetApp/netAppAccounts/capacityPools/volumes/delete
+
+
+
+
+=== Cloud-Backup
+
+Der Connector stellt die folgenden API-Anforderungen für Backup- und Wiederherstellungsvorgänge:
+
+* Microsoft.Compute/virtualMachines/read
+* Microsoft.Compute/virtualMachines/start/action
+* Microsoft.Compute/virtualMachines/deallocate/action
+* Microsoft.Storage/StorageAccounts/Listkeys/Action
+* Microsoft.Storage/StorageAccounts/Lesevorgang
+* Microsoft.Storage/StorageAccounts/write
+* Microsoft.Storage/StorageAccounts/blobServices/Container/Lesevorgang
+* Microsoft.KeyVault/Vaults/read
+* Microsoft.KeyVault/Vaults/accessPolicies/write
+* Microsoft.Network/networkInterfaces/read
+* Microsoft.Ressourcen/Abonnements/Standorte/gelesen
+* Microsoft.Network/virtualNetworks/read
+* Microsoft.Network/virtualNetworks/subnets/read
+* Microsoft.Resources/Subskriptionen/resourceGroups/read
+* Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen
+* Microsoft.Resources/Subskriptionen/resourceGroups/write
+* Microsoft.Authorization/Locks/*
+* Microsoft.Network/privateEndpoints/write
+* Microsoft.Network/privateEndpoints/read
+* Microsoft.Network/privateDnsZones/virtualNetworkLinks/write
+* Microsoft.Network/virtualNetworks/join/action
+* Microsoft.Network/privateDnsZones/A/write
+* Microsoft.Network/privateDnsZones/read
+* Microsoft.Network/privateDnsZones/virtualNetworkLinks/read
+* Microsoft.Compute/virtualMachines/extensions/delete
+* Microsoft.Compute/virtualMachines/delete
+* Microsoft.Network/networkInterfaces/delete
+* Microsoft.Network/networkSecurityGroups/delete
+* Microsoft.Ressourcen/Bereitstellungen/löschen
+* Microsoft.Network/publicIPAddresses/delete
+* Microsoft.Storage/StorageAccounts/blobServices/Container/write
+* Microsoft.ManagedIdentity/userAssignetIdentities/assign/Action
+
+
+Der Konnektor stellt folgende API-Anforderungen zur Verfügung, wenn Sie die Funktion Suchen & Wiederherstellen verwenden:
+
+* Microsoft.Synapse/Workspaces/schreiben
+* Microsoft.Synapse/Workspaces/Lesen
+* Microsoft.Synapse/Workspaces/delete
+* Microsoft.Synapse/Register/Aktion
+* Microsoft.Synapse/CheckNameVerfügbarkeit/Aktion
+* Microsoft.Synapse/Workspaces/OperationStatus/Lesen
+* Microsoft.Synapse/Workspaces/Firewall Regeln/lesen
+* Microsoft.Synapse/Workspaces/ersetzenAllIpFirewallRegeln/Aktion
+* Microsoft.Synapse/Workspaces/OperationResults/read
+
+
+
+
+=== Cloud-Daten Sinnvoll
+
+Der Connector stellt bei der Verwendung von Cloud Data Sense die folgenden API-Anforderungen vor.
+
+[cols="3*"]
+|===
+| Aktion | Wird zur Einrichtung verwendet? | Wird für den täglichen Betrieb verwendet? 
+
+
+| Microsoft.Compute/locations/operations/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/locations/vmSizes/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/operations/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/virtualMachines/instanceView/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/virtualMachines/powerOff/action | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/virtualMachines/restart/action | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/start/action | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/vmSizes/read | Nein | Ja. 
+
+
+| Microsoft.Compute/virtualMachines/write | Ja. | Nein 
+
+
+| Microsoft.Compute/images/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/disks/delete | Ja. | Nein 
+
+
+| Microsoft.Compute/disks/read | Ja. | Ja. 
+
+
+| Microsoft.Compute/disks/write | Ja. | Nein 
+
+
+| Microsoft.Storage/ChecknameVerfügbarkeit/Lesevorgang | Ja. | Ja. 
+
+
+| Microsoft.Storage/Operations/Lesevorgang | Ja. | Ja. 
+
+
+| Microsoft.Storage/StorageAccounts/Listkeys/Action | Ja. | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/Lesevorgang | Ja. | Ja. 
+
+
+| Microsoft.Storage/StorageAccounts/write | Ja. | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/delete | Nein | Ja. 
+
+
+| Microsoft.Storage/StorageAccounts/blobServices/Container/Lesevorgang | Ja. | Ja. 
+
+
+| Microsoft.Network/networkInterfaces/read | Ja. | Ja. 
+
+
+| Microsoft.Network/networkInterfaces/write | Ja. | Nein 
+
+
+| Microsoft.Network/networkInterfaces/join/action | Ja. | Nein 
+
+
+| Microsoft.Network/networkSecurityGroups/read | Ja. | Ja. 
+
+
+| Microsoft.Network/networkSecurityGroups/write | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Abonnements/Standorte/gelesen | Ja. | Ja. 
+
+
+| Microsoft.Network/locations/operationResults/read | Ja. | Ja. 
+
+
+| Microsoft.Network/locations/operations/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/subnets/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/virtualMachines/read | Ja. | Ja. 
+
+
+| Microsoft.Network/virtualNetworks/subnets/join/action | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/subnets/write | Ja. | Nein 
+
+
+| Microsoft.Network/routeTables/join/action | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Implementierungen/Betrieb/Lesevorgang | Ja. | Ja. 
+
+
+| Microsoft.Ressourcen/Implementierungen/lesen | Ja. | Ja. 
+
+
+| Microsoft.Ressourcen/Implementierungen/schreiben | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Ressourcen/Lesen | Ja. | Ja. 
+
+
+| Microsoft.Ressourcen/Abonnements/Operationsergebnisse/Lesen | Ja. | Ja. 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/delete | Ja. | Nein 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/read | Ja. | Ja. 
+
+
+| Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen | Ja. | Ja. 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/write | Ja. | Nein 
+|===
+
+
+=== Cloud Tiering
+
+Der Connector stellt bei der Einrichtung von Cloud Tiering die folgenden API-Anforderungen vor.
+
+* Microsoft.Storage/StorageAccounts/Listkeys/Action
+* Microsoft.Resources/Subskriptionen/resourceGroups/read
+* Microsoft.Ressourcen/Abonnements/Standorte/gelesen
+
+
+Der Connector stellt folgende API-Anforderungen für den täglichen Betrieb.
+
+* Microsoft.Storage/StorageAccounts/blobServices/Container/Lesevorgang
+* Microsoft.Storage/StorageAccounts/blobServices/Container/write
+* Microsoft.Storage/StorageAccounts/Management Policies/read
+* Microsoft.Storage/StorageAccounts/Management Richtlinien/schreiben
+* Microsoft.Storage/StorageAccounts/Lesevorgang
+
+
+
+
+=== Cloud Volumes ONTAP
+
+Der Connector stellt die folgenden API-Anforderungen für die Implementierung und das Management von Cloud Volumes ONTAP in AWS.
+
+[cols="5*"]
+|===
+| Zweck | Aktion | Werden sie für die Implementierung verwendet? | Wird für den täglichen Betrieb verwendet? | Zum Löschen verwendet? 
+
+
+.12+| Erstellen Sie VMs, stoppen, starten, löschen und erhalten Sie den Status des Systems | Microsoft.Compute/locations/operations/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/locations/vmSizes/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Abonnements/Standorte/gelesen | Ja. | Nein | Nein 
+
+
+| Microsoft.Compute/operations/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/instanceView/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/powerOff/action | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/restart/action | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/start/action | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/deallocate/action | Nein | Ja. | Ja. 
+
+
+| Microsoft.Compute/virtualMachines/vmSizes/read | Nein | Ja. | Nein 
+
+
+| Microsoft.Compute/virtualMachines/write | Ja. | Ja. | Nein 
+
+
+| Implementierung über eine VHD ermöglichen | Microsoft.Compute/images/read | Ja. | Nein | Nein 
+
+
+.3+| Netzwerkschnittstellen im Ziel-Subnetz erstellen und verwalten | Microsoft.Network/networkInterfaces/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/networkInterfaces/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/networkInterfaces/join/action | Ja. | Ja. | Nein 
+
+
+.3+| Erstellen Sie vordefinierte Netzwerksicherheitsgruppen | Microsoft.Network/networkSecurityGroups/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/networkSecurityGroups/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/networkSecurityGroups/join/action | Ja. | Nein | Nein 
+
+
+.8+| Abrufen der Netzwerkinformationen zu Regionen, Ziel-vnet und Subnetz, und Hinzufügen der VMs zu VNets | Microsoft.Network/locations/operationResults/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/locations/operations/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/read | Ja. | Nein | Nein 
+
+
+| Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | Ja. | Nein | Nein 
+
+
+| Microsoft.Network/virtualNetworks/subnets/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/virtualMachines/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/subnets/join/action | Ja. | Ja. | Nein 
+
+
+.9+| Erstellen und Verwalten von Ressourcengruppen | Microsoft.Ressourcen/Implementierungen/Betrieb/Lesevorgang | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Implementierungen/lesen | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Implementierungen/schreiben | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Ressourcen/Lesen | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Abonnements/Operationsergebnisse/Lesen | Ja. | Ja. | Nein 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/delete | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/read | Nein | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen | Ja. | Ja. | Nein 
+
+
+| Microsoft.Resources/Subskriptionen/resourceGroups/write | Ja. | Ja. | Nein 
+
+
+.10+| Azure-Storage-Konten und -Festplatten managen | Microsoft.Compute/disks/read | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Compute/disks/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/disks/delete | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Storage/ChecknameVerfügbarkeit/Lesevorgang | Ja. | Ja. | Nein 
+
+
+| Microsoft.Storage/Operations/Lesevorgang | Ja. | Ja. | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/Listkeys/Action | Ja. | Ja. | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/Lesevorgang | Ja. | Ja. | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/delete | Nein | Ja. | Ja. 
+
+
+| Microsoft.Storage/StorageAccounts/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Speicherung/Verwendung/Lesen | Nein | Ja. | Nein 
+
+
+.3+| Ermöglichen von Backups auf Blob Storage und Verschlüsselung von Storage-Konten | Microsoft.Storage/StorageAccounts/blobServices/Container/Lesevorgang | Ja. | Ja. | Nein 
+
+
+| Microsoft.KeyVault/Vaults/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.KeyVault/Vaults/accessPolicies/write | Ja. | Ja. | Nein 
+
+
+.2+| Vnet-Service-Endpunkte für Daten-Tiering aktivieren | Microsoft.Network/virtualNetworks/subnets/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/routeTables/join/action | Ja. | Ja. | Nein 
+
+
+.4+| Erstellen und managen Sie über Azure gemanagte Snapshots | Microsoft.Compute/snapshots/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/snapshots/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/snapshots/delete | Nein | Ja. | Ja. 
+
+
+| Microsoft.Compute/disks/beginGetAccess/action | Nein | Ja. | Nein 
+
+
+.2+| Erstellung und Management von Verfügbarkeitsgruppen | Microsoft.Compute/availabilitySets/write | Ja. | Nein | Nein 
+
+
+| Microsoft.Compute/availabilitySets/read | Ja. | Nein | Nein 
+
+
+.2+| Programmatische Implementierungen über den Markt ermöglichen | Microsoft.MarketplaceOrdering/offertypes/Publisher/Offers/Plans/Agreements/read | Ja. | Nein | Nein 
+
+
+| Microsoft.MarketplaceOrdering/offertypes/Publisher/Offers/Plans/Agreements/write | Ja. | Ja. | Nein 
+
+
+.7+| Managen Sie einen Load Balancer für HA-Paare | Microsoft.Network/loadBalancers/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/loadBalancers/write | Ja. | Nein | Nein 
+
+
+| Microsoft.Network/loadBalancers/delete | Nein | Ja. | Ja. 
+
+
+| Microsoft.Network/loadBalancers/backendAddressPools/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/loadBalancers/loadBalancingRules/read | Ja. | Nein | Nein 
+
+
+| Microsoft.Network/loadBalancers/probes/read | Ja. | Nein | Nein 
+
+
+| Microsoft.Network/loadBalancers/probes/join/action | Ja. | Nein | Nein 
+
+
+| Verwaltung von Sperren auf Azure Festplatten aktivieren | Microsoft.Authorization/Locks/* | Ja. | Ja. | Nein 
+
+
+.10+| Aktivieren Sie private Endpunkte für HA-Paare, wenn sich keine Verbindung außerhalb des Subnetzes befindet | Microsoft.Network/privateEndpoints/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Speicherung/Speicherkonten/PrivateEndpointConnectionsGenehmigung/Aktion | Ja. | Nein | Nein 
+
+
+| Microsoft.Storage/StorageAccounts/private EndpointConnections/Lesevorgang | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Network/privateEndpoints/read | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Network/privateDnsZones/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/virtualNetworks/join/action | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/privateDnsZones/A/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/privateDnsZones/read | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Ja. | Ja. | Nein 
+
+
+| Erforderlich für einige VM-Implementierungen, abhängig von der zugrunde liegenden physischen Hardware | Microsoft.Ressourcen/Implementierungen/OperationStatuses/read | Ja. | Ja. | Nein 
+
+
+.2+| Entfernen von Ressourcen aus einer Ressourcengruppe bei Ausfall oder Löschen der Bereitstellung | Microsoft.Network/privateEndpoints/delete | Ja. | Ja. | Nein 
+
+
+| Microsoft.Compute/availabilitySets/delete | Ja. | Ja. | Nein 
+
+
+.4+| Nutzen Sie die API, wenn Sie die vom Kunden gemanagten Schlüssel verwenden | Microsoft.Compute/diskEncryptionSets/read | Ja. | Ja. | Ja. 
+
+
+| Microsoft.Compute/diskEncryptionSets/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.KeyVault/Vaults/Deploy/Action | Ja. | Nein | Nein 
+
+
+| Microsoft.Compute/diskEncryptionSets/delete | Ja. | Ja. | Ja. 
+
+
+.6+| Konfigurieren Sie eine Applikationssicherheitsgruppe für ein HA-Paar, um die HA Interconnect- und Cluster-Netzwerk-NICs zu isolieren | Microsoft.Network/applicationSecurityGroups/write | Nein | Ja. | Nein 
+
+
+| Microsoft.Network/applicationSecurityGroups/read | Nein | Ja. | Ja. 
+
+
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Nein | Ja. | Nein 
+
+
+| Microsoft.Network/networkSecurityGroups/securityRules/write | Ja. | Ja. | Nein 
+
+
+| Microsoft.Network/applicationSecurityGroups/delete | Nein | Ja. | Nein 
+
+
+| Microsoft.Network/networkSecurityGroups/securityRules/delete | Nein | Ja. | Ja. 
+
+
+.3+| Lesen, Schreiben und Löschen von Tags im Zusammenhang mit Cloud Volumes ONTAP Ressourcen | Microsoft.Ressourcen/Tags/lesen | Nein | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Tags/schreiben | Ja. | Ja. | Nein 
+
+
+| Microsoft.Ressourcen/Tags/delete | Ja. | Nein | Nein 
+
+
+| Verschlüsselung von Speicherkonten bei der Erstellung | Microsoft.ManagedIdentity/userAssignetIdentities/assign/Action | Ja. | Ja. | Nein 
+|===
+
+
+=== Globaler Datei-Cache
+
+Der Connector stellt bei Verwendung des globalen Datei-Caches folgende API-Anforderungen vor:
+
+* Microsoft.Insights/Metriken/Lesevorgang
+* Microsoft.Compute/virtualMachines/extensions/write
+* Microsoft.Compute/virtualMachines/extensions/read
+* Microsoft.Compute/virtualMachines/extensions/delete
+* Microsoft.Compute/virtualMachines/delete
+* Microsoft.Network/networkInterfaces/delete
+* Microsoft.Network/networkSecurityGroups/delete
+* Microsoft.Ressourcen/Bereitstellungen/löschen
+
+
+
+
+=== Kubernetes
+
+Der Connector stellt folgende API-Anforderungen zur Erkennung und Verwaltung von Clustern in Azure Kubernetes Service (AKS):
+
+* Microsoft.Compute/virtualMachines/read
+* Microsoft.Ressourcen/Abonnements/Standorte/gelesen
+* Microsoft.Ressourcen/Abonnements/Operationsergebnisse/Lesen
+* Microsoft.Resources/Subskriptionen/resourceGroups/read
+* Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen
+* Microsoft.ContainerService/manageCluster/lesen
+* Microsoft.ContainerService/verwaltungCluster/listClusterUserCredential/Action
+

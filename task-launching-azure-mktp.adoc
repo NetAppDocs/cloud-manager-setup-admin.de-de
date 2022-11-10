@@ -1,0 +1,169 @@
+---
+sidebar: sidebar 
+permalink: task-launching-azure-mktp.html 
+keywords: install, installation, installing, marketplace, azure, deploy, virtual machine, permissions, deploy connector in azure, install connector in azure 
+summary: Für eine kommerzielle Azure-Region ist es am besten, einen Connector direkt aus BlueXP zu erstellen, aber Sie können einen Connector im Azure Marketplace starten, falls Sie es bevorzugen. Für Azure-Regierungsregionen kann der Connector nicht über die BlueXP SaaS-Website in einer Regierungsregion bereitgestellt werden. Die nächste Option ist daher der Azure Marketplace. 
+---
+= Erstellen Sie einen Connector aus dem Azure Marketplace
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Für eine kommerzielle Azure-Region ist es am besten, einen Connector direkt aus BlueXP zu erstellen, aber Sie können einen Connector im Azure Marketplace starten, falls Sie es bevorzugen. Für Azure-Regierungsregionen kann der Connector nicht über die BlueXP SaaS-Website in einer Regierungsregion bereitgestellt werden. Die nächste Option ist daher der Azure Marketplace.
+
+
+TIP: Sie können die Connector-Software auch auf einem bestehenden Linux-Host in Ihrem Netzwerk oder in der Cloud herunterladen und installieren. link:task-installing-linux.html["Erfahren Sie, wie Sie den Connector auf einem vorhandenen Linux-Host installieren"].
+
+
+
+== Erstellen eines Connectors in Azure
+
+Implementieren Sie den Connector in Azure mithilfe des Images im Azure Marketplace. Melden Sie sich dann bei Connector an, um Ihren NetApp Account anzugeben.
+
+.Schritte
+. Wechseln Sie im Azure Marketplace auf die Seite NetApp Connector VM.
++
+** https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-oncommand-cloud-manager["Azure Marketplace-Seite für kommerzielle Regionen"^]
+** https://portal.azure.us/#create/netapp.netapp-oncommand-cloud-manageroccm-byol["Azure Marketplace-Seite für Azure Government Regions"^]
+
+
+. Klicken Sie auf *Jetzt holen* und klicken Sie dann auf *Weiter*.
+. Klicken Sie im Azure-Portal auf *Erstellen* und befolgen Sie die Schritte zur Konfiguration der virtuellen Maschine.
++
+Beachten Sie beim Konfigurieren der VM Folgendes:
+
++
+** Der Connector kann mit Festplatten der Festplatte oder der SSD optimal arbeiten.
+** Wählen Sie eine VM-Größe aus, die den CPU- und RAM-Anforderungen entspricht. Wir empfehlen DS3 v2.
++
+link:task-installing-linux.html["VM-Anforderungen prüfen"].
+
+** Für die Netzwerksicherheitsgruppe benötigt der Connector eingehende Verbindungen unter Verwendung von SSH, HTTP und HTTPS.
++
+link:reference-ports-azure.html["Erfahren Sie mehr über die Regeln für Sicherheitsgruppen für den Connector"].
+
+** Aktivieren Sie unter *Management* * * die vom System zugewiesene verwaltete Identität* für den Connector, indem Sie *ein* wählen.
++
+Diese Einstellung ist wichtig, da sich die Virtual Machine Connector mit Azure Active Directory identifizieren kann, ohne dass Anmeldedaten vorhanden sind. https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Erfahren Sie mehr über Managed Identitäten für Azure Ressourcen"^].
+
+
+
+. Überprüfen Sie auf der Seite *Überprüfen + erstellen* Ihre Auswahl und klicken Sie auf *Erstellen*, um die Bereitstellung zu starten.
++
+Azure stellt die virtuelle Maschine mit den angegebenen Einstellungen bereit. Die virtuelle Maschine und die Connector-Software sollten in etwa fünf Minuten ausgeführt werden.
+
+. Öffnen Sie einen Webbrowser von einem Host, der eine Verbindung mit der virtuellen Verbindungsmaschine hat, und geben Sie die folgende URL ein:
++
+https://_ipaddress_[]
+
+. Richten Sie nach der Anmeldung den Konnektor ein:
++
+.. Geben Sie den NetApp Account an, der mit dem Connector verknüpft werden soll.
++
+link:concept-netapp-accounts.html["Informationen zu NetApp Accounts"].
+
+.. Geben Sie einen Namen für das System ein.
++
+image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm BlueXP einrichten zeigt, über den Sie ein NetApp Konto auswählen und das System benennen können."]
+
+
+
+
+
+Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet.
+
+Wenn sich der Connector in einer kommerziellen Azure-Region befindet, öffnen Sie einen Webbrowser, und gehen Sie zu https://cloudmanager.netapp.com[] Um den Connector mit BlueXP zu verwenden.
+
+Wenn sich der Connector in einer Region der Azure-Regierung befindet, können Sie BlueXP verwenden, indem Sie Ihren Webbrowser öffnen und eine Verbindung zur IP-Adresse der Connector-Instanz herstellen: https://_ipaddress_[]
+
+Da der Connector in einer Regierungsregion eingesetzt wurde, ist er von nicht zugänglich https://cloudmanager.netapp.com[].
+
+
+
+== Azure-Berechtigungen werden gewährt
+
+Bei der Implementierung des Connectors in Azure sollten Sie a aktiviert haben https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Vom System zugewiesene verwaltete Identität"^]. Sie müssen nun die erforderlichen Azure-Berechtigungen erteilen, indem Sie eine benutzerdefinierte Rolle erstellen und dann die Rolle der virtuellen Connector-Maschine für ein oder mehrere Abonnements zuweisen.
+
+.Schritte
+. Erstellen einer benutzerdefinierten Rolle:
++
+.. Kopieren Sie den Inhalt des link:reference-permissions-azure.html["Benutzerdefinierte Rollenberechtigungen für den Konnektor"] Und speichern Sie sie in einer JSON-Datei.
+.. Ändern Sie die JSON-Datei, indem Sie dem zuweisbaren Bereich Azure-Abonnement-IDs hinzufügen.
++
+Sie sollten die ID für jedes Azure Abonnement hinzufügen, aus dem Benutzer Cloud Volumes ONTAP Systeme erstellen.
+
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+"/subscriptions/54b91999-b3e6-4599-908e-416e0zzzzzzz",
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"
+----
+.. Verwenden Sie die JSON-Datei, um eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+In den folgenden Schritten wird beschrieben, wie die Rolle mithilfe von Bash in Azure Cloud Shell erstellt wird.
+
++
+*** Starten https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] Und wählen Sie die Bash-Umgebung.
+*** Laden Sie die JSON-Datei hoch.
++
+image:screenshot_azure_shell_upload.png["Einen Screenshot der Azure Cloud Shell, in dem Sie die Option zum Hochladen einer Datei auswählen können."]
+
+*** Geben Sie den folgenden Befehl der Azure CLI ein:
++
+[source, azurecli]
+----
+az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json
+----
++
+Sie sollten nun eine benutzerdefinierte Rolle namens BlueXP Operator haben, die Sie der virtuellen Connector-Maschine zuweisen können.
+
+
+
+
+
+. Weisen Sie der virtuellen Verbindungsmaschine die Rolle für eine oder mehrere Abonnements zu:
++
+.. Öffnen Sie den Dienst *Abonnements* und wählen Sie dann das Abonnement aus, in dem Sie Cloud Volumes ONTAP-Systeme bereitstellen möchten.
+.. Klicken Sie auf *Zugriffskontrolle (IAM)* > *Hinzufügen* > *Rollenzuweisung hinzufügen*.
+.. Wählen Sie auf der Registerkarte * Role* die Rolle *BlueXP Operator* aus und klicken Sie auf *Next*.
++
+
+NOTE: BlueXP Operator ist der Standardname, der in der BlueXP-Richtlinie angegeben ist. Wenn Sie einen anderen Namen für die Rolle ausgewählt haben, wählen Sie stattdessen diesen Namen aus.
+
+.. Führen Sie auf der Registerkarte *Mitglieder* die folgenden Schritte aus:
++
+*** Weisen Sie einer * verwalteten Identität* Zugriff zu.
+*** Klicken Sie auf *Mitglieder auswählen*, wählen Sie das Abonnement aus, in dem die virtuelle Connector-Maschine erstellt wurde, wählen Sie *Virtuelle Maschine* und wählen Sie dann die virtuelle Connector-Maschine aus.
+*** Klicken Sie Auf *Auswählen*.
+*** Klicken Sie Auf *Weiter*.
+
+
+.. Klicken Sie auf *Review + Assign*.
+.. Wenn Sie Cloud Volumes ONTAP von zusätzlichen Abonnements aus implementieren möchten, wechseln Sie zu diesem Abonnement, und wiederholen Sie diese Schritte.
+
+
+
+
+Der Connector verfügt nun über die Berechtigungen, die die IT für das Management von Ressourcen und Prozessen in Ihrer Public Cloud-Umgebung benötigt. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun link:task-managing-connectors.html["Wechseln Sie zwischen ihnen"].
+
+Wenn Sie Azure Blob Storage in demselben Azure Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Azure Blob Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-azure-blob.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].
+
+
+
+== Offener Port 3128 für AutoSupport-Meldungen
+
+Wenn Sie Cloud Volumes ONTAP-Systeme in einem Subnetz bereitstellen möchten, in dem keine ausgehende Internetverbindung verfügbar ist, konfiguriert BlueXP Cloud Volumes ONTAP automatisch für die Verwendung des Connectors als Proxyserver.
+
+Die einzige Anforderung besteht darin, sicherzustellen, dass die Sicherheitsgruppe des Connectors _eingehende_ -Verbindungen über Port 3128 zulässt. Nach der Bereitstellung des Connectors müssen Sie diesen Port öffnen.
+
+Wenn Sie die Standardsicherheitsgruppe für Cloud Volumes ONTAP verwenden, sind keine Änderungen an der Sicherheitsgruppe erforderlich. Wenn Sie aber strenge ausgehende Regeln für Cloud Volumes ONTAP definieren möchten, müssen Sie auch sicherstellen, dass die Cloud Volumes ONTAP-Sicherheitsgruppe _Outbound_-Verbindungen über Port 3128 zulässt.

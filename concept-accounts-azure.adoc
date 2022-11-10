@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: concept-accounts-azure.html 
+keywords: cloud provider accounts, azure, azure accounts, service principal, multiple accounts, permissions, policy, policies, subscriptions, credentials 
+summary: Mit BlueXP können Sie die für die Bereitstellung von Cloud Volumes ONTAP verwendeten Azure Zugangsdaten auswählen. Alle Cloud Volumes ONTAP Systeme können über die ersten Azure Zugangsdaten implementiert oder zusätzliche Anmeldedaten hinzugefügt werden. 
+---
+= Azure Zugangsdaten und Berechtigungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit BlueXP können Sie die für die Bereitstellung von Cloud Volumes ONTAP verwendeten Azure Zugangsdaten auswählen. Alle Cloud Volumes ONTAP Systeme können über die ersten Azure Zugangsdaten implementiert oder zusätzliche Anmeldedaten hinzugefügt werden.
+
+
+
+== Erste Azure Zugangsdaten
+
+Wenn Sie einen Connector von BlueXP bereitstellen, müssen Sie ein Azure-Konto oder einen Service-Principal verwenden, der über die Berechtigungen zum Bereitstellen der virtuellen Connector-Maschine verfügt. Die erforderlichen Berechtigungen werden im aufgeführt link:task-creating-connectors-azure.html["Connector-Implementierungsrichtlinie für Azure"].
+
+Wenn BlueXP die Connector Virtual Machine in Azure implementiert, wird damit ein aktiviert https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Vom System zugewiesene verwaltete Identität"^] Erstellt auf einer virtuellen Maschine eine benutzerdefinierte Rolle und weist sie der virtuellen Maschine zu. Diese Rolle bietet BlueXP die Berechtigungen, die für das Management von Ressourcen und Prozessen innerhalb des Azure Abonnements erforderlich sind. link:reference-permissions-azure.html["Überprüfen Sie, wie BlueXP die Berechtigungen verwendet"].
+
+image:diagram_permissions_initial_azure.png["Ein konzeptionelles Image, das BlueXP die Bereitstellung eines Connectors in einem Azure-Konto und -Abonnement zeigt. Eine vom System zugewiesene verwaltete Identität ist aktiviert und der virtuellen Maschine Connector wird eine benutzerdefinierte Rolle zugewiesen."]
+
+Bei der Erstellung einer neuen Arbeitsumgebung für Cloud Volumes ONTAP wählt BlueXP die folgenden Azure-Anmeldedaten standardmäßig aus:
+
+image:screenshot_accounts_select_azure.gif["Ein Screenshot, in dem die Option Konto wechseln auf der Seite Details  Credentials angezeigt wird."]
+
+
+
+== Zusätzliche Azure-Abonnements für eine gemanagte Identität
+
+Die verwaltete Identität ist mit dem Abonnement verbunden, in dem Sie den Connector gestartet haben. Wenn Sie ein anderes Azure Abonnement auswählen möchten, müssen Sie es ausführen link:task-adding-azure-accounts.html#associating-additional-azure-subscriptions-with-a-managed-identity["Verknüpfen Sie die verwaltete Identität mit diesen Abonnements"].
+
+
+
+== Zusätzliche Azure Zugangsdaten
+
+Wenn Sie Cloud Volumes ONTAP mit unterschiedlichen Azure Zugangsdaten implementieren möchten, müssen Sie die erforderlichen Berechtigungen von erteilen link:task-adding-azure-accounts.html["Erstellen und Einrichten eines Service Principal in Azure Active Directory"] Für jedes Azure Konto. Das folgende Bild zeigt zwei zusätzliche Konten, die jeweils mit einer Dienstprinzipal- und einer benutzerdefinierten Rolle eingerichtet sind, die Berechtigungen bereitstellt:
+
+image:diagram_permissions_multiple_azure.png["Ein konzeptionelles Image, das den ersten Azure Account zeigt und über eine benutzerdefinierte Rolle und gemanagte Identität Berechtigungen erhält, und zwei zusätzliche Konten, die über eine benutzerdefinierte Rolle und einen Serviceprincipal Berechtigungen erhalten."]
+
+Das würden Sie dann tun link:task-adding-azure-accounts.html#adding-azure-accounts-to-cloud-manager["Fügen Sie die Kontoanmeldeinformationen zu BlueXP hinzu"] Durch Angabe von Details zum AD-Dienstprinzipal.
+
+Nachdem Sie einen weiteren Satz von Anmeldeinformationen hinzugefügt haben, können Sie zu ihnen wechseln, wenn Sie eine neue Arbeitsumgebung erstellen:
+
+image:screenshot_accounts_switch_azure.gif["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]
+
+.Wie sieht es mit Marketplace-Implementierungen und On-Premises-Implementierungen aus?
+****
+In den obigen Abschnitten wird die empfohlene Bereitstellungsmethode für den Connector beschrieben, der aus BlueXP stammt. Sie können auch einen Connector in Azure über die bereitstellen link:task-launching-azure-mktp.html["Azure Marketplace"], Und Sie können link:task-installing-linux.html["Installieren Sie den Steckverbinder vor Ort"].
+
+Wenn Sie den Marktplatz nutzen, werden Berechtigungen auf die gleiche Weise bereitgestellt. Sie müssen lediglich die verwaltete Identität für den Connector manuell erstellen und einrichten und dann Berechtigungen für weitere Konten bereitstellen.
+
+Für On-Premises-Bereitstellungen können Sie keine verwaltete Identität für den Connector einrichten, aber Sie können Berechtigungen wie bei zusätzlichen Konten mit einem Service-Principal bereitstellen.
+
+****

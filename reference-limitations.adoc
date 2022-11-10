@@ -1,0 +1,103 @@
+---
+sidebar: sidebar 
+permalink: reference-limitations.html 
+keywords: limitations, active directory, ad, iscsi, key managers, ip address, govcloud, BlueXP, Cloud Volumes ONTAP, days, running, Connectors should remain running 
+summary: Bekannte Einschränkungen identifizieren Plattformen, Geräte oder Funktionen, die von dieser Version des Produkts nicht unterstützt werden oder nicht korrekt mit dem Produkt zusammenarbeiten. Lesen Sie diese Einschränkungen sorgfältig durch. 
+---
+= Bekannte Einschränkungen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bekannte Einschränkungen identifizieren Plattformen, Geräte oder Funktionen, die von dieser Version des Produkts nicht unterstützt werden oder nicht korrekt mit dem Produkt zusammenarbeiten. Lesen Sie diese Einschränkungen sorgfältig durch.
+
+Diese Einschränkungen gelten insbesondere für die Einrichtung und Administration von BlueXP: Der Connector, die SaaS-Plattform und vieles mehr.
+
+
+
+== Einschränkungen an den Anschlüssen
+
+
+
+=== Möglicher Konflikt mit IP-Adressen im Bereich 172
+
+BlueXP implementiert den Connector mit zwei Schnittstellen, die IP-Adressen in den Bereichen 172.17.0.0/16 und 172.18.0.0/16 haben.
+
+Wenn Ihr Netzwerk über ein Subnetz verfügt, das mit einem dieser Bereiche konfiguriert ist, können Verbindungsfehler von BlueXP auftreten. Beispielsweise schlägt die Erkennung von lokalen ONTAP Clustern in BlueXP fehl.
+
+Siehe Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Cloud_Manager/Cloud_Manager_shows_inactive_as_Connector_IP_range_in_172.x.x.x_conflict_with_docker_network["BlueXP Connector IP-Konflikt mit vorhandenem Netzwerk"] Anweisungen zum Ändern der IP-Adresse der Schnittstellen des Connectors.
+
+
+
+=== Es wird nur ein HTTP-Proxyserver unterstützt
+
+Wenn Sie in Ihren Unternehmensrichtlinien einen Proxyserver für die gesamte HTTP-Kommunikation mit dem Internet verwenden müssen, müssen Sie Ihre Connectors so konfigurieren, dass sie diesen HTTP-Proxyserver verwenden. Der Proxyserver kann sich in der Cloud oder im Netzwerk befinden.
+
+BlueXP unterstützt die Verwendung eines HTTPS-Proxys mit dem Connector nicht.
+
+
+
+=== SSL-Entschlüsselung wird nicht unterstützt
+
+BlueXP unterstützt keine Firewall-Konfigurationen, bei denen die SSL-Entschlüsselung aktiviert ist. Wenn die SSL-Entschlüsselung aktiviert ist, werden Fehlermeldungen in BlueXP angezeigt, und die Connector-Instanz wird als inaktiv angezeigt.
+
+Um die Sicherheit zu erhöhen, haben Sie die Möglichkeit link:task-installing-https-cert.html["Installieren eines von einer Zertifizierungsstelle (CA) signierten HTTPS-Zertifikats"].
+
+
+
+=== Leere Seite beim Laden der lokalen Benutzeroberfläche
+
+Wenn Sie die lokale Benutzeroberfläche für einen Konnektor laden, wird die Benutzeroberfläche manchmal nicht angezeigt, und Sie erhalten nur eine leere Seite.
+
+Dieses Problem bezieht sich auf ein Caching-Problem. Die Problemumgehung besteht darin, eine Inkognito- oder private Webbrowser-Sitzung zu verwenden.
+
+
+
+=== Freigegebene Linux-Hosts werden nicht unterstützt
+
+Der Connector wird nicht von einer VM unterstützt, die gemeinsam mit anderen Anwendungen genutzt wird. Die VM muss der Connector-Software zugewiesen sein.
+
+
+
+=== Agenten und Erweiterungen von Drittanbietern
+
+Agenten von Drittanbietern oder VM-Erweiterungen werden auf der Connector-VM nicht unterstützt.
+
+
+
+== SaaS-Einschränkungen
+
+
+
+=== Die SaaS-Plattform ist für Regierungsregionen deaktiviert
+
+Wenn Sie einen Connector in einer AWS GovCloud Region, einer Azure Gov-Region oder einer Azure DoD-Region bereitstellen, steht der Zugriff auf BlueXP nur über die Host-IP-Adresse eines Connectors zur Verfügung. Der Zugriff auf die SaaS-Plattform ist für das gesamte Konto deaktiviert.
+
+Das bedeutet, dass nur privilegierte Benutzer, die auf die interne VPC/vnet des Endbenutzers zugreifen können, die UI oder API von BlueXP verwenden können.
+
+Beachten Sie, dass nur Cloud Volumes ONTAP, Cloud-Backup, Cloud-Datensense und Replizierung unterstützt werden. Andere NetApp Services werden in Regionen der öffentlichen Hand nicht unterstützt.
+
+link:task-managing-connectors.html#access-the-local-ui["Erfahren Sie, wie Sie auf die lokale Benutzeroberfläche des Connectors zugreifen können"].
+
+
+
+== Einschränkungen des Marktes
+
+
+
+=== Für Azure und Google Cloud Partner ist kein „Pay-as-you-go“-Modell verfügbar
+
+Wenn Sie ein Microsoft Cloud Solution Provider (CSP)-Partner oder Google Cloud-Partner sind, stehen NetApp Pay-as-you-go-Abonnements nicht zur Verfügung. Kunden müssen eine Lizenz erwerben und NetApp Cloud-Lösungen mit einer BYOL-Lizenz implementieren.
+
+Abonnements auf Nutzung sind für die folgenden NetApp Cloud-Services nicht verfügbar:
+
+* Cloud Volumes ONTAP
+* Cloud Tiering
+* Cloud-Backup
+* Cloud-Daten Sinnvoll
+

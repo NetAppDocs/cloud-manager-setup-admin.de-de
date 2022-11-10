@@ -1,0 +1,118 @@
+---
+sidebar: sidebar 
+permalink: task-install-connector-onprem-no-internet.html 
+keywords: connector, dark site, install dark site, install connector no internet, install connector on prem 
+summary: Sie können den Connector auf einem lokalen Linux-Host installieren, der keinen Internetzugang hat. Anschließend können Sie ONTAP-Cluster vor Ort erkennen, Daten zwischen ihnen replizieren, Volumes mit Cloud Backup sichern und mithilfe von Cloud Data Sense scannen. 
+---
+= Installieren Sie den Connector On-Prem ohne Internetzugang
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können den Connector auf einem lokalen Linux-Host installieren, der keinen Internetzugang hat. Anschließend können Sie ONTAP-Cluster vor Ort erkennen, Daten zwischen ihnen replizieren, Volumes mit Cloud Backup sichern und mithilfe von Cloud Data Sense scannen.
+
+Diese Installationsanweisungen richten sich speziell an den oben beschriebenen Anwendungsfall. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie mehr über andere Möglichkeiten zur Bereitstellung eines Connectors"].
+
+
+
+== Host-Anforderungen prüfen
+
+Die Connector-Software muss auf einem Host ausgeführt werden, der bestimmte Betriebssystemanforderungen, RAM-Anforderungen, Port-Anforderungen usw. erfüllt.
+
+Ein dedizierter Host ist erforderlich:: Der Connector wird nicht auf einem Host unterstützt, der für andere Anwendungen freigegeben ist. Der Host muss ein dedizierter Host sein.
+CPU:: 4 Kerne oder 4 vCPUs
+RAM:: 14 GB
+Unterstützte Betriebssysteme::
++
+--
+* CentOS 7.6
+* CentOS 7.7
+* CentOS 7.8
+* CentOS 7.9
+* Red Hat Enterprise Linux 7.6
+* Red Hat Enterprise Linux 7.7
+* Red Hat Enterprise Linux 7.8
+* Red Hat Enterprise Linux 7.9
++
+Das Red Hat Enterprise Linux System muss beim Red Hat Subscription Management registriert sein. Wenn es nicht registriert ist, kann das System während der Connector-Installation nicht auf Repositories zugreifen, um die erforderliche Software von Drittanbietern zu aktualisieren.
+
++
+Der Connector wird auf Englisch-sprachigen Versionen dieser Betriebssysteme unterstützt.
+
+
+
+--
+Hypervisor:: Ein Bare Metal- oder gehosteter Hypervisor, der für die Ausführung von CentOS oder Red hat Enterprise Linux zertifiziert isthttps://access.redhat.com/certified-hypervisors["Red hat Solution: Welche Hypervisoren sind für die Ausführung von Red hat Enterprise Linux zertifiziert?"^]
+Festplattentyp:: Eine SSD ist erforderlich
+Speicherplatz in /opt:: 100 gib Speicherplatz muss verfügbar sein
+Festplattenspeicher in /var:: 20 gib Speicherplatz muss verfügbar sein
+Docker Engine:: Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. https://docs.docker.com/engine/install/["Installationsanweisungen anzeigen"^].
+
+
+
+
+== Den Stecker einbauen
+
+Nachdem Sie sich vergewissern, dass Sie über einen unterstützten Linux-Host verfügen, können Sie die Connector-Software erwerben und dann installieren.
+
+Zur Installation des Connectors sind Root-Berechtigungen erforderlich.
+
+.Schritte
+. Vergewissern Sie sich, dass der Docker aktiviert ist und ausgeführt wird.
++
+[source, cli]
+----
+sudo systemctl enable docker && sudo systemctl start docker
+----
+. Laden Sie die BlueXP-Software von der herunter https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab["NetApp Support Website"^].
+. Kopieren Sie das Installationsprogramm auf den Linux-Host.
+. Weisen Sie Berechtigungen zum Ausführen des Skripts zu.
++
+[source, cli]
+----
+chmod +x /path/cloud-manager-connector-offline-v3.9.19
+----
+. Führen Sie das Installationsskript aus:
++
+[source, cli]
+----
+sudo /path/cloud-manager-connector-offline-v3.9.19
+----
+. Öffnen Sie einen Webbrowser, und geben Sie ein https://_ipaddress_[] Wobei _ipaddress_ die IP-Adresse des Linux-Hosts ist.
++
+Der folgende Bildschirm sollte angezeigt werden.
+
++
+image:screenshot-onprem-darksite-welcome.png["Ein Screenshot der Begrüßungsseite, die angezeigt wird, nachdem Sie die IP-Adresse des Connectors in Ihren Webbrowser eingegeben haben."]
+
+. Klicken Sie auf *Neues BlueXP* einrichten und befolgen Sie die Anweisungen zur Einrichtung des Systems.
++
+** *Systemdetails*: Geben Sie einen Namen für den Connector und Ihren Firmennamen ein.
++
+image:screenshot-onprem-darksite-details.png["Ein Screenshot der Seite Systemdetails, in der Sie aufgefordert werden, den Namen von BlueXP und den Firmennamen einzugeben."]
+
+** *Admin-Benutzer erstellen*: Erstellen Sie den Admin-Benutzer für das System.
++
+Dieses Benutzerkonto wird lokal auf dem System ausgeführt. Über BlueXP ist keine Verbindung zum aut0-Service verfügbar.
+
+** *Review*: Lesen Sie die Details durch, akzeptieren Sie die Lizenzvereinbarung und klicken Sie dann auf *Einrichten*.
+
+
+. Melden Sie sich mit dem gerade erstellten Admin-Benutzer bei BlueXP an.
+
+
+Der Connector ist jetzt installiert und Sie können die BlueXP-Funktionen nutzen, die bei der Installation an dunklen Standorten verfügbar sind.
+
+.Was und#8217;s als Nächstes?
+* https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Erkennen von On-Premises-ONTAP-Clustern"^]
+* https://docs.netapp.com/us-en/cloud-manager-replication/task-replicating-data.html["Replizieren von Daten zwischen lokalen ONTAP Clustern"^]
+* https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html["On-Premises-ONTAP-Volume-Daten werden mit Cloud-Backup in StorageGRID gesichert"^]
+* https://docs.netapp.com/us-en/cloud-manager-data-sense/task-deploy-compliance-dark-site.html["Scannen Sie ONTAP-Volume-Daten vor Ort mit Cloud-Data Sense"^]
+
+
+Sobald neue Versionen der Connector-Software verfügbar sind, werden diese auf der NetApp Support Site veröffentlicht. link:task-managing-connectors.html#upgrade-the-connector-on-prem-without-internet-access["Erfahren Sie, wie Sie den Connector aktualisieren können"].

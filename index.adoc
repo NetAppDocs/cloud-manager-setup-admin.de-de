@@ -1,0 +1,16 @@
+---
+layout: astra 
+sidebar: sidebar 
+permalink: index.html 
+lead: 'Get started with BlueXP (formerly Cloud Manager) so that you can start using NetApp"s cloud services to manage your data across a hybrid multicloud. After set up is complete, you can administer your NetApp accounts, Connectors, cloud provider accounts, and more.' 
+summary: 'Steigen Sie mit BlueXP (früher Cloud Manager) ein, um Ihre Daten zunächst mithilfe der Cloud-Services von NetApp in einer Hybrid-Multi-Cloud zu managen. Nach der Einrichtung können Sie Ihre NetApp Accounts, Connectors, Cloud-Provider-Konten und vieles mehr verwalten.' 
+---
+= Richten Sie BlueXP ein und verwalten Sie sie
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+

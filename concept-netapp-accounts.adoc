@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: concept-netapp-accounts.html 
+keywords: accounts, workspaces, Connector, users, BlueXP website, admin, Account Admin, Workspace Admin, account settings, workspaces, users, members, connector, service connector, user accounts, what are users, what is a workspace, users and workspaces 
+summary: Ein NetApp Konto bietet Mandantenfähigkeit und ermöglicht es Ihnen, Benutzer und Ressourcen in isolierten Workspaces innerhalb von BlueXP zu organisieren. 
+---
+= Informationen zu NetApp Accounts
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ein _NetApp Konto_ bietet Mandantenfähigkeit und ermöglicht es Ihnen, Benutzer und Ressourcen in isolierten Arbeitsbereichen innerhalb von BlueXP zu organisieren.
+
+So können beispielsweise mehrere Benutzer Cloud Volumes ONTAP Systeme in isolierten Umgebungen, sogenannte _Workspaces_, implementieren und managen. Diese Arbeitsbereiche sind für andere Benutzer unsichtbar, es sei denn, sie werden gemeinsam genutzt.
+
+Wenn Sie zum ersten Mal auf BlueXP zugreifen, werden Sie aufgefordert, ein NetApp Konto auszuwählen oder zu erstellen:
+
+image:screenshot_account_selection.gif["Einen Screenshot des BlueXP Setup-Assistenten, in dem Sie zur Eingabe des NetApp Kontos aufgefordert werden, in dem Sie BlueXP erstellen möchten."]
+
+BlueXP-Kontoadministratoren können dann die Einstellungen für dieses Konto ändern, indem sie Benutzer (Mitglieder), Arbeitsbereiche, Connectors und Abonnements verwalten:
+
+image:screenshot_account_settings.gif["Ein Screenshot mit dem Widget „Konto verwalten“, über das Sie Benutzer, Arbeitsbereiche und Connectors verwalten können."]
+
+Schritt-für-Schritt-Anweisungen finden Sie unter link:task-setting-up-netapp-accounts.html["NetApp Konto einrichten"].
+
+
+
+== Kontoeinstellungen
+
+Im Widget „Manage Account“ in BlueXP können Account-Administratoren ein NetApp Konto verwalten. Wenn Sie gerade Ihr Konto erstellt, dann beginnen Sie von Grund auf. Wenn Sie jedoch bereits ein Konto eingerichtet haben, sehen Sie _all_ die Benutzer, Arbeitsbereiche, Connectors und Abonnements, die mit dem Konto verknüpft sind.
+
+
+
+== Überblick
+
+Auf der Seite Übersicht werden der Kontoname und die Konto-ID angezeigt. Bei der Registrierung einiger Services müssen Sie unter Umständen Ihre Konto-ID angeben. Diese Seite enthält auch einige BlueXP-Konfigurationsoptionen.
+
+
+
+== Mitglieder
+
+Die Mitglieder sind BlueXP Benutzer, die Sie mit Ihrem NetApp Konto verknüpfen. Wenn Sie einen Benutzer mit einem Konto und einem oder mehreren Arbeitsbereichen in diesem Konto verknüpfen, können diese Benutzer Arbeitsumgebungen in BlueXP erstellen und verwalten.
+
+Wenn Sie einen Benutzer zuordnen, weisen Sie ihm eine Rolle zu:
+
+* _Account Admin_: Kann jede Aktion in BlueXP ausführen.
+* _Workspace Admin_: Kann Ressourcen im zugewiesenen Arbeitsbereich erstellen und verwalten.
+* _Compliance Viewer_: Kann nur Informationen zur Compliance von Cloud Data Sense anzeigen und Berichte für Systeme erstellen, auf die sie zugreifen können.
+* _SnapCenter Admin_: Kann den SnapCenter Service verwenden, um mit diesen Backups applikationskonsistente Backups zu erstellen und Daten wiederherzustellen. _Dieser Dienst befindet sich derzeit in der Beta._
+
+
+link:reference-user-roles.html["Hier erfahren Sie mehr über diese Rollen"].
+
+
+
+== Arbeitsbereiche
+
+In BlueXP isoliert ein Arbeitsbereich beliebig viele _Arbeitsumgebungen_ aus anderen Arbeitsumgebungen. Workspace-Administratoren können nicht auf die Arbeitsumgebungen in einem Arbeitsbereich zugreifen, es sei denn, der Kontoadministrator ordnet den Administrator diesem Arbeitsbereich zu.
+
+Eine Arbeitsumgebung ist ein Speichersystem:
+
+* Single Node Cloud Volumes ONTAP System oder ein HA-Paar
+* Ein On-Premises ONTAP Cluster in Ihrem Netzwerk
+* Ein ONTAP Cluster in einer NetApp Private Storage-Konfiguration
+
+
+link:task-setting-up-netapp-accounts.html["Erfahren Sie, wie Sie einen Arbeitsbereich hinzufügen"].
+
+
+
+== Anschlüsse
+
+Mit einem Connector kann BlueXP Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten. Der Connector wird auf einer Virtual-Machine-Instanz ausgeführt, die Sie bei Ihrem Cloud-Provider implementieren, oder auf einem von Ihnen konfigurierten On-Premises-Host.
+
+Sie können einen Connector mit mehr als einem NetApp Cloud-Datenservice verwenden. Wenn Sie beispielsweise bereits über einen Connector für BlueXP verfügen, können Sie ihn auswählen, wenn Sie den Cloud Tiering Service einrichten.
+
+link:concept-connectors.html["Erfahren Sie mehr über Steckverbinder"].
+
+
+
+== Abonnements
+
+Dies sind die NetApp Abonnements, die mit dem ausgewählten Konto verknüpft sind.
+
+Wenn Sie BlueXP über den Marktplatz eines Cloud-Providers abonnieren, werden Sie auf die BlueXP-Website weitergeleitet, auf der Sie Ihr Abonnement speichern und mit bestimmten Konten verknüpfen müssen.
+
+Nach dem Abonnement steht jedes Abonnement über das Widget „Konto verwalten“ zur Verfügung. Sie sehen nur die Abonnements, die mit dem Konto verknüpft sind, das Sie derzeit anzeigen.
+
+Sie haben die Möglichkeit, ein Abonnement umzubenennen und das Abonnement von einem oder mehreren Konten zu entfernen.
+
+Nehmen wir zum Beispiel an, dass Sie zwei Konten haben und jedes über separate Abonnements abgerechnet wird. Sie können ein Abonnement von einem der Konten ablösen, so dass die Benutzer in diesem Konto nicht versehentlich das falsche Abonnement wählen, wenn Sie eine Cloud Volume ONTAP Arbeitsumgebung erstellen.
+
+link:task-managing-netapp-accounts.html#managing-subscriptions["Erfahren Sie, wie Sie Abonnements verwalten"].
+
+
+
+== Beispiele
+
+In den folgenden Beispielen wird veranschaulicht, wie Sie Ihre Konten einrichten könnten.
+
+
+NOTE: In den folgenden Beispielbildern befinden sich der Connector und die Cloud Volumes ONTAP Systeme nicht _in_ dem NetApp Konto - sie laufen bei einem Cloud-Provider. Dies ist eine konzeptionelle Darstellung der Beziehung zwischen den einzelnen Komponenten.
+
+
+
+=== Beispiel 1
+
+Das folgende Beispiel zeigt ein Konto, das zwei Arbeitsbereiche zum Erstellen isolierter Umgebungen verwendet. Der erste Arbeitsbereich ist für eine Produktionsumgebung und der zweite für eine Entwicklungsumgebung.
+
+image:diagram_cloud_central_accounts_one.png["Ein Diagramm mit einem einzelnen NetApp Account, der zwei Workspaces enthält Jeder Arbeitsbereich ist mit demselben Connector verknüpft, und jeder hat seinen eigenen Workspace-Administrator"]
+
+
+
+=== Beispiel 2
+
+Das nachfolgend ein weiteres Beispiel zeigt die höchste Mandantenfähigkeit mit zwei separaten NetApp Konten. So kann ein Service Provider beispielsweise BlueXP in einem Konto für die Bereitstellung von Services für seine Kunden nutzen und gleichzeitig einen anderen Account für die Disaster Recovery einer seiner Geschäftsbereiche verwenden.
+
+Beachten Sie, dass Konto 2 zwei separate Anschlüsse enthält. Dies kann passieren, wenn Systeme in verschiedenen Regionen oder separaten Cloud-Providern vorhanden sind.
+
+image:diagram_cloud_central_accounts_two.png["Ein Diagramm, das zwei NetApp Accounts enthält, die jeweils über mehrere Arbeitsbereiche und zugehörige Workspace Administratoren verfügen."]

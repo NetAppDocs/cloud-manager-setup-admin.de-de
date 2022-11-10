@@ -1,0 +1,626 @@
+---
+sidebar: sidebar 
+permalink: task-creating-connectors-azure.html 
+keywords: create connector in azure, launch connector in azure, deploy connector in azure, azure connector, connector azure, connector permissions, create custom role, create azure custom role, azure custom role 
+summary: Ein BlueXP-Kontoadministrator muss einen Connector bereitstellen, bevor Sie die meisten BlueXP-Funktionen nutzen können. Mit dem Connector kann BlueXP Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten. 
+---
+= Erstellen Sie einen Connector in Azure von BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ein BlueXP-Kontoadministrator muss einen _Connector_ bereitstellen, bevor Sie die meisten BlueXP-Funktionen nutzen können. Mit dem Connector kann BlueXP Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten. link:concept-connectors.html["Informieren Sie sich, wann ein Anschluss erforderlich ist"].
+
+Auf dieser Seite wird beschrieben, wie Sie einen Connector in Azure direkt aus BlueXP erstellen. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie mehr über andere Möglichkeiten zur Bereitstellung eines Connectors"].
+
+Diese Schritte müssen von einem Benutzer ausgeführt werden, der die Rolle „Account Admin“ hat. Ein Workspace-Administrator kann keinen Konnektor erstellen.
+
+
+
+== Überblick
+
+Um einen Connector bereitzustellen, müssen Sie BlueXP mit einer Anmeldung bereitstellen, die über die erforderlichen Berechtigungen zum Erstellen der Connector-VM in Azure verfügt.
+
+Sie haben zwei Möglichkeiten:
+
+. Melden Sie sich bei Aufforderung mit Ihrem Microsoft-Konto an. Dieses Konto muss über spezifische Azure Berechtigungen verfügen. Dies ist die Standardoption.
++
+ a Connector using your Azure account,Führen Sie die nachstehenden Schritte aus, um zu starten.
+
+. Geben Sie Details zu einem Azure AD-Serviceprincipal an. Dieser Service-Principal erfordert auch spezielle Berechtigungen.
++
+ a Connector using a service principal,Führen Sie die nachstehenden Schritte aus, um zu starten.
+
+
+
+
+
+== Ein Hinweis zu Azure Regionen
+
+Der Connector sollte in derselben Azure-Region wie die Cloud Volumes ONTAP-Systeme, die er verwaltet, oder in der implementiert werden https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Azure Region Paar"^] Für die Cloud Volumes ONTAP Systeme. Diese Anforderung stellt sicher, dass eine Azure Private Link-Verbindung zwischen Cloud Volumes ONTAP und den zugehörigen Storage-Konten verwendet wird.
+
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-enabling-private-link.html["Erfahren Sie, wie Cloud Volumes ONTAP einen privaten Azure Link nutzt"^]
+
+
+
+== Netzwerk einrichten
+
+Richten Sie Ihr Netzwerk ein, damit der Connector Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung managen kann. Abgesehen von einem vnet und Subnetz für den Connector müssen Sie sicherstellen, dass die folgenden Anforderungen erfüllt sind.
+
+
+
+=== Verbindung zu Zielnetzwerken
+
+Ein Connector erfordert eine Netzwerkverbindung zu der Art der Arbeitsumgebung, die Sie erstellen und die Dienste, die Sie planen zu ermöglichen.
+
+Wenn Sie beispielsweise einen Connector in Ihrem Unternehmensnetzwerk installieren, müssen Sie eine VPN-Verbindung zu dem vnet einrichten, in dem Sie Cloud Volumes ONTAP starten.
+
+
+
+=== Outbound-Internetzugang
+
+Für den Connector ist ein abgehender Internetzugang erforderlich, um Ressourcen und Prozesse in Ihrer Public Cloud-Umgebung zu managen.
+
+[cols="2*"]
+|===
+| Endpunkte | Zweck 
+
+
+| \https://support.netapp.com | Um Lizenzinformationen zu erhalten und AutoSupport Meldungen an den NetApp Support zu senden. 
+
+
+| \https://*.cloudmanager.cloud.netapp.com \https://cloudmanager.cloud.netapp.com | Um SaaS-Funktionen und -Services in BlueXP zur Verfügung zu stellen. 
+
+
+| \https://cloudmanagerinfraprod.azurecr.io \https://*.blob.core.windows.net | Aktualisierung des Connectors und seiner Docker Komponenten. 
+|===
+
+
+=== Proxy-Server
+
+Wenn Ihr Unternehmen einen HTTP-Proxy für den gesamten ausgehenden Internet-Datenverkehr benötigt, informieren Sie sich über Ihren HTTP-Proxy:
+
+* IP-Adresse
+* Anmeldedaten
+* HTTPS-Zertifikat
+
+
+
+
+=== Sicherheitsgruppe
+
+Es gibt keinen eingehenden Datenverkehr zum Konnektor, es sei denn, Sie initiieren ihn oder wenn der Connector als Proxy für AutoSupport-Nachrichten verwendet wird. HTTP und HTTPS bieten den Zugriff auf link:concept-connectors.html#the-local-user-interface["Lokale Benutzeroberfläche"], Die Sie in seltenen Fällen verwenden. SSH ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen.
+
+
+
+=== Einschränkung der IP-Adresse
+
+Es besteht ein möglicher Konflikt mit IP-Adressen im Bereich 172. link:reference-limitations.html["Erfahren Sie mehr über diese Einschränkung"].
+
+
+
+== Erstellen Sie mit Ihrem Azure Konto einen Connector
+
+Zum Erstellen eines Konnektors in Azure müssen Sie sich bei einer entsprechenden Aufforderung bei Ihrem Azure-Konto anmelden. Das Anmeldeformular ist Eigentum von Microsoft und wird von Microsoft gehostet. Ihre Zugangsdaten werden nicht an NetApp bereitgestellt.
+
+
+
+=== Richten Sie Berechtigungen für Ihr Azure Konto ein
+
+Bevor Sie einen Connector von BlueXP bereitstellen können, müssen Sie sicherstellen, dass Ihr Azure-Konto über die entsprechenden Berechtigungen verfügt.
+
+.Schritte
+. Kopieren Sie die erforderlichen Berechtigungen für eine neue benutzerdefinierte Rolle in Azure und speichern Sie sie in einer JSON-Datei.
++
+
+NOTE: Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector VM in Azure von BlueXP erforderlich sind. Verwenden Sie diese Richtlinie nicht für andere Situationen. Wenn BlueXP den Connector erstellt, wendet er eine neue Gruppe von Berechtigungen auf die Connector-VM an, die es dem Connector ermöglicht, die Ressourcen in Ihrer Public-Cloud-Umgebung zu verwalten.
+
++
+[source, json]
+----
+{
+    "Name": "Azure SetupAsService",
+    "Actions": [
+        "Microsoft.Compute/disks/delete",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/locations/operations/read",
+        "Microsoft.Compute/operations/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/write",
+        "Microsoft.Compute/virtualMachines/delete",
+        "Microsoft.Compute/virtualMachines/extensions/write",
+        "Microsoft.Compute/virtualMachines/extensions/read",
+        "Microsoft.Compute/availabilitySets/read",
+        "Microsoft.Network/locations/operationResults/read",
+        "Microsoft.Network/locations/operations/read",
+        "Microsoft.Network/networkInterfaces/join/action",
+        "Microsoft.Network/networkInterfaces/read",
+        "Microsoft.Network/networkInterfaces/write",
+        "Microsoft.Network/networkInterfaces/delete",
+        "Microsoft.Network/networkSecurityGroups/join/action",
+        "Microsoft.Network/networkSecurityGroups/read",
+        "Microsoft.Network/networkSecurityGroups/write",
+        "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/read",
+        "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+        "Microsoft.Network/virtualNetworks/virtualMachines/read",
+        "Microsoft.Network/publicIPAddresses/write",
+        "Microsoft.Network/publicIPAddresses/read",
+        "Microsoft.Network/publicIPAddresses/delete",
+        "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        "Microsoft.Network/networkSecurityGroups/securityRules/write",
+        "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+        "Microsoft.Network/publicIPAddresses/join/action",
+        "Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read",
+        "Microsoft.Network/networkInterfaces/ipConfigurations/read",
+        "Microsoft.Resources/deployments/operations/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Resources/deployments/delete",
+        "Microsoft.Resources/deployments/cancel/action",
+        "Microsoft.Resources/deployments/validate/action",
+        "Microsoft.Resources/resources/read",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Authorization/roleDefinitions/write",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+        "Microsoft.Network/networkSecurityGroups/delete",
+        "Microsoft.Storage/storageAccounts/delete",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/deployments/operationStatuses/read",
+        "Microsoft.Authorization/roleAssignments/read"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure SetupAsService",
+    "IsCustom": "true"
+}
+----
+. Ändern Sie den JSON, indem Sie Ihre Azure Abonnement-ID dem zuweisbaren Umfang hinzufügen.
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz"
+],
+----
+. Verwenden Sie die JSON-Datei, um eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+In den folgenden Schritten wird beschrieben, wie die Rolle mithilfe von Bash in Azure Cloud Shell erstellt wird.
+
++
+.. Starten https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] Und wählen Sie die Bash-Umgebung.
+.. Laden Sie die JSON-Datei hoch.
++
+image:screenshot_azure_shell_upload.png["Einen Screenshot der Azure Cloud Shell, in dem Sie die Option zum Hochladen einer Datei auswählen können."]
+
+.. Geben Sie den folgenden Befehl der Azure CLI ein:
++
+[source, azurecli]
+----
+az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json
+----
+
+
++
+Sie sollten jetzt eine benutzerdefinierte Rolle namens _Azure SetupAsService_ haben.
+
+. Weisen Sie die Rolle dem Benutzer zu, der den Connector von BlueXP bereitstellen wird:
++
+.. Öffnen Sie den Dienst *Abonnements* und wählen Sie das Abonnement des Benutzers aus.
+.. Klicken Sie auf *Access Control (IAM)*.
+.. Klicken Sie auf *Hinzufügen* > *Rollenzuordnung hinzufügen* und fügen Sie dann die Berechtigungen hinzu:
++
+*** Wählen Sie die Rolle *Azure SetupAsService* aus und klicken Sie auf *Weiter*.
++
+
+NOTE: Azure SetupAsService ist der Standardname, der in der Connector Deployment Policy für Azure angegeben ist. Wenn Sie einen anderen Namen für die Rolle ausgewählt haben, wählen Sie stattdessen diesen Namen aus.
+
+*** *Benutzer, Gruppe oder Serviceprincipal* ausgewählt lassen.
+*** Klicken Sie auf *Mitglieder auswählen*, wählen Sie Ihr Benutzerkonto aus und klicken Sie auf *Auswählen*.
+*** Klicken Sie Auf *Weiter*.
+*** Klicken Sie auf *Review + Assign*.
+
+
+
+
+
+
+Der Azure-Benutzer verfügt nun über die erforderlichen Berechtigungen für die Bereitstellung des Connectors von BlueXP.
+
+
+
+=== Erstellen Sie den Connector, indem Sie sich mit Ihrem Azure Konto anmelden
+
+Mit BlueXP können Sie einen Connector in Azure direkt über die Benutzeroberfläche erstellen.
+
+.Was Sie und#8217;ll benötigen
+* Ein Azure Abonnement.
+* Eine vnet und Subnetz in Ihrer bevorzugten Azure-Region.
+* Wenn Sie nicht möchten, dass BlueXP automatisch eine Azure-Rolle für den Connector erstellt, müssen Sie Ihre eigene erstellen link:reference-permissions-azure.html["Verwenden der Richtlinie auf dieser Seite"].
++
+Diese Berechtigungen gelten für die Connector-Instanz selbst. Es handelt sich um eine andere Gruppe von Berechtigungen als das, was Sie zuvor für die einfache Bereitstellung des Connectors eingerichtet haben.
+
+
+
+.Schritte
+. Wenn Sie Ihre erste Arbeitsumgebung erstellen, klicken Sie auf *Arbeitsumgebung hinzufügen* und befolgen Sie die Anweisungen. Klicken Sie andernfalls auf das Dropdown-Menü *Connector* und wählen Sie *Connector hinzufügen* aus.
++
+image:screenshot_connector_add.gif["Ein Screenshot, in dem das Symbol Connector in der Kopfzeile und die Aktion Connector hinzufügen angezeigt wird."]
+
+. Wählen Sie als Cloud-Provider * Microsoft Azure* aus.
+. Lesen Sie auf der Seite *Bereitstellen eines Konnektors* die Details dazu, was Sie benötigen. Sie haben zwei Möglichkeiten:
++
+.. Klicken Sie auf *Weiter*, um die Bereitstellung mithilfe des Produktleitfadens vorzubereiten. Jeder Schritt enthält Informationen, die auf dieser Seite der Dokumentation enthalten sind.
+.. Klicken Sie auf *Skip to Deployment*, wenn Sie bereits mit den Schritten auf dieser Seite vorbereitet sind.
+
+
+. Befolgen Sie die Schritte im Assistenten, um den Konnektor zu erstellen:
++
+** Wenn Sie dazu aufgefordert werden, melden Sie sich bei Ihrem Microsoft-Konto an, das über die erforderlichen Berechtigungen zum Erstellen der virtuellen Maschine verfügt.
++
+Das Formular ist Eigentum von Microsoft und wird von Microsoft gehostet. Ihre Zugangsdaten werden nicht an NetApp bereitgestellt.
+
++
+
+TIP: Wenn Sie bereits bei einem Azure-Konto angemeldet sind, nutzt BlueXP das Konto automatisch. Wenn Sie über mehrere Konten verfügen, müssen Sie sich möglicherweise erst abmelden, um sicherzustellen, dass Sie das richtige Konto verwenden.
+
+** *VM Authentication*: Wählen Sie ein Azure-Abonnement, einen Speicherort, eine neue Ressourcengruppe oder eine vorhandene Ressourcengruppe aus und wählen Sie dann eine Authentifizierungsmethode aus.
+** *Details*: Geben Sie einen Namen für die Instanz ein, geben Sie Tags an und wählen Sie aus, ob BlueXP eine neue Rolle mit den erforderlichen Berechtigungen erstellen soll oder ob Sie eine vorhandene Rolle auswählen möchten, die Sie mit eingerichtet haben link:reference-permissions-azure.html["Die erforderlichen Berechtigungen"].
++
+Beachten Sie, dass Sie die Abonnements für diese Rolle auswählen können. Jedes von Ihnen gewählte Abonnement bietet dem Konnektor Berechtigungen zum Bereitstellen von Cloud Volumes ONTAP in diesen Abonnements.
+
+** *Netzwerk*: Wählen Sie ein vnet und Subnetz, ob eine öffentliche IP-Adresse aktiviert werden soll, und geben Sie optional eine Proxy-Konfiguration an.
+** *Sicherheitsgruppe*: Wählen Sie aus, ob eine neue Sicherheitsgruppe erstellt werden soll oder ob eine vorhandene Sicherheitsgruppe ausgewählt werden soll, die einen eingehenden HTTP-, HTTPS- und SSH-Zugriff erlaubt.
+** *Review*: Überprüfen Sie Ihre Auswahl, um zu überprüfen, ob Ihre Einrichtung korrekt ist.
+
+
+. Klicken Sie Auf *Hinzufügen*.
++
+Die Virtual Machine sollte in ca. 7 Minuten einsatzbereit sein. Sie sollten auf der Seite bleiben, bis der Vorgang abgeschlossen ist.
+
+
+
+Sie müssen einen Connector mit Arbeitsbereichen verknüpfen, damit Arbeitsbereichsadministratoren diese Connectors zum Erstellen von Cloud Volumes ONTAP-Systemen verwenden können. Wenn Sie nur Kontoadministratoren haben, ist es nicht erforderlich, den Connector mit Arbeitsbereichen zu verknüpfen. Kontoadministratoren haben standardmäßig die Möglichkeit, auf alle Arbeitsbereiche in BlueXP zuzugreifen. link:task-setting-up-netapp-accounts.html#associating-connectors-with-workspaces["Weitere Informationen ."].
+
+Wenn Sie Azure Blob Storage in demselben Azure Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Azure Blob Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-azure-blob.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].
+
+
+
+== Erstellen Sie einen Konnektor mithilfe eines Service-Principal
+
+Anstatt sich beim Azure-Konto anzumelden, haben Sie auch die Möglichkeit, BlueXP die Zugangsdaten für einen Azure-Service-Principal mit den erforderlichen Berechtigungen bereitzustellen.
+
+
+
+=== Azure-Berechtigungen über einen Service-Principal gewähren
+
+Gewähren Sie die erforderlichen Berechtigungen für die Bereitstellung eines Konnektors in Azure, indem Sie einen Service-Principal in Azure Active Directory erstellen und einrichten, sowie die von BlueXP benötigten Azure Zugangsdaten.
+
+.Schritte
+.  an Azure Active Directory application.
+.  the application to a role.
+.  Windows Azure Service Management API permissions.
+.  the application ID and directory ID.
+.  a client secret.
+
+
+
+
+==== Erstellen Sie eine Azure Active Directory-Anwendung
+
+Erstellen Sie eine Applikation und einen Service-Principal für Azure Active Directory (AD), die BlueXP zur Bereitstellung des Connectors verwenden kann.
+
+Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"^].
+
+.Schritte
+. Öffnen Sie über das Azure-Portal den *Azure Active Directory*-Service.
++
+image:screenshot_azure_ad.gif["Zeigt den Active Directory-Dienst in Microsoft Azure an."]
+
+. Klicken Sie im Menü auf *App-Registrierungen*.
+. Klicken Sie auf *Neue Registrierung*.
+. Geben Sie Details zur Anwendung an:
++
+** *Name*: Geben Sie einen Namen für die Anwendung ein.
+** *Kontotyp*: Wählen Sie einen Kontotyp aus (jeder kann mit BlueXP verwendet werden).
+** *Redirect URI*: Sie können dieses Feld leer lassen.
+
+
+. Klicken Sie Auf *Registrieren*.
+
+
+Sie haben die AD-Anwendung und den Service-Principal erstellt.
+
+
+
+==== Anwendung einer Rolle zuweisen
+
+Sie müssen den Service-Principal an das Azure-Abonnement binden, in dem Sie den Connector bereitstellen möchten, und ihm die benutzerdefinierte Rolle „Azure SetupAsService“ zuweisen.
+
+.Schritte
+. Kopieren Sie die erforderlichen Berechtigungen für eine neue benutzerdefinierte Rolle in Azure und speichern Sie sie in einer JSON-Datei.
++
+
+NOTE: Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector VM in Azure von BlueXP erforderlich sind. Verwenden Sie diese Richtlinie nicht für andere Situationen. Wenn BlueXP den Connector erstellt, wendet er eine neue Gruppe von Berechtigungen auf die Connector-VM an, die es dem Connector ermöglicht, die Ressourcen in Ihrer Public-Cloud-Umgebung zu verwalten.
+
++
+[source, json]
+----
+{
+    "Name": "Azure SetupAsService",
+    "Actions": [
+        "Microsoft.Compute/disks/delete",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/locations/operations/read",
+        "Microsoft.Compute/operations/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/write",
+        "Microsoft.Compute/virtualMachines/delete",
+        "Microsoft.Compute/virtualMachines/extensions/write",
+        "Microsoft.Compute/virtualMachines/extensions/read",
+        "Microsoft.Compute/availabilitySets/read",
+        "Microsoft.Network/locations/operationResults/read",
+        "Microsoft.Network/locations/operations/read",
+        "Microsoft.Network/networkInterfaces/join/action",
+        "Microsoft.Network/networkInterfaces/read",
+        "Microsoft.Network/networkInterfaces/write",
+        "Microsoft.Network/networkInterfaces/delete",
+        "Microsoft.Network/networkSecurityGroups/join/action",
+        "Microsoft.Network/networkSecurityGroups/read",
+        "Microsoft.Network/networkSecurityGroups/write",
+        "Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+        "Microsoft.Network/virtualNetworks/subnets/read",
+        "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
+        "Microsoft.Network/virtualNetworks/virtualMachines/read",
+        "Microsoft.Network/publicIPAddresses/write",
+        "Microsoft.Network/publicIPAddresses/read",
+        "Microsoft.Network/publicIPAddresses/delete",
+        "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        "Microsoft.Network/networkSecurityGroups/securityRules/write",
+        "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+        "Microsoft.Network/publicIPAddresses/join/action",
+        "Microsoft.Network/locations/virtualNetworkAvailableEndpointServices/read",
+        "Microsoft.Network/networkInterfaces/ipConfigurations/read",
+        "Microsoft.Resources/deployments/operations/read",
+        "Microsoft.Resources/deployments/read",
+        "Microsoft.Resources/deployments/delete",
+        "Microsoft.Resources/deployments/cancel/action",
+        "Microsoft.Resources/deployments/validate/action",
+        "Microsoft.Resources/resources/read",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/subscriptions/resourcegroups/resources/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Authorization/roleDefinitions/write",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read",
+        "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write",
+        "Microsoft.Network/networkSecurityGroups/delete",
+        "Microsoft.Storage/storageAccounts/delete",
+        "Microsoft.Storage/storageAccounts/write",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/deployments/operationStatuses/read",
+        "Microsoft.Authorization/roleAssignments/read"
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure SetupAsService",
+    "IsCustom": "true"
+}
+----
+. Ändern Sie die JSON-Datei, indem Sie Ihre Azure Abonnement-ID dem zuweisbaren Umfang hinzufügen.
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"
+----
+. Verwenden Sie die JSON-Datei, um eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+In den folgenden Schritten wird beschrieben, wie die Rolle mithilfe von Bash in Azure Cloud Shell erstellt wird.
+
++
+.. Starten https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] Und wählen Sie die Bash-Umgebung.
+.. Laden Sie die JSON-Datei hoch.
++
+image:screenshot_azure_shell_upload.png["Einen Screenshot der Azure Cloud Shell, in dem Sie die Option zum Hochladen einer Datei auswählen können."]
+
+.. Geben Sie den folgenden Befehl der Azure CLI ein:
++
+[source, azurecli]
+----
+az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json
+----
+
+
++
+Sie sollten jetzt eine benutzerdefinierte Rolle namens _Azure SetupAsService_ haben.
+
+. Applikation der Rolle zuweisen:
++
+.. Öffnen Sie im Azure-Portal den Service *Abonnements*.
+.. Wählen Sie das Abonnement aus.
+.. Klicken Sie auf *Zugriffskontrolle (IAM) > Hinzufügen > Rollenzuweisung hinzufügen*.
+.. Wählen Sie auf der Registerkarte *Role* die Rolle *Azure SetupAsService* aus und klicken Sie auf *Next*.
+.. Führen Sie auf der Registerkarte *Mitglieder* die folgenden Schritte aus:
++
+*** *Benutzer, Gruppe oder Serviceprincipal* ausgewählt lassen.
+*** Klicken Sie auf *Mitglieder auswählen*.
++
+image:screenshot-azure-service-principal-role.png["Ein Screenshot des Azure-Portals, auf dem die Registerkarte Mitglieder angezeigt wird, wenn einer Anwendung eine Rolle hinzugefügt wird."]
+
+*** Suchen Sie nach dem Namen der Anwendung.
++
+Hier ein Beispiel:
+
++
+image:screenshot_azure_service_principal_role.png["Ein Screenshot des Azure-Portals, in dem das Formular Rollenzuordnung hinzufügen im Azure-Portal angezeigt wird."]
+
+*** Wählen Sie die Anwendung aus und klicken Sie auf *Auswählen*.
+*** Klicken Sie Auf *Weiter*.
+
+
+.. Klicken Sie auf *Review + Assign*.
++
+Der Service-Principal verfügt jetzt über die erforderlichen Azure-Berechtigungen zur Bereitstellung des Connectors.
+
+
+
+
+
+
+
+==== Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu
+
+Der Service-Principal muss über die Berechtigungen „Windows Azure Service Management API“ verfügen.
+
+.Schritte
+. Klicken Sie im *Azure Active Directory*-Dienst auf *App-Registrierungen* und wählen Sie die Anwendung aus.
+. Klicken Sie auf *API-Berechtigungen > Berechtigung hinzufügen*.
+. Wählen Sie unter *Microsoft APIs* *Azure Service Management* aus.
++
+image:screenshot_azure_service_mgmt_apis.gif["Ein Screenshot des Azure Portals, in dem die Berechtigungen der Azure Service Management API angezeigt werden."]
+
+. Klicken Sie auf *Zugriff auf Azure Service Management als Benutzer der Organisation* und dann auf *Berechtigungen hinzufügen*.
++
+image:screenshot_azure_service_mgmt_apis_add.gif["Ein Screenshot des Azure Portals, in dem das Hinzufügen der Azure Service Management APIs angezeigt wird"]
+
+
+
+
+
+==== Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab
+
+Wenn Sie den Connector von BlueXP erstellen, müssen Sie die Anwendungs- (Client)-ID und die Verzeichnis-(Mandanten-)ID für die Anwendung angeben. BlueXP verwendet die IDs, um sich programmatisch anzumelden.
+
+.Schritte
+. Klicken Sie im *Azure Active Directory*-Dienst auf *App-Registrierungen* und wählen Sie die Anwendung aus.
+. Kopieren Sie die *Application (Client) ID* und die *Directory (Tenant) ID*.
++
+image:screenshot_azure_app_ids.gif["Ein Screenshot, der die Anwendungs-ID (Client) und die Verzeichnis-ID (Mandant) für eine Anwendung in Azure Active Directory anzeigt"]
+
+
+
+
+
+==== Erstellen Sie einen Clientschlüssel
+
+Sie müssen ein Clientgeheimnis erstellen und dann BlueXP den Wert des Geheimnisses zur Verfügung stellen, damit BlueXP es zur Authentifizierung mit Azure AD nutzen kann.
+
+.Schritte
+. Öffnen Sie den Dienst *Azure Active Directory*.
+. Klicken Sie auf *App-Registrierungen* und wählen Sie Ihre Anwendung aus.
+. Klicken Sie auf *Zertifikate & Geheimnisse > Neuer Client Secret*.
+. Geben Sie eine Beschreibung des Geheimnisses und eine Dauer an.
+. Klicken Sie Auf *Hinzufügen*.
+. Kopieren Sie den Wert des Clientgeheimnisses.
++
+image:screenshot_azure_client_secret.gif["Ein Screenshot des Azure-Portals, in dem ein Client-Geheimnis für den Azure AD-Service-Principal angezeigt wird"]
+
+
+
+Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in BlueXP eingeben, wenn Sie den Connector erstellen.
+
+
+
+=== Erstellen Sie den Connector, indem Sie sich beim Service-Principal anmelden
+
+Mit BlueXP können Sie einen Connector in Azure direkt über die Benutzeroberfläche erstellen.
+
+.Was Sie und#8217;ll benötigen
+* Ein Azure Abonnement.
+* Eine vnet und Subnetz in Ihrer bevorzugten Azure-Region.
+* Details zu einem HTTP-Proxy, wenn Ihr Unternehmen einen Proxy für den gesamten ausgehenden Internet-Datenverkehr benötigt:
++
+** IP-Adresse
+** Anmeldedaten
+** HTTPS-Zertifikat
+
+
+* Wenn Sie nicht möchten, dass BlueXP automatisch eine Azure-Rolle für den Connector erstellt, müssen Sie Ihre eigene erstellen link:reference-permissions-azure.html["Verwenden der Richtlinie auf dieser Seite"].
++
+Diese Berechtigungen gelten für die Connector-Instanz selbst. Es handelt sich um eine andere Gruppe von Berechtigungen als das, was Sie zuvor für die einfache Bereitstellung des Connectors eingerichtet haben.
+
+
+
+.Schritte
+. Wenn Sie Ihre erste Arbeitsumgebung erstellen, klicken Sie auf *Arbeitsumgebung hinzufügen* und befolgen Sie die Anweisungen. Klicken Sie andernfalls auf das Dropdown-Menü *Connector* und wählen Sie *Connector hinzufügen* aus.
++
+image:screenshot_connector_add.gif["Ein Screenshot, in dem das Symbol Connector in der Kopfzeile und die Aktion Connector hinzufügen angezeigt wird."]
+
+. Wählen Sie als Cloud-Provider * Microsoft Azure* aus.
+. Auf der Seite * Ansetzen eines Konnektors*:
++
+.. Klicken Sie unter *Authentifizierung* auf *Active Directory Service Principal* und geben Sie Informationen über den Azure Active Directory Service Principal ein, der die erforderlichen Berechtigungen erteilt:
++
+*** Anwendungs-ID (Client): Siehe  the application ID and directory ID.
+*** Verzeichnis-ID (Mandant): Siehe  the application ID and directory ID.
+*** Client Secret: Siehe  a client secret.
+
+
+.. Klicken Sie auf *Anmelden*.
+.. Sie haben nun zwei Möglichkeiten:
++
+*** Klicken Sie auf *Weiter*, um die Bereitstellung mithilfe des Produktleitfadens vorzubereiten. Jeder Schritt im Produktleitfaden enthält die Informationen, die auf dieser Seite der Dokumentation enthalten sind.
+*** Klicken Sie auf *Skip to Deployment*, wenn Sie bereits mit den Schritten auf dieser Seite vorbereitet sind.
+
+
+
+
+. Befolgen Sie die Schritte im Assistenten, um den Konnektor zu erstellen:
++
+** *VM Authentication*: Wählen Sie ein Azure-Abonnement, einen Speicherort, eine neue Ressourcengruppe oder eine vorhandene Ressourcengruppe aus und wählen Sie dann eine Authentifizierungsmethode aus.
+** *Details*: Geben Sie einen Namen für die Instanz ein, geben Sie Tags an und wählen Sie aus, ob BlueXP eine neue Rolle mit den erforderlichen Berechtigungen erstellen soll oder ob Sie eine vorhandene Rolle auswählen möchten, die Sie mit eingerichtet haben link:reference-permissions-azure.html["Die erforderlichen Berechtigungen"].
++
+Beachten Sie, dass Sie die Abonnements für diese Rolle auswählen können. Jedes von Ihnen gewählte Abonnement bietet dem Konnektor Berechtigungen zum Bereitstellen von Cloud Volumes ONTAP in diesen Abonnements.
+
+** *Netzwerk*: Wählen Sie ein vnet und Subnetz, ob eine öffentliche IP-Adresse aktiviert werden soll, und geben Sie optional eine Proxy-Konfiguration an.
+** *Sicherheitsgruppe*: Wählen Sie aus, ob eine neue Sicherheitsgruppe erstellt werden soll oder ob eine vorhandene Sicherheitsgruppe ausgewählt werden soll, die einen eingehenden HTTP-, HTTPS- und SSH-Zugriff erlaubt.
+** *Review*: Überprüfen Sie Ihre Auswahl, um zu überprüfen, ob Ihre Einrichtung korrekt ist.
+
+
+. Klicken Sie Auf *Hinzufügen*.
++
+Die Virtual Machine sollte in ca. 7 Minuten einsatzbereit sein. Sie sollten auf der Seite bleiben, bis der Vorgang abgeschlossen ist.
+
+
+
+Sie müssen einen Connector mit Arbeitsbereichen verknüpfen, damit Arbeitsbereichsadministratoren diese Connectors zum Erstellen von Cloud Volumes ONTAP-Systemen verwenden können. Wenn Sie nur Kontoadministratoren haben, ist es nicht erforderlich, den Connector mit Arbeitsbereichen zu verknüpfen. Kontoadministratoren haben standardmäßig die Möglichkeit, auf alle Arbeitsbereiche in BlueXP zuzugreifen. link:task-setting-up-netapp-accounts.html#associating-connectors-with-workspaces["Weitere Informationen ."].
+
+Wenn Sie Azure Blob Storage in demselben Azure Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Azure Blob Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-azure-blob.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].
+
+
+
+== Offener Port 3128 für AutoSupport-Meldungen
+
+Wenn Sie Cloud Volumes ONTAP-Systeme in einem Subnetz bereitstellen möchten, in dem keine ausgehende Internetverbindung verfügbar ist, konfiguriert BlueXP Cloud Volumes ONTAP automatisch für die Verwendung des Connectors als Proxyserver.
+
+Die einzige Anforderung besteht darin, sicherzustellen, dass die Sicherheitsgruppe des Connectors _eingehende_ -Verbindungen über Port 3128 zulässt. Nach der Bereitstellung des Connectors müssen Sie diesen Port öffnen.
+
+Wenn Sie die Standardsicherheitsgruppe für Cloud Volumes ONTAP verwenden, sind keine Änderungen an der Sicherheitsgruppe erforderlich. Wenn Sie aber strenge ausgehende Regeln für Cloud Volumes ONTAP definieren möchten, müssen Sie auch sicherstellen, dass die Cloud Volumes ONTAP-Sicherheitsgruppe _Outbound_-Verbindungen über Port 3128 zulässt.

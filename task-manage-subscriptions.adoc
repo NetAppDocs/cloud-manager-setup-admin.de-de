@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: task-manage-subscriptions.html 
+keywords: digital wallet, subscriptions, paygo subscriptions, contracts, annual contracts 
+summary: Wenn Sie BlueXP über den Marktplatz eines Cloud-Providers abonnieren, werden Sie auf die BlueXP-Website weitergeleitet, auf der Sie Ihr Abonnement speichern und mit bestimmten Konten verknüpfen müssen. Nach dem Abonnement können Sie jedes Abonnement über Digital Wallet verwalten. 
+---
+= PAYGO-Abonnements und -Verträge verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie BlueXP über den Marktplatz eines Cloud-Providers abonnieren, werden Sie auf die BlueXP-Website weitergeleitet, auf der Sie Ihr Abonnement speichern und mit bestimmten Konten verknüpfen müssen. Nach dem Abonnement können Sie jedes Abonnement über Digital Wallet verwalten.
+
+
+
+== Ihre Abonnements anzeigen
+
+Das Digital Wallet enthält Details zu jedem PAYGO-Abonnement und einem Jahresvertrag, der mit Ihrem BlueXP-Konto und mit Astra verbunden ist (Astra nutzt den BlueXP-Gebührendienst).
+
+.Schritte
+. Wählen Sie im Navigationsmenü BlueXP die Option *Governance > Digital Wallet* aus.
+. Wählen Sie *Abonnements*.
++
+Sie sehen nur die Abonnements, die mit dem Konto verknüpft sind, das Sie derzeit anzeigen.
+
+. Wenn Sie die Informationen zu Ihren Abonnements anzeigen, können Sie wie folgt mit den Details in der Tabelle interagieren:
++
+** Erweitern Sie eine Zeile, um weitere Details anzuzeigen.
++
+image:screenshot-subscriptions-expand.png["Ein Screenshot der Registerkarte Abonnements im Digital Wallet, in dem Sie den Pfeil am Ende einer Zeile auswählen können, um ihn zu erweitern."]
+
+** Klicken Sie Auf image:icon-column-selector.png["Das Plus-Symbol am Ende der Tabellenüberschrift"] So legen Sie fest, welche Spalten in der Tabelle angezeigt werden sollen.
++
+Beachten Sie, dass die Spalten „Begriff“ und „Automatische Verlängerung“ standardmäßig nicht angezeigt werden. In der Spalte „Automatische Erneuerung“ werden nur Informationen zur Verlängerung von Azure-Verträgen angezeigt.
+
+
+
++
+Beachten Sie Folgendes zu den in der Tabelle aufgeführten Informationen:
+
++
+Startdatum:: Das Startdatum ist, wenn Sie das Abonnement erfolgreich mit Ihrem Konto verknüpft haben und der Ladevorgang gestartet wurde.
+K. A.:: Wenn in der Tabelle „N/A“ angezeigt wird, sind die Informationen derzeit nicht über die API des Cloud-Providers verfügbar.
+Verträge::
++
+--
+** Wenn Sie die Details für einen Vertrag erweitern, zeigt das Digital Wallet an, was für Ihren aktuellen Plan zur Verfügung steht: Die Vertragsoptionen und Einheiten (Kapazität oder Anzahl der Knoten).
+** Das Digital Wallet identifiziert das Enddatum und gibt an, ob der Vertrag bald verlängert, bald beendet wird oder ob er bereits beendet ist.
+** Wenn Sie über einen AWS-Vertrag verfügen und nach dem Startdatum eine der Optionen des Vertrags geändert haben, sollten Sie Ihre Vertragsoptionen von AWS validieren.
+
+
+--
+
+
+
+
+
+
+== Verwalten Sie Ihre Abonnements
+
+Sie können Ihre Abonnements über das Digital Wallet verwalten, indem Sie ein Abonnement umbenennen und die Konten auswählen, die mit dem Abonnement verknüpft sind.
+
+Nehmen wir zum Beispiel an, dass Sie zwei Konten haben und jedes über separate Abonnements abgerechnet wird. Sie können ein Abonnement von einem der Konten ablösen, so dass die Benutzer in diesem Konto nicht versehentlich das falsche Abonnement wählen, wenn Sie eine Cloud Volume ONTAP Arbeitsumgebung erstellen.
+
+.Schritte
+. Wählen Sie im Navigationsmenü BlueXP die Option *Governance > Digital Wallet* aus.
+. Wählen Sie *Abonnements*.
+. Klicken Sie in der Zeile auf das Aktionsmenü, das dem Abonnement entspricht, das Sie verwalten möchten.
++
+image:screenshot-subscription-menu.png["Ein Screenshot des Aktionsmenüs für ein Abonnement."]
+
+. Sie können das Abonnement umbenennen oder die NetApp Konten, die dem Abonnement zugeordnet sind, verwalten.
+

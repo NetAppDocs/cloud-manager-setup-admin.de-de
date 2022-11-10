@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: reference-whats-next.html 
+keywords: get started, create working environments, manage settings 
+summary: Nachdem Sie sich angemeldet und BlueXP eingerichtet haben, können Benutzer jetzt mit dem Erstellen und Erkennen von Arbeitsumgebungen beginnen. 
+---
+= Weitere Schritte
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nachdem Sie sich angemeldet und BlueXP eingerichtet haben, können Benutzer jetzt mit dem Erstellen und Erkennen von Arbeitsumgebungen beginnen.
+
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["Erste Schritte mit Cloud Volumes ONTAP für AWS"^]
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Erste Schritte mit Cloud Volumes ONTAP für Azure"^]
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Erste Schritte mit Cloud Volumes ONTAP für Google Cloud"^]
+* https://docs.netapp.com/us-en/cloud-manager-azure-netapp-files/task-quick-start.html["Azure NetApp Files einrichten"^]
+* https://docs.netapp.com/us-en/cloud-manager-fsx-ontap/start/task-getting-started-fsx.html["Amazon FSX für ONTAP einrichten"^]
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-service-aws/task-manage-cvs-aws.html["Cloud Volumes Service für AWS einrichten"^]
+* https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Ermitteln eines lokalen ONTAP Clusters"^]
+* link:task-viewing-amazon-s3.html["Amazon S3 Buckets entdecken"]
+

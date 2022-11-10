@@ -1,0 +1,86 @@
+---
+sidebar: sidebar 
+permalink: task-installing-https-cert.html 
+keywords: https certificate, certificate, adding, installing, ca, certificate authority, format, encoding, renewing 
+summary: 'Standardmäßig verwendet BlueXP ein selbstsigniertes Zertifikat für HTTPS-Zugriff auf die Webkonsole. Sie können ein Zertifikat installieren, das von einer Zertifizierungsstelle (CA) signiert wurde. Dies bietet einen besseren Sicherheitsschutz als ein selbstsigniertes Zertifikat.' 
+---
+= Verwalten eines HTTPS-Zertifikats für sicheren Zugriff
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Standardmäßig verwendet BlueXP ein selbstsigniertes Zertifikat für HTTPS-Zugriff auf die Webkonsole. Sie können ein Zertifikat installieren, das von einer Zertifizierungsstelle (CA) signiert wurde. Dies bietet einen besseren Sicherheitsschutz als ein selbstsigniertes Zertifikat.
+
+
+
+== Bevor Sie beginnen
+
+Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie, wie"].
+
+
+
+== Installieren eines HTTPS-Zertifikats
+
+Installieren Sie ein von einer Zertifizierungsstelle signiertes Zertifikat, um den sicheren Zugriff zu gewährleisten.
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen, und wählen Sie *HTTPS-Setup*.
++
+image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol Einstellungen oben rechts in der BlueXP-Konsole angezeigt wird."]
+
+. Installieren Sie auf der Seite HTTPS Setup ein Zertifikat, indem Sie eine Zertifikatsignierungsanforderung (CSR) erstellen oder Ihr eigenes, von der Zertifizierungsstelle signiertes Zertifikat installieren:
++
+[cols="25,75"]
+|===
+| Option | Beschreibung 
+
+
+| Erstellen Sie eine CSR  a| 
+.. Geben Sie den Hostnamen oder den DNS des Connector-Hosts (dessen allgemeiner Name) ein, und klicken Sie dann auf *CSR erstellen*.
++
+BlueXP zeigt eine Anfrage zum Signieren des Zertifikats an.
+
+.. Verwenden Sie die CSR, um eine SSL-Zertifikatsanforderung an eine Zertifizierungsstelle zu senden.
++
+Das Zertifikat muss das mit Privacy Enhanced Mail (PEM) Base-64 codierte X.509-Format verwenden.
+
+.. Laden Sie die Zertifikatdatei hoch und klicken Sie dann auf *Installieren*.
+
+
+
+
+| Installieren Sie Ihr eigenes CA-signiertes Zertifikat  a| 
+.. Wählen Sie *CA-signiertes Zertifikat installieren*.
+.. Laden Sie sowohl die Zertifikatdatei als auch den privaten Schlüssel und klicken Sie dann auf *Installieren*.
++
+Das Zertifikat muss das mit Privacy Enhanced Mail (PEM) Base-64 codierte X.509-Format verwenden.
+
+
+
+|===
+
+
+BlueXP verwendet jetzt das von der Zertifizierungsstelle signierte Zertifikat, um einen sicheren HTTPS-Zugriff zu ermöglichen. Die folgende Abbildung zeigt ein BlueXP-Konto, das für den sicheren Zugriff konfiguriert ist:
+
+image:screenshot_https_cert.gif["Screenshot: Zeigt die Seite HTTPS Setup an, nachdem Sie ein signiertes Zertifikat installiert haben. Auf der Seite werden die Zertifikateigenschaften und eine Option zum Erneuern des Zertifikats angezeigt."]
+
+
+
+== Erneuern des HTTPS-Zertifikats von BlueXP
+
+Sie sollten das BlueXP HTTPS-Zertifikat erneuern, bevor es abläuft, um einen sicheren Zugriff auf die BlueXP-Konsole zu gewährleisten. Wenn Sie das Zertifikat nicht erneuern, bevor es abläuft, wird eine Warnung angezeigt, wenn Benutzer über HTTPS auf die Webkonsole zugreifen.
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen, und wählen Sie *HTTPS-Setup*.
++
+Es werden Details zum BlueXP-Zertifikat angezeigt, einschließlich des Ablaufdatums.
+
+. Klicken Sie auf *Zertifikat ändern* und befolgen Sie die Schritte, um eine CSR zu erstellen oder Ihr eigenes CA-signiertes Zertifikat zu installieren.
+
+
+BlueXP verwendet das neue CA-signierte Zertifikat, um sicheren HTTPS-Zugriff bereitzustellen.

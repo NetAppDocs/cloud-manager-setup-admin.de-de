@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: reference-ports-on-prem.html 
+keywords: networking, network, requirements, ports, on-prem, linux, http, https 
+summary: Der Connector verwendet die folgenden eingehenden Ports, wenn er manuell auf einem lokalen Linux-Host installiert wird. 
+---
+= Anschlüsse für den On-Prem Connector
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Connector verwendet die folgenden _Inbound_-Ports, wenn er manuell auf einem lokalen Linux-Host installiert wird.
+
+Diese eingehenden Regeln gelten für beide Bereitstellungsmodelle für den On-Prem Connector: Installiert mit Internetzugang oder ohne Internetzugang.
+
+[cols="10,10,80"]
+|===
+| Protokoll | Port | Zweck 
+
+
+| HTTP | 80 | Bietet HTTP-Zugriff von Client-Webbrowsern auf die lokale Benutzeroberfläche 
+
+
+| HTTPS | 443 | Bietet HTTPS-Zugriff von Client-Webbrowsern auf die lokale Benutzeroberfläche 
+|===

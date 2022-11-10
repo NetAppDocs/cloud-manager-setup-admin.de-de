@@ -1,0 +1,319 @@
+---
+sidebar: sidebar 
+permalink: task-managing-netapp-accounts.html 
+keywords: account settings, workspaces, Connector, account admin, workspace admin, users, associate, disassociate, add user, add users, user management, administer, user, management, member, remove user, remove users, remove, delete, account, user account, user accounts, add workspace, setup workspace, workspace, Connector, manage Connector, manage workspace, associate Connector, service account 
+summary: Nach der ersten Einrichtung können Sie Ihre Kontoeinstellungen später verwalten, indem Sie Benutzer, Servicekonten, Arbeitsbereiche, Anschlüsse und Abonnements verwalten. 
+---
+= Managen Ihres NetApp Kontos
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+link:task-setting-up-netapp-accounts.html["Nach der ersten Einrichtung"], Sie können Ihre Kontoeinstellungen später verwalten, indem Sie Benutzer, Servicekonten, Arbeitsbereiche, Anschlüsse und Abonnements verwalten.
+
+link:concept-netapp-accounts.html["Erfahren Sie mehr über die Funktionsweise von NetApp Accounts"].
+
+
+
+== Managen Ihres Kontos mit der Tenancy API
+
+Wenn Sie Ihre Kontoeinstellungen durch Senden von API-Anfragen verwalten möchten, müssen Sie die API _Tenancy_ verwenden. Diese API unterscheidet sich von der BlueXP API, die Sie zum Erstellen und Verwalten von Cloud Volumes ONTAP-Arbeitsumgebungen verwenden.
+
+https://docs.netapp.com/us-en/cloud-manager-automation/tenancy/overview.html["Anzeige von Endpunkten für die Mandanten-API"^]
+
+
+
+== Erstellen und Verwalten von Benutzern
+
+Die Benutzer in Ihrem Konto können auf die Ressourcen in den Arbeitsbereichen Ihres Kontos verwalten zugreifen.
+
+
+
+=== Benutzer hinzufügen
+
+Verknüpfen Sie Benutzer mit Ihrem NetApp Konto, damit diese Benutzer Arbeitsumgebungen in BlueXP erstellen und verwalten können.
+
+.Schritte
+. Wenn der Benutzer dies noch nicht getan hat, bitten Sie den Benutzer, zu wechseln https://cloud.netapp.com["NetApp BlueXP Website"^] Und melden Sie sich an.
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto*.
++
+image:screenshot-account-settings-menu.png["Ein Screenshot, in dem die Option Kontoeinstellungen im oberen Banner von BlueXP angezeigt wird."]
+
+. Klicken Sie neben dem aktuell ausgewählten Konto auf *Konto verwalten*.
++
+image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option „Kontoeinstellungen verwalten“ angezeigt wird, die im Dropdown-Menü „Konto“ verfügbar ist."]
+
+. Klicken Sie auf der Registerkarte Mitglieder auf *Benutzer verknüpfen*.
+. Geben Sie die E-Mail-Adresse des Benutzers ein, und wählen Sie eine Rolle für den Benutzer aus:
++
+** *Account Admin*: Kann jede Aktion in BlueXP ausführen.
+** *Workspace Admin*: Kann Ressourcen in zugewiesenen Workspaces erstellen und verwalten.
+** *Compliance Viewer*: Kann nur Informationen zur Compliance von Cloud Data Sense anzeigen und Berichte für Arbeitsbereiche erstellen, auf die sie zugreifen können.
+** *SnapCenter Admin*: Kann den SnapCenter Service verwenden, um mit diesen Backups anwendungskonsistente Backups zu erstellen und Daten wiederherzustellen. _Dieser Dienst befindet sich derzeit in der Beta._
+
+
+. Wenn Sie Workspace Admin oder Compliance Viewer ausgewählt haben, wählen Sie eine oder mehrere Arbeitsbereiche aus, die diesem Benutzer zugeordnet werden sollen.
++
+image:screenshot_associate_user.gif["Ein Screenshot, der zeigt, wie ein Benutzer durch Auswahl einer Rolle und der zugehörigen Arbeitsbereiche zugeordnet wird."]
+
+. Klicken Sie Auf *Mitarbeiter*.
+
+
+Der Benutzer sollte eine E-Mail von NetApp BlueXP mit dem Titel „Account Association“ erhalten. Die E-Mail enthält die Informationen, die für den Zugriff auf BlueXP erforderlich sind.
+
+
+
+=== Benutzer werden entfernt
+
+Die Trennung der Verknüpfung eines Benutzers wird dadurch ermöglicht, dass er nicht mehr auf die Ressourcen eines NetApp Kontos zugreifen kann.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
++
+image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option „Kontoeinstellungen verwalten“ angezeigt wird, die im Dropdown-Menü „Konto“ verfügbar ist."]
+
+. Klicken Sie auf der Registerkarte Mitglieder auf das Aktionsmenü in der Zeile, die dem Benutzer entspricht.
++
+image:screenshot_associate_user_workspace.png["Ein Screenshot, der das Aktionsmenü anzeigt, das verfügbar ist, wenn der Mauszeiger über den Namen eines Benutzers in der Benutzertabelle bewegt wird."]
+
+. Klicken Sie zur Bestätigung auf *Benutzer entzuordnen* und klicken Sie zur Bestätigung auf *Mitarbeiter nicht zuordnen*.
+
+
+Der Anwender kann nicht mehr auf die Ressourcen in diesem NetApp Konto zugreifen.
+
+
+
+=== Arbeitsbereiche eines Arbeitsbereichs-Administrators verwalten
+
+Sie können Workspace-Administratoren jederzeit mit Arbeitsbereichen verknüpfen und sie ablösen. Durch die Verknüpfung des Benutzers können die Arbeitsumgebungen in diesem Arbeitsbereich erstellt und angezeigt werden.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
++
+image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option „Kontoeinstellungen verwalten“ angezeigt wird, die im Dropdown-Menü „Konto“ verfügbar ist."]
+
+. Klicken Sie auf der Registerkarte Mitglieder auf das Aktionsmenü in der Zeile, die dem Benutzer entspricht.
++
+image:screenshot_associate_user_workspace.png["Ein Screenshot, der das Aktionsmenü anzeigt, das verfügbar ist, wenn der Mauszeiger über den Namen eines Benutzers in der Benutzertabelle bewegt wird."]
+
+. Klicken Sie Auf *Arbeitsbereiche Verwalten*.
+. Wählen Sie die Arbeitsbereiche aus, die dem Benutzer zugeordnet werden sollen, und klicken Sie auf *Anwenden*.
+
+
+Der Benutzer kann jetzt von BlueXP auf diese Arbeitsbereiche zugreifen, solange der Connector auch mit den Arbeitsbereichen verknüpft war.
+
+
+
+== Erstellen und Verwalten von Servicekonten
+
+Ein Servicekonto fungiert als „Benutzer“, der autorisierte API-Aufrufe zu Automatisierungszwecken an BlueXP vornehmen kann. So ist das Management der Automatisierung einfacher, da keine Automatisierungsskripts auf Basis des Benutzerkontos eines echten Mitarbeiters erstellt werden müssen, der das Unternehmen jederzeit verlassen kann. Und bei Verwendung von Federation können Sie ein Token erstellen, ohne ein Update-Token aus der Cloud zu generieren.
+
+Sie erteilen einem Servicekonto Berechtigungen, indem Sie ihm eine Rolle zuweisen, genau wie jeder andere BlueXP-Benutzer. Sie können das Servicekonto auch mit bestimmten Arbeitsbereichen verknüpfen, um die Arbeitsumgebungen (Ressourcen) zu kontrollieren, auf die der Service zugreifen kann.
+
+Wenn Sie das Dienstkonto erstellen, können Sie mit BlueXP eine Client-ID und einen Clientschlüssel für das Dienstkonto kopieren oder herunterladen. Dieses Schlüsselpaar wird für die Authentifizierung mit BlueXP verwendet.
+
+
+
+=== Erstellen eines Dienstkontos
+
+Erstellen Sie so viele Service-Konten wie für das Management der Ressourcen in Ihren Arbeitsumgebungen erforderlich.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto*.
++
+image:screenshot-account-settings-menu.png["Ein Screenshot, in dem die Option Kontoeinstellungen im oberen Banner von BlueXP angezeigt wird."]
+
+. Klicken Sie neben dem aktuell ausgewählten Konto auf *Konto verwalten*.
++
+image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option „Kontoeinstellungen verwalten“ angezeigt wird, die im Dropdown-Menü „Konto“ verfügbar ist."]
+
+. Klicken Sie auf der Registerkarte Mitglieder auf *Dienstkonto erstellen*.
+. Geben Sie einen Namen ein, und wählen Sie eine Rolle aus. Wenn Sie eine andere Rolle als Kontoadministrator auswählen, wählen Sie den Arbeitsbereich aus, der mit diesem Dienstkonto verknüpft werden soll.
+. Klicken Sie Auf *Erstellen*.
+. Kopieren Sie die Client-ID und den Clientschlüssel, oder laden Sie sie herunter.
++
+Das Clientgeheimnis ist nur einmal sichtbar und wird von BlueXP nirgendwo gespeichert. Kopieren oder laden Sie das Geheimnis herunter und speichern Sie es sicher.
+
+. Klicken Sie Auf *Schließen*.
+
+
+
+
+=== Abrufen eines Inhabertoken für ein Dienstkonto
+
+Um API-Aufrufe an das zu tätigen https://docs.netapp.com/us-en/cloud-manager-automation/tenancy/overview.html["Mandanten-API"^], Sie müssen ein Inhaberzeichen für ein Service-Konto zu erhalten.
+
+https://docs.netapp.com/us-en/cloud-manager-automation/platform/create_service_token.html["Erfahren Sie, wie Sie ein Service-Konto-Token erstellen"^]
+
+
+
+=== Kopieren der Client-ID
+
+Sie können die Client-ID eines Dienstkontos jederzeit kopieren.
+
+.Schritte
+. Klicken Sie auf der Registerkarte Mitglieder auf das Aktionsmenü in der Zeile, die dem Dienstkonto entspricht.
++
+image:screenshot_service_account_actions.gif["Ein Screenshot, der das Aktionsmenü anzeigt, das verfügbar ist, wenn der Mauszeiger über den Namen eines Benutzers in der Benutzertabelle bewegt wird."]
+
+. Klicken Sie auf *Client-ID*.
+. Die ID wird in die Zwischenablage kopiert.
+
+
+
+
+=== Schlüssel werden neu erstellt
+
+Durch Neuerstellen des Schlüssels wird der vorhandene Schlüssel für dieses Servicekonto gelöscht und anschließend ein neuer Schlüssel erstellt. Sie können den vorherigen Schlüssel nicht verwenden.
+
+.Schritte
+. Klicken Sie auf der Registerkarte Mitglieder auf das Aktionsmenü in der Zeile, die dem Dienstkonto entspricht.
++
+image:screenshot_service_account_actions.gif["Ein Screenshot, der das Aktionsmenü anzeigt, das verfügbar ist, wenn der Mauszeiger über den Namen eines Benutzers in der Benutzertabelle bewegt wird."]
+
+. Klicken Sie Auf *Reproduzieren Schlüssel*.
+. Klicken Sie zur Bestätigung auf *reproduzieren*.
+. Kopieren Sie die Client-ID und den Clientschlüssel, oder laden Sie sie herunter.
++
+Das Clientgeheimnis ist nur einmal sichtbar und wird von BlueXP nirgendwo gespeichert. Kopieren oder laden Sie das Geheimnis herunter und speichern Sie es sicher.
+
+. Klicken Sie Auf *Schließen*.
+
+
+
+
+=== Löschen eines Dienstkontos
+
+Löschen Sie ein Dienstkonto, wenn Sie es nicht mehr verwenden müssen.
+
+.Schritte
+. Klicken Sie auf der Registerkarte Mitglieder auf das Aktionsmenü in der Zeile, die dem Dienstkonto entspricht.
++
+image:screenshot_service_account_actions.gif["Ein Screenshot, der das Aktionsmenü anzeigt, das verfügbar ist, wenn der Mauszeiger über den Namen eines Benutzers in der Benutzertabelle bewegt wird."]
+
+. Klicken Sie Auf *Löschen*.
+. Klicken Sie zur Bestätigung erneut auf *Löschen*.
+
+
+
+
+== Arbeitsbereiche verwalten
+
+Verwalten Sie Ihre Arbeitsbereiche, indem Sie sie erstellen, umbenennen und löschen. Beachten Sie, dass Sie einen Arbeitsbereich nicht löschen können, wenn er Ressourcen enthält. Er muss leer sein.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Klicken Sie Auf *Arbeitsbereiche*.
+. Wählen Sie eine der folgenden Optionen:
++
+** Klicken Sie auf *Neuen Arbeitsbereich hinzufügen*, um einen neuen Arbeitsbereich zu erstellen.
+** Klicken Sie auf *Umbenennen*, um den Arbeitsbereich umzubenennen.
+** Klicken Sie auf *Löschen*, um den Arbeitsbereich zu löschen.
+
+
+
+
+
+
+== Verwalten der Arbeitsbereiche eines Connectors
+
+Sie müssen den Connector mit Arbeitsbereichen verknüpfen, damit Workspace-Administratoren von BlueXP auf diese Arbeitsbereiche zugreifen können.
+
+Wenn Sie nur Kontoadministratoren haben, ist es nicht erforderlich, den Connector mit Arbeitsbereichen zu verknüpfen. Kontoadministratoren haben standardmäßig die Möglichkeit, auf alle Arbeitsbereiche in BlueXP zuzugreifen.
+
+link:concept-netapp-accounts.html#users-workspaces-and-service-connectors["Erfahren Sie mehr über Benutzer, Arbeitsbereiche und Connectors"].
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Klicken Sie Auf *Connector*.
+. Klicken Sie auf *Arbeitsbereiche verwalten* für den Konnektor, den Sie verknüpfen möchten.
+. Wählen Sie die Arbeitsbereiche aus, die mit dem Connector verknüpft werden sollen, und klicken Sie auf *Anwenden*.
+
+
+
+
+== Verwalten von Abonnements
+
+Nachdem Sie den Marketplace eines Cloud-Providers abonniert haben, steht jedes Abonnement über das Widget „Account Settings“ (Kontoeinstellungen) zur Verfügung. Sie haben die Möglichkeit, ein Abonnement umzubenennen und das Abonnement von einem oder mehreren Konten zu entfernen.
+
+Nehmen wir zum Beispiel an, dass Sie zwei Konten haben und jedes über separate Abonnements abgerechnet wird. Sie können ein Abonnement von einem der Konten ablösen, so dass die Benutzer in diesem Konto nicht versehentlich das falsche Abonnement wählen, wenn Sie eine Cloud Volume ONTAP Arbeitsumgebung erstellen.
+
+link:concept-netapp-accounts.html#subscriptions["Weitere Informationen zu Abonnements"].
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Klicken Sie Auf *Abonnements*.
++
+Sie sehen nur die Abonnements, die mit dem Konto verknüpft sind, das Sie derzeit anzeigen.
+
+. Klicken Sie in der Zeile auf das Aktionsmenü, das dem Abonnement entspricht, das Sie verwalten möchten.
++
+image:screenshot_subscription_menu.gif["Ein Screenshot des Aktionsmenüs für ein Abonnement."]
+
+. Wählen Sie diese Option, um das Abonnement umzubenennen oder um die Konten zu verwalten, die mit dem Abonnement verbunden sind.
+
+
+
+
+== Ihren Kontonamen ändern
+
+Ändern Sie Ihren Kontonamen jederzeit, um ihn in etwas Sinnvolles für Sie zu ändern.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Klicken Sie auf der Registerkarte *Übersicht* neben dem Kontonamen auf das Bearbeiten-Symbol.
+. Geben Sie einen neuen Kontonamen ein und klicken Sie auf *Speichern*.
+
+
+
+
+== Private Vorschauen zulassen
+
+Ermöglichen Sie privaten Vorschau in Ihrem Konto, um Zugriff auf die neuen NetApp Cloud-Services zu erhalten, die in BlueXP als Vorschau zur Verfügung gestellt werden.
+
+Services in der privaten Vorschau sind nicht garantiert, dass sich wie erwartet verhalten und können Ausfälle aufrecht erhalten und fehlende Funktionen sein.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Aktivieren Sie auf der Registerkarte *Übersicht* die Einstellung *Private Vorschau zulassen*.
+
+
+
+
+== Durch die Nutzung von Services anderer Anbieter
+
+Lassen Sie Drittanbieter-Services in Ihrem Konto zu, um Zugriff auf Dienste von Drittanbietern zu erhalten, die in BlueXP verfügbar sind. Drittanbieter-Services sind ähnlich wie die Services von NetApp, werden aber von Drittanbieter gemanagt und unterstützt.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Aktivieren Sie auf der Registerkarte *Übersicht* die Option *Drittanbieter-Services zulassen*.
+
+
+
+
+== Deaktivieren der SaaS-Plattform
+
+Wir empfehlen nicht, die SaaS-Plattform zu deaktivieren, es sei denn, Sie müssen, um die Sicherheitsrichtlinien Ihres Unternehmens zu erfüllen. Durch die Deaktivierung der SaaS-Plattform ist Ihre Fähigkeit zur Nutzung von integrierten NetApp Cloud-Services begrenzt.
+
+Die folgenden Dienste stehen bei BlueXP nicht zur Verfügung, wenn Sie die SaaS-Plattform deaktivieren:
+
+* Cloud-Daten Sinnvoll
+* Kubernetes
+* Cloud Tiering
+* Globaler Datei-Cache
+
+
+Wenn Sie die SaaS-Plattform deaktivieren, müssen Sie alle Aufgaben von ausführen link:task-managing-connectors.html#access-the-local-ui["Die lokale Benutzeroberfläche, die auf einem Connector verfügbar ist"].
+
+
+CAUTION: Dies ist eine irreversible Aktion, die Sie daran hindert, die BlueXP SaaS-Plattform zu verwenden. Sie müssen Aktionen über den lokalen Konnektor durchführen. Sie können nicht viele integrierte Cloud-Services von NetApp nutzen und die erneute Aktivierung der SaaS-Plattform erfordert die Unterstützung durch NetApp.
+
+.Schritte
+. Klicken Sie oben in BlueXP auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Schalten Sie auf der Registerkarte Übersicht die Option ein, um die Nutzung der SaaS-Plattform zu deaktivieren.
+

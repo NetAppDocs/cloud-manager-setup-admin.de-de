@@ -1,0 +1,346 @@
+---
+sidebar: sidebar 
+permalink: task-adding-azure-accounts.html 
+keywords: permissions, microsoft, azure, permissions, custom role, role, json, active directory, ad, service principal, key, tenant id, application key, application id, operator role, managed identity, iam, operator, role, virtual machine, create custom role, create azure custom role, azure custom role 
+summary: Wenn Sie ein Cloud Volumes ONTAP System erstellen, müssen Sie die Azure Zugangsdaten und das Marketplace-Abonnement auswählen, die mit diesem System verwendet werden sollen. Wenn Sie mehrere Azure Marketplace-Abonnements verwalten, können Sie jedes davon auf der Seite „Anmeldeinformationen“ verschiedenen Azure Zugangsdaten zuweisen. 
+---
+= Verwalten von Azure-Anmeldeinformationen und -Abonnements für BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Wenn Sie ein Cloud Volumes ONTAP-System erstellen, müssen Sie die Azure-Anmeldedaten auswählen, die mit diesem System verwendet werden sollen. Sie müssen auch ein Marketplace-Abonnement wählen, wenn Sie Pay-as-you-go-Lizenzen verwenden. Folgen Sie den Schritten auf dieser Seite, wenn Sie mehrere Azure Zugangsdaten oder mehrere Azure Marketplace Abonnements für Cloud Volumes ONTAP verwenden möchten.
+
+Es gibt zwei Möglichkeiten, in BlueXP zusätzliche Azure-Abonnements und Anmeldedaten hinzuzufügen.
+
+. Verknüpfen Sie zusätzliche Azure-Abonnements mit der von Azure verwalteten Identität.
+. Wenn Sie Cloud Volumes ONTAP mit unterschiedlichen Azure Zugangsdaten bereitstellen möchten, erteilen Sie Azure Berechtigungen unter Verwendung eines Service-Principal und fügen dessen Zugangsdaten BlueXP hinzu.
+
+
+
+
+== Verknüpfen weiterer Azure-Abonnements mit einer gemanagten Identität
+
+Mit BlueXP können Sie die Azure Zugangsdaten und das Azure Abonnement auswählen, in dem Sie Cloud Volumes ONTAP bereitstellen möchten. Sie können kein anderes Azure-Abonnement für das verwaltete Identitätsprofil auswählen, es sei denn, Sie verknüpfen das https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview["Verwaltete Identität"^] Mit diesen Abonnements.
+
+Eine verwaltete Identität ist link:concept-accounts-azure.html["Zunächst das Azure-Konto"] Wenn Sie einen Connector von BlueXP bereitstellen. Wenn Sie den Connector bereitgestellt haben, hat BlueXP die Rolle BlueXP Operator erstellt und der virtuellen Connector-Maschine zugewiesen.
+
+.Schritte
+. Melden Sie sich beim Azure Portal an.
+. Öffnen Sie den Dienst *Abonnements* und wählen Sie dann das Abonnement aus, in dem Sie Cloud Volumes ONTAP bereitstellen möchten.
+. Klicken Sie auf *Access Control (IAM)*.
++
+.. Klicken Sie auf *Hinzufügen* > *Rollenzuordnung hinzufügen* und fügen Sie dann die Berechtigungen hinzu:
++
+*** Wählen Sie die Rolle *BlueXP Operator* aus.
++
+
+NOTE: BlueXP Operator ist der Standardname, der in der Connector-Richtlinie angegeben ist. Wenn Sie einen anderen Namen für die Rolle ausgewählt haben, wählen Sie stattdessen diesen Namen aus.
+
+*** Weisen Sie einer *virtuellen Maschine* Zugriff zu.
+*** Wählen Sie das Abonnement aus, in dem die virtuelle Connector-Maschine erstellt wurde.
+*** Wählen Sie die virtuelle Verbindungsmaschine aus.
+*** Klicken Sie Auf *Speichern*.
+
+
+
+
+. Wiederholen Sie diese Schritte für weitere Abonnements.
+
+
+Wenn Sie eine neue Arbeitsumgebung erstellen, sollten Sie nun über mehrere Azure-Abonnements für das verwaltete Identitätsprofil verfügen.
+
+image:screenshot_accounts_switch_azure_subscription.gif["Ein Screenshot, in dem die Möglichkeit angezeigt wird, bei der Auswahl eines Microsoft Azure Provider-Kontos mehrere Azure-Abonnements auszuwählen."]
+
+
+
+== Hinzufügen zusätzlicher Azure Zugangsdaten zu BlueXP
+
+Wenn Sie einen Connector von BlueXP bereitstellen, aktiviert BlueXP eine vom System zugewiesene verwaltete Identität auf der virtuellen Maschine, die über die erforderlichen Berechtigungen verfügt. BlueXP wählt diese Azure-Anmeldedaten standardmäßig aus, wenn Sie eine neue Arbeitsumgebung für Cloud Volumes ONTAP erstellen.
+
+
+TIP: Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die Connector-Software manuell auf einem vorhandenen System installiert haben. link:concept-accounts-azure.html["Informationen zu Azure Zugangsdaten und Berechtigungen"].
+
+Wenn Sie Cloud Volumes ONTAP mit _different_ Azure Zugangsdaten bereitstellen möchten, müssen Sie die erforderlichen Berechtigungen erteilen, indem Sie für jedes Azure Konto einen Service-Principal in Azure Active Directory erstellen und einrichten. Anschließend können Sie die neuen Anmeldeinformationen zu BlueXP hinzufügen.
+
+
+
+=== Azure-Berechtigungen über einen Service-Principal gewähren
+
+Für Aktionen in Azure benötigt BlueXP Berechtigungen. Sie können einem Azure-Konto die erforderlichen Berechtigungen erteilen, indem Sie einen Service-Principal in Azure Active Directory erstellen und einrichten, sowie die für BlueXP erforderlichen Azure Zugangsdaten erhalten.
+
+Die folgende Abbildung zeigt, wie BlueXP Berechtigungen zur Durchführung von Operationen in Azure erhält. Ein Service-Principal-Objekt, das an ein oder mehrere Azure-Abonnements gebunden ist, repräsentiert BlueXP in Azure Active Directory und wird einer benutzerdefinierten Rolle zugewiesen, die die erforderlichen Berechtigungen zulässt.
+
+image:diagram_azure_authentication.png["Konzeptionelles Image, das zeigt, dass BlueXP Authentifizierung und Autorisierung von Azure Active Directory erhält, bevor es einen API-Aufruf durchführen kann. In Active Directory definiert die Rolle BlueXP Berechtigungen. Sie ist an ein oder mehrere Azure Subscriptions und ein Service-Prinzipalobjekt gebunden, das die Cloud Manager Applikation repräsentiert."]
+
+.Schritte
+.  an Azure Active Directory application,Erstellen Sie eine Azure Active Directory-Anwendung.
+.  the application to a role,Anwendung einer Rolle zuweisen.
+.  Windows Azure Service Management API permissions,Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu.
+.  the application ID and directory ID,Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab.
+.  a client secret,Erstellen Sie einen Clientschlüssel.
+
+
+
+
+==== Erstellen einer Azure Active Directory-Anwendung
+
+Erstellen Sie eine Applikation und einen Service-Principal für Azure Active Directory (AD), die BlueXP für die rollenbasierte Zugriffssteuerung verwenden kann.
+
+Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"^].
+
+.Schritte
+. Öffnen Sie über das Azure-Portal den *Azure Active Directory*-Service.
++
+image:screenshot_azure_ad.gif["Zeigt den Active Directory-Dienst in Microsoft Azure an."]
+
+. Klicken Sie im Menü auf *App-Registrierungen*.
+. Klicken Sie auf *Neue Registrierung*.
+. Geben Sie Details zur Anwendung an:
++
+** *Name*: Geben Sie einen Namen für die Anwendung ein.
+** *Kontotyp*: Wählen Sie einen Kontotyp aus (jeder kann mit BlueXP verwendet werden).
+** *Redirect URI*: Sie können dieses Feld leer lassen.
+
+
+. Klicken Sie Auf *Registrieren*.
+
+
+Sie haben die AD-Anwendung und den Service-Principal erstellt.
+
+
+
+==== Anwendung einer Rolle zuweisen
+
+Sie müssen den Service-Principal an ein oder mehrere Azure-Abonnements binden und ihm die benutzerdefinierte Rolle „BlueXP Operator“ zuweisen, damit BlueXP über Berechtigungen in Azure verfügt.
+
+.Schritte
+. Erstellen einer benutzerdefinierten Rolle:
++
+.. Kopieren Sie den Inhalt des link:reference-permissions-azure.html["Benutzerdefinierte Rollenberechtigungen für den Konnektor"] Und speichern Sie sie in einer JSON-Datei.
+.. Ändern Sie die JSON-Datei, indem Sie dem zuweisbaren Bereich Azure-Abonnement-IDs hinzufügen.
++
+Sie sollten die ID für jedes Azure Abonnement hinzufügen, aus dem Benutzer Cloud Volumes ONTAP Systeme erstellen.
+
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+"/subscriptions/54b91999-b3e6-4599-908e-416e0zzzzzzz",
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"
+----
+.. Verwenden Sie die JSON-Datei, um eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+In den folgenden Schritten wird beschrieben, wie die Rolle mithilfe von Bash in Azure Cloud Shell erstellt wird.
+
++
+*** Starten https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] Und wählen Sie die Bash-Umgebung.
+*** Laden Sie die JSON-Datei hoch.
++
+image:screenshot_azure_shell_upload.png["Einen Screenshot der Azure Cloud Shell, in dem Sie die Option zum Hochladen einer Datei auswählen können."]
+
+*** Geben Sie den folgenden Befehl der Azure CLI ein:
++
+[source, azurecli]
+----
+az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json
+----
++
+Sie sollten nun eine benutzerdefinierte Rolle namens BlueXP Operator haben, die Sie der virtuellen Connector-Maschine zuweisen können.
+
+
+
+
+
+. Applikation der Rolle zuweisen:
++
+.. Öffnen Sie im Azure-Portal den Service *Abonnements*.
+.. Wählen Sie das Abonnement aus.
+.. Klicken Sie auf *Zugriffskontrolle (IAM) > Hinzufügen > Rollenzuweisung hinzufügen*.
+.. Wählen Sie auf der Registerkarte * Role* die Rolle *BlueXP Operator* aus und klicken Sie auf *Next*.
+.. Führen Sie auf der Registerkarte *Mitglieder* die folgenden Schritte aus:
++
+*** *Benutzer, Gruppe oder Serviceprincipal* ausgewählt lassen.
+*** Klicken Sie auf *Mitglieder auswählen*.
++
+image:screenshot-azure-service-principal-role.png["Ein Screenshot des Azure-Portals, auf dem die Registerkarte Mitglieder angezeigt wird, wenn einer Anwendung eine Rolle hinzugefügt wird."]
+
+*** Suchen Sie nach dem Namen der Anwendung.
++
+Hier ein Beispiel:
+
++
+image:screenshot_azure_service_principal_role.png["Ein Screenshot des Azure-Portals, in dem das Formular Rollenzuordnung hinzufügen im Azure-Portal angezeigt wird."]
+
+*** Wählen Sie die Anwendung aus und klicken Sie auf *Auswählen*.
+*** Klicken Sie Auf *Weiter*.
+
+
+.. Klicken Sie auf *Review + Assign*.
++
+Der Service-Principal verfügt jetzt über die erforderlichen Azure-Berechtigungen zur Bereitstellung des Connectors.
+
++
+Wenn Sie Cloud Volumes ONTAP aus mehreren Azure Subscriptions bereitstellen möchten, müssen Sie den Service-Prinzipal an jedes dieser Subscriptions binden. Mit BlueXP können Sie das Abonnement auswählen, das Sie bei der Bereitstellung von Cloud Volumes ONTAP verwenden möchten.
+
+
+
+
+
+
+
+==== Windows Azure Service Management-API-Berechtigungen werden hinzugefügt
+
+Der Service-Principal muss über die Berechtigungen „Windows Azure Service Management API“ verfügen.
+
+.Schritte
+. Klicken Sie im *Azure Active Directory*-Dienst auf *App-Registrierungen* und wählen Sie die Anwendung aus.
+. Klicken Sie auf *API-Berechtigungen > Berechtigung hinzufügen*.
+. Wählen Sie unter *Microsoft APIs* *Azure Service Management* aus.
++
+image:screenshot_azure_service_mgmt_apis.gif["Ein Screenshot des Azure Portals, in dem die Berechtigungen der Azure Service Management API angezeigt werden."]
+
+. Klicken Sie auf *Zugriff auf Azure Service Management als Benutzer der Organisation* und dann auf *Berechtigungen hinzufügen*.
++
+image:screenshot_azure_service_mgmt_apis_add.gif["Ein Screenshot des Azure Portals, in dem das Hinzufügen der Azure Service Management APIs angezeigt wird"]
+
+
+
+
+
+==== Abrufen der Anwendungs-ID und der Verzeichnis-ID
+
+Wenn Sie das Azure-Konto zu BlueXP hinzufügen, müssen Sie die Anwendungs-ID (Client) und die Verzeichnis-ID (Mandant) für die Anwendung angeben. BlueXP verwendet die IDs, um sich programmatisch anzumelden.
+
+.Schritte
+. Klicken Sie im *Azure Active Directory*-Dienst auf *App-Registrierungen* und wählen Sie die Anwendung aus.
+. Kopieren Sie die *Application (Client) ID* und die *Directory (Tenant) ID*.
++
+image:screenshot_azure_app_ids.gif["Ein Screenshot, der die Anwendungs-ID (Client) und die Verzeichnis-ID (Mandant) für eine Anwendung in Azure Active Directory anzeigt"]
+
+
+
+
+
+==== Erstellen eines Clientgeheimnisses
+
+Sie müssen ein Clientgeheimnis erstellen und dann BlueXP den Wert des Geheimnisses zur Verfügung stellen, damit BlueXP es zur Authentifizierung mit Azure AD nutzen kann.
+
+.Schritte
+. Öffnen Sie den Dienst *Azure Active Directory*.
+. Klicken Sie auf *App-Registrierungen* und wählen Sie Ihre Anwendung aus.
+. Klicken Sie auf *Zertifikate & Geheimnisse > Neuer Client Secret*.
+. Geben Sie eine Beschreibung des Geheimnisses und eine Dauer an.
+. Klicken Sie Auf *Hinzufügen*.
+. Kopieren Sie den Wert des Clientgeheimnisses.
++
+image:screenshot_azure_client_secret.gif["Ein Screenshot des Azure-Portals, in dem ein Client-Geheimnis für den Azure AD-Service-Principal angezeigt wird"]
+
+
+
+Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in BlueXP eingeben, wenn Sie ein Azure-Konto hinzufügen.
+
+
+
+=== Hinzufügen der Anmeldeinformationen zu BlueXP
+
+Nachdem Sie ein Azure-Konto mit den erforderlichen Berechtigungen angegeben haben, können Sie die Anmeldedaten für dieses Konto bei BlueXP hinzufügen. Durch diesen Schritt können Sie Cloud Volumes ONTAP mit unterschiedlichen Azure Zugangsdaten starten.
+
+Falls Sie diese Zugangsdaten gerade bei Ihrem Cloud-Provider erstellt haben, kann es einige Minuten dauern, bis sie zur Verwendung verfügbar sind. Warten Sie einige Minuten, bevor Sie BlueXP die Anmeldeinformationen hinzufügen.
+
+Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie, wie"].
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen und wählen Sie *Anmeldeinformationen*.
++
+image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol Einstellungen oben rechts in der BlueXP-Konsole angezeigt wird."]
+
+. Klicken Sie auf *Anmeldeinformationen hinzufügen* und befolgen Sie die Schritte im Assistenten.
++
+.. *Anmeldeort*: Wählen Sie *Microsoft Azure > Connector*.
+.. *Anmeldedaten definieren*: Geben Sie Informationen über den Azure Active Directory Service Principal ein, der die erforderlichen Berechtigungen erteilt:
++
+*** Anwendungs-ID (Client): Siehe  the application ID and directory ID.
+*** Verzeichnis-ID (Mandant): Siehe  the application ID and directory ID.
+*** Client Secret: Siehe  a client secret.
+
+
+.. *Marketplace-Abonnement*: Verknüpfen Sie diese Anmeldedaten mit einem Marketplace-Abonnement, indem Sie jetzt abonnieren oder ein vorhandenes Abonnement auswählen.
++
+Damit Sie für Cloud Volumes ONTAP mit einem stündlichen Tarif (PAYGO) bezahlen können, müssen diese Azure Zugangsdaten einem Abonnement im Azure Marketplace zugeordnet sein.
+
+.. *Review*: Bestätigen Sie die Angaben zu den neuen Anmeldedaten und klicken Sie auf *Hinzufügen*.
+
+
+
+
+Auf der Seite Details und Anmeldeinformationen können Sie nun zu verschiedenen Anmeldeinformationen wechseln https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html["Beim Erstellen einer neuen Arbeitsumgebung"^]
+
+image:screenshot_accounts_switch_azure.gif["Ein Screenshot, in dem die Auswahl zwischen Anmeldeinformationen angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Anmeldeinformationen bearbeiten geklickt haben."]
+
+
+
+== Vorhandene Anmeldedaten verwalten
+
+Verwalten Sie die Azure-Anmeldedaten, die Sie BlueXP bereits hinzugefügt haben, indem Sie ein Marketplace-Abonnement zuordnen, Anmeldedaten bearbeiten und löschen.
+
+
+
+=== Verknüpfen eines Azure Marketplace Abonnements mit den Zugangsdaten
+
+Nachdem Sie Ihre Azure Zugangsdaten zu BlueXP hinzugefügt haben, können Sie diesen Anmeldedaten ein Azure Marketplace Abonnement zuordnen. Mithilfe des Abonnements können Sie ein nutzungsbasiertes Cloud Volumes ONTAP System erstellen und andere NetApp Cloud-Services nutzen.
+
+Es gibt zwei Szenarien, in denen Sie ein Azure Marketplace-Abonnement verknüpfen können, nachdem Sie BlueXP bereits die Zugangsdaten hinzugefügt haben:
+
+* Sie haben ein Abonnement nicht zugeordnet, wenn Sie die Anmeldeinformationen zu BlueXP hinzugefügt haben.
+* Sie möchten ein vorhandenes Azure Marketplace Abonnement durch ein neues Abonnement ersetzen.
+
+
+Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie, wie"].
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen und wählen Sie *Anmeldeinformationen*.
+. Klicken Sie auf das Aktionsmenü für eine Reihe von Anmeldeinformationen und wählen Sie dann *Abonnement verknüpfen*.
++
+image:screenshot_azure_add_subscription.png["Ein Screenshot des Aktionsmenüs für einen Satz vorhandener Anmeldedaten."]
+
+. Wählen Sie ein Abonnement aus der Down-Liste aus, oder klicken Sie auf *Abonnement hinzufügen* und befolgen Sie die Schritte, um ein neues Abonnement zu erstellen.
++
+Das folgende Video beginnt im Kontext des Assistenten zur Arbeitsumgebung, zeigt Ihnen aber den gleichen Workflow, nachdem Sie auf *Abonnement hinzufügen* geklickt haben:
+
++
+video::video_subscribing_azure.mp4[width=848,height=480]
+
+
+
+
+=== Anmeldedaten werden bearbeitet
+
+Bearbeiten Sie Ihre Azure-Anmeldedaten in BlueXP, indem Sie die Details zu Ihren Azure-Serviceanmeldeinformationen ändern. Sie müssen beispielsweise den Clientschlüssel aktualisieren, wenn ein neues Geheimnis für die Service-Hauptanwendung erstellt wurde.
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen und wählen Sie *Anmeldeinformationen*.
+. Klicken Sie auf das Aktionsmenü für eine Reihe von Anmeldeinformationen und wählen Sie dann *Anmeldeinformationen bearbeiten*.
+. Nehmen Sie die gewünschten Änderungen vor und klicken Sie dann auf *Anwenden*.
+
+
+
+
+=== Anmeldedaten werden gelöscht
+
+Wenn Sie keine Anmeldedaten mehr benötigen, können Sie diese aus BlueXP löschen. Sie können nur Anmeldeinformationen löschen, die nicht mit einer Arbeitsumgebung verknüpft sind.
+
+.Schritte
+. Klicken Sie oben rechts in der BlueXP-Konsole auf das Symbol Einstellungen und wählen Sie *Anmeldeinformationen*.
+. Klicken Sie auf das Aktionsmenü für einen Satz von Anmeldeinformationen und wählen Sie dann *Anmeldeinformationen löschen*.
+. Klicken Sie zur Bestätigung auf *Löschen*.
+

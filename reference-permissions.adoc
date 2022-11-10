@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: reference-permissions.html 
+keywords: permissions, actions 
+summary: Um die Funktionen und Services in BlueXP nutzen zu können, müssen Sie Berechtigungen bereitstellen, damit BlueXP die Abläufe in Ihrer Cloud-Umgebung ausführen kann. Über die Links auf dieser Seite können Sie schnell auf die in BlueXP erforderlichen Berechtigungen zugreifen. 
+---
+= Zusammenfassung der Berechtigungen für BlueXP
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Um die Funktionen und Services in BlueXP nutzen zu können, müssen Sie Berechtigungen bereitstellen, damit BlueXP die Abläufe in Ihrer Cloud-Umgebung ausführen kann. Über die Links auf dieser Seite können Sie schnell auf die Berechtigungen zugreifen, die Sie basierend auf Ihrem Ziel benötigen.
+
+
+
+== AWS Berechtigungen
+
+[cols="25,60,40"]
+|===
+| Zweck | Beschreibung | Verlinken 
+
+
+| Connector-Bereitstellung | Der Benutzer, der einen Connector von BlueXP erstellt, benötigt spezielle Berechtigungen, um die Instanz in AWS bereitzustellen. | link:task-creating-connectors-aws.html["Erstellen Sie einen Connector in AWS von BlueXP"] 
+
+
+| Verbindungsbetrieb | Beim Start des Connectors durch BlueXP wird eine Richtlinie an die Instanz angehängt, die die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen in Ihrem AWS-Konto bereitstellt. Sie müssen die Richtlinie selbst einrichten, wenn Sie dies tun link:task-launching-aws-mktp.html["Starten Sie einen Connector vom Markt aus"] Oder wenn Sie link:task-adding-aws-accounts.html#add-credentials-to-a-connector["Fügen Sie weitere AWS Zugangsdaten zu einem Connector hinzu"]. Außerdem müssen Sie sicherstellen, dass die Richtlinie aktuell ist, wenn neue Berechtigungen in nachfolgenden Releases hinzugefügt werden. | link:reference-permissions-aws.html["AWS-Berechtigungen für den Connector"] 
+
+
+| Cloud Volumes ONTAP Betrieb | Eine IAM-Rolle muss mit jedem Cloud Volumes ONTAP-Node in AWS verbunden sein. Das gleiche gilt für den HA Mediator. Standardmäßig können BlueXP die IAM-Rollen für Sie erstellen lassen, Sie können jedoch Ihre eigenen Funktionen verwenden. | https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-set-up-iam-roles.html["Erfahren Sie, wie Sie die IAM-Rollen selbst einrichten"^] 
+|===
+
+
+== Azure-Berechtigungen
+
+[cols="25,60,40"]
+|===
+| Zweck | Beschreibung | Verlinken 
+
+
+| Connector-Bereitstellung | Wenn Sie einen Connector von BlueXP bereitstellen, müssen Sie ein Azure-Konto oder einen Service-Principal verwenden, der über die Berechtigungen zum Bereitstellen der Connector-VM in Azure verfügt. | link:task-creating-connectors-azure.html["Erstellen Sie einen Connector in Azure von BlueXP"] 
+
+
+| Verbindungsbetrieb  a| 
+Wenn BlueXP die Connector VM in Azure implementiert, wird eine benutzerdefinierte Rolle erstellt, die die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen im Azure Abonnement bietet.
+
+Sie müssen die benutzerdefinierte Rolle selbst einrichten, wenn Sie link:task-launching-azure-mktp.html["Starten Sie einen Connector vom Markt aus"] Oder wenn Sie link:task-adding-azure-accounts.html#adding-additional-azure-credentials-to-cloud-manager["Fügen Sie weitere Azure Credentials zu einem Connector hinzu"].
+
+Außerdem müssen Sie sicherstellen, dass die Richtlinie aktuell ist, wenn neue Berechtigungen in nachfolgenden Releases hinzugefügt werden.
+ a| 
+link:reference-permissions-azure.html["Azure-Berechtigungen für den Connector"]
+
+|===
+
+
+== Google Cloud-Berechtigungen
+
+[cols="25,60,40"]
+|===
+| Zweck | Beschreibung | Verlinken 
+
+
+| Connector-Bereitstellung | Der Google Cloud-Benutzer, der einen Connector von BlueXP bereitstellt, benötigt spezielle Berechtigungen, um den Connector in Google Cloud bereitzustellen. | link:task-creating-connectors-gcp.html#set-up-permissions-to-deploy-the-connector["Richten Sie Berechtigungen für die Bereitstellung des Connectors ein"] 
+
+
+| Verbindungsbetrieb | Das Servicekonto für die Connector-VM-Instanz muss über spezielle Berechtigungen für den täglichen Betrieb verfügen. Sie müssen das Servicekonto mit dem Connector verknüpfen, wenn Sie es über BlueXP bereitstellen. Außerdem müssen Sie sicherstellen, dass die Richtlinie aktuell ist, wenn neue Berechtigungen in nachfolgenden Releases hinzugefügt werden. | link:task-creating-connectors-gcp.html#set-up-a-service-account-for-the-connector["Richten Sie ein Servicekonto für den Konnektor ein"] 
+|===

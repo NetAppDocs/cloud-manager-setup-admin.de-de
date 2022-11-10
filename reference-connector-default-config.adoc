@@ -1,0 +1,161 @@
+---
+sidebar: sidebar 
+permalink: reference-connector-default-config.html 
+keywords: linux, user name, operating system, installation files, installation folder, folder, log, logs, service, mysql, packages, linux 
+summary: Wenn Sie eine Fehlerbehebung für den Konnektor benötigen, können Sie die Konfiguration des Connectors unter Umständen besser verstehen. 
+---
+= Standardkonfiguration für den Konnektor
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Möglicherweise möchten Sie mehr über den Connector erfahren, bevor Sie ihn bereitstellen, oder wenn Sie Probleme beheben müssen.
+
+
+
+== Standardkonfiguration mit Internetzugang
+
+Die folgenden Konfigurationsdetails gelten, wenn Sie den Connector von BlueXP, vom Markt Ihres Cloud-Providers oder manuell auf einem lokalen Linux-Host mit Internetzugang installiert haben.
+
+
+
+=== AWS – Details
+
+Wenn Sie den Connector von BlueXP oder vom Marktplatz des Cloud-Providers implementiert haben, beachten Sie Folgendes:
+
+* Der EC2-Instanztyp ist t3.xlarge.
+* Das Betriebssystem für das Image ist Red hat Enterprise Linux 7.6 (HVM).
++
+Das Betriebssystem enthält keine GUI. Sie müssen ein Terminal verwenden, um auf das System zuzugreifen.
+
+* Der Benutzername für die EC2 Linux Instanz ist ec2-user.
+* Die Standardfestplatte des Systems ist eine 100 gib gp2-Festplatte.
+
+
+
+
+=== Azure – Details
+
+Wenn Sie den Connector von BlueXP oder vom Marktplatz des Cloud-Providers implementiert haben, beachten Sie Folgendes:
+
+* Der VM-Typ ist DS3 v2.
+* Das Betriebssystem für das Image ist CentOS 7.6.
++
+Das Betriebssystem enthält keine GUI. Sie müssen ein Terminal verwenden, um auf das System zuzugreifen.
+
+* Die Standardfestplatte des Systems beträgt 100 gib Premium-SSD-Festplatte.
+
+
+
+
+=== Google Cloud-Details
+
+Wenn Sie den Connector von BlueXP oder vom Marktplatz des Cloud-Providers implementiert haben, beachten Sie Folgendes:
+
+* Die VM-Instanz ist n2-Standard-4.
+* Das Betriebssystem für das Image ist Red hat Enterprise Linux 8.6.
++
+Das Betriebssystem enthält keine GUI. Sie müssen ein Terminal verwenden, um auf das System zuzugreifen.
+
+* Die Standardfestplatte des Systems beträgt eine persistente SSD-Festplatte mit 100 gib.
+
+
+
+
+=== Installationsordner
+
+Der Installationsordner des Connectors befindet sich an folgender Stelle:
+
+/opt/application/netapp/cloudmanager
+
+
+
+=== Log-Dateien
+
+Protokolldateien sind in den folgenden Ordnern enthalten:
+
+* /opt/application/netapp/cloudmanager/log
++
+Die Protokolle in diesem Ordner enthalten Details zu den Konnektor- und Docker-Images.
+
+* /Opt/Application/netapp/CloudManager/docker_occm/Data/log
++
+Die Protokolle in diesem Ordner enthalten Details zu Cloud-Diensten und zum BlueXP-Dienst, der auf dem Connector ausgeführt wird.
+
+
+
+
+
+=== Verbindungsdienst
+
+* Der BlueXP-Dienst heißt occm.
+* Der occm-Dienst ist vom MySQL-Dienst abhängig.
++
+Wenn der MySQL-Dienst nicht verfügbar ist, ist auch der occm-Dienst nicht verfügbar.
+
+
+
+
+
+=== Pakete
+
+BlueXP installiert die folgenden Pakete auf dem Linux-Host, falls diese noch nicht installiert sind:
+
+* 7-Zip
+* AWSCLI
+* Docker
+* Java
+* Kubectl
+* MySQL
+* Tridentctl
+* Ziehen
+* Wget
+
+
+
+
+=== Ports
+
+Der Connector verwendet die folgenden Ports auf dem Linux-Host:
+
+* 80 für HTTP-Zugriff
+* 443 für HTTPS-Zugriff
+* 3306 für die BlueXP-Datenbank
+* 8080 für den BlueXP API Proxy
+* 8666 für die Service Manager API
+* 8777 für die Health-Checker Container Service API
+
+
+
+
+== Standardkonfiguration ohne Internetzugang
+
+Die folgende Konfiguration gilt, wenn Sie den Connector manuell auf einem lokalen Linux-Host installiert haben, der keinen Internetzugang hat. link:task-install-connector-onprem-no-internet.html["Erfahren Sie mehr über diese Installationsoption"].
+
+* Der Installationsordner des Connectors befindet sich an folgender Stelle:
++
+/Opt/Application/netapp/ds
+
+* Protokolldateien sind in den folgenden Ordnern enthalten:
++
+/Var/lib/docker/Volumes/ds_occmdata/data-data/log
+
++
+Die Protokolle in diesem Ordner enthalten Details zu den Konnektor- und Docker-Images.
+
+* Alle Services werden in Docker Containern ausgeführt
++
+Die Dienste sind abhängig vom laufenden Docker Runtime Service
+
+* Der Connector verwendet die folgenden Ports auf dem Linux-Host:
++
+** 80 für HTTP-Zugriff
+** 443 für HTTPS-Zugriff
+
+
+

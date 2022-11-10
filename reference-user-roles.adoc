@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: reference-user-roles.html 
+keywords: user, users, roles, role, task, permission, permissions, tasks, admin, Account Admin, Workspace Admin, Cloud Compliance Viewer, Cloud Data Sense, SnapCenter Admin 
+summary: Die Rollen Kontoverwaltung, Arbeitsbereichsverwaltung, Compliance Viewer und SnapCenter-Admin bieten Benutzern spezifische Berechtigungen. 
+---
+= Rollen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Rollen Kontoverwaltung, Arbeitsbereichsverwaltung, Compliance Viewer und SnapCenter-Admin bieten Benutzern spezifische Berechtigungen.
+
+Die Compliance Viewer-Rolle dient dem schreibgeschützten Cloud Data Sense Zugriff.
+
+[cols="24,19,19,19,19"]
+|===
+| Aufgabe | Kontoadministrator | Workspace-Verwaltung | Compliance Viewer | SnapCenter Admin 
+
+
+| Verwalten von Arbeitsumgebungen | Ja. | Ja. | Nein | Nein 
+
+
+| Services in Arbeitsumgebungen ermöglichen | Ja. | Ja. | Nein | Nein 
+
+
+| Anzeigen des Status der Datenreplizierung | Ja. | Ja. | Nein | Nein 
+
+
+| Zeitachse anzeigen | Ja. | Ja. | Nein | Nein 
+
+
+| Wechseln Sie zwischen Arbeitsbereichen | Ja. | Ja. | Ja. | Nein 
+
+
+| Zeigen Sie die Ergebnisse des Data Sense-Scans an | Ja. | Ja. | Ja. | Nein 
+
+
+| Arbeitsumgebungen löschen | Ja. | Nein | Nein | Nein 
+
+
+| Kubernetes-Cluster mit Arbeitsumgebungen verbinden | Ja. | Nein | Nein | Nein 
+
+
+| Cloud Volumes ONTAP Bericht erhalten | Ja. | Nein | Nein | Nein 
+
+
+| Anschlüsse Erstellen | Ja. | Nein | Nein | Nein 
+
+
+| NetApp Accounts managen | Ja. | Nein | Nein | Nein 
+
+
+| Anmeldeinformationen verwalten | Ja. | Nein | Nein | Nein 
+
+
+| Ändern Sie die Einstellungen von BlueXP | Ja. | Nein | Nein | Nein 
+
+
+| Anzeigen und Verwalten des Support-Dashboards | Ja. | Nein | Nein | Nein 
+
+
+| Entfernen Sie Arbeitsumgebungen aus BlueXP | Ja. | Nein | Nein | Nein 
+
+
+| Installieren Sie ein HTTPS-Zertifikat | Ja. | Nein | Nein | Nein 
+
+
+| Verwenden Sie den SnapCenter-Dienst | Ja. | Ja. | Nein | Ja. 
+|===
+.Weiterführende Links
+* link:task-setting-up-netapp-accounts.html["Einrichtung von Workspaces und Benutzern im NetApp Konto"]
+* link:task-managing-netapp-accounts.html["Managen von Workspaces und Benutzern im NetApp Account"]
+

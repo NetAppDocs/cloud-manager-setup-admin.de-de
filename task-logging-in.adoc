@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: task-logging-in.html 
+keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account, federated, federation, federated login, federation login, login with netapp, log in with netapp, sign up, create account 
+summary: 'Auf die BlueXP-Schnittstelle kann über eine SaaS-basierte Benutzeroberfläche zugegriffen werden. Gehen Sie zu https://cloudmanager.netapp.com[].' 
+---
+= Melden Sie sich bei BlueXP an
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Über eine SaaS-basierte Benutzeroberfläche ist BlueXP über Ihren Webbrowser zugänglich.
+
+Wenn Sie über eine Regierungsregion oder eine Website ohne Outbound-Internetzugang auf BlueXP zugreifen, müssen Sie sich bei der BlueXP-Benutzeroberfläche anmelden, die lokal auf dem Connector ausgeführt wird. link:task-managing-connectors.html#access-the-local-ui["Erfahren Sie, wie Sie auf die lokale Benutzeroberfläche des Connectors zugreifen können"].
+
+Sie können sich unter BlueXP mit einer der folgenden Optionen anmelden:
+
+* Ihre vorhandenen Zugangsdaten für die NetApp Support Site (NSS
++
+Wenn Sie diese Option verwenden, werden Ihre NSS-Anmeldedaten (NetApp Support Site) BlueXP im Support Dashboard nicht hinzugefügt. Um wichtige Workflows für Cloud Volumes ONTAP zu aktivieren, müssen Sie BlueXP Ihre NSS-Anmeldeinformationen hinzufügen. link:task-adding-nss-accounts.html["Erfahren Sie, wie Sie Ihre NSS-Anmeldedaten in BlueXP einfügen"].
+
+* Nutzen Sie Ihre E-Mail-Adresse und ein Passwort, um sich bei einem NetApp Cloud-Login anzumelden
++
+Diese Option unterstützt verbundene Verbindungen. Sie können sich mit Single Sign-On über Anmeldedaten aus Ihrem Unternehmensverzeichnis (föderierte Identität) anmelden. Weitere Informationen erhalten Sie im https://cloud.netapp.com/help-center["Hilfe-Center für BlueXP"^] Und klicken Sie dann auf *Anmelde-Optionen*.
+
+
+
+Bei jeder Anmeldung müssen Sie dieselbe Option verwenden, die Sie bei der ersten Anmeldung gewählt haben.
+
+* Wenn Sie sich mit Ihren NetApp Support Site Anmeldedaten anmelden, müssen Sie diese Login-Option jedes Mal verwenden.
+* Wenn Sie sich durch Eingabe Ihrer E-Mail und Ihres Kennworts angemeldet haben, müssen Sie diese Anmeldedaten jedes Mal eingeben, wenn Sie sich anmelden.
+
+
+.Schritte
+. Öffnen Sie einen Webbrowser, und rufen Sie den auf https://cloudmanager.netapp.com["BlueXP-Konsole"^]
++
+Die Anmeldeseite für NetApp BlueXP wird angezeigt.
+
++
+image:screenshot-login.png["Die Anmeldeseite für BlueXP."]
+
+. Wählen Sie eine der Anmeldeoptionen:
++
+** Wenn Sie zuvor NetApp Cloud-Anmeldedaten erstellt haben, melden Sie sich mit Ihrer E-Mail und Ihrem Passwort an.
+** Wenn Sie keine Cloud-Anmeldedaten haben, aber bereits über einen NSS Account (NetApp Support Site) verfügen, wählen Sie *Melden Sie sich mit Ihren NetApp Support Site-Anmeldedaten* an.
+** Wenn Sie keinen NSS-Account besitzen und noch keine NetApp Cloud-Anmeldedaten erstellt haben, klicken Sie auf *Registrieren*, um einen NetApp Cloud-Login zu erstellen.
++
+Beachten Sie, dass nur englische Zeichen im Anmeldeformular zulässig sind.
+
++
+Nachdem Sie sich angemeldet haben, erhalten Sie eine E-Mail von NetApp. Klicken Sie auf den Link in der E-Mail, um Ihre E-Mail-Adresse zu überprüfen und sich dann anzumelden.
+
+
+
+
+
+Sie sind jetzt angemeldet und können mit BlueXP Ihre Hybrid-Multi-Cloud-Infrastruktur managen.

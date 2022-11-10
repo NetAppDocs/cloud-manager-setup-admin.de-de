@@ -1,0 +1,229 @@
+---
+sidebar: sidebar 
+permalink: concept-connectors.html 
+keywords: 'concept, connectors, learn about connectors, service connectors, what are connectors, what is a connector, what"s a connector, days, 14 days' 
+summary: In den meisten Fällen müssen Sie einen Connector in Ihrer Cloud oder Ihrem On-Premises-Netzwerk bereitstellen. Der Connector ist eine entscheidende Komponente für die tägliche Nutzung von BlueXP. BlueXP kann die Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten. 
+---
+= Erfahren Sie mehr über Steckverbinder
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In den meisten Fällen muss ein BlueXP Account Admin einen _Connector_ in Ihrer Cloud oder Ihrem On-Premises-Netzwerk bereitstellen. Der Connector ist eine entscheidende Komponente für die tägliche Nutzung von BlueXP. BlueXP kann die Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten.
+
+
+
+== Wenn ein Stecker erforderlich ist
+
+Für die Nutzung vieler Funktionen und Services in BlueXP ist ein Connector erforderlich.
+
+
+
+=== Services
+
+* Managementfunktionen von Amazon FSX für ONTAP
+* Ermittlung von Amazon S3
+* Azure Blob-Erkennung
+* Cloud-Backup
+* Cloud-Daten Sinnvoll
+* Cloud Tiering
+* Cloud Volumes ONTAP
+* E-Series Systeme
+* Globaler Datei-Cache
+* Erkennung von Google Cloud Storage
+* Kubernetes-Cluster
+* On-Premises ONTAP Cluster
+* StorageGRID
+
+
+Für die folgenden Dienste ist ein Connector *_Not_* erforderlich:
+
+* Digital Advisor
+* Amazon FSX für die Erstellung von Arbeitsumgebungen durch ONTAP Obwohl für die Erstellung eines Connectors keine Arbeitsumgebung erforderlich ist, müssen Volumes erstellt und gemanagt, Daten repliziert und FSX für ONTAP in NetApp Cloud-Services wie Data Sense und Cloud Sync integriert werden.
+* Azure NetApp Dateien
++
+Während kein Connector für die Einrichtung und Verwaltung von Azure NetApp Files erforderlich ist, ist für die Überprüfung von Azure NetApp Files-Daten ein Connector erforderlich.
+
+* Cloud Volumes Service für Google Cloud
+* Cloud-Synchronisierung
+
+
+
+
+=== Digital Wallet
+
+In fast allen Fällen können Sie eine Lizenz für das Digital Wallet ohne Connector hinzufügen.
+
+Der einzige Zeitpunkt, zu dem ein Konnektor erforderlich ist, um eine Lizenz zum digitalen Wallet hinzuzufügen, sind Cloud Volumes ONTAP_Node-basierte_-Lizenzen. In diesem Fall ist ein Connector erforderlich, da die Daten aus den auf Cloud Volumes ONTAP-Systemen installierten Lizenzen stammen.
+
+
+
+== Unterstützte Standorte
+
+Ein Connector wird an folgenden Stellen unterstützt:
+
+* Amazon Web Services
+* Microsoft Azure
+* Google Cloud
+* Vor Ort
+* In Ihrem Haus, ohne Internetzugang
+
+
+
+
+=== Hinweis zu Azure Implementierungen
+
+Wenn Sie den Connector in Azure implementieren, sollte er in derselben Azure-Region wie die Cloud Volumes ONTAP-Systeme, die er managt, oder in bereitgestellt werden https://docs.microsoft.com/en-us/azure/availability-zones/cross-region-replication-azure#azure-cross-region-replication-pairings-for-all-geographies["Azure Region Paar"^] Für die Cloud Volumes ONTAP Systeme. Diese Anforderung stellt sicher, dass eine Azure Private Link-Verbindung zwischen Cloud Volumes ONTAP und den zugehörigen Storage-Konten verwendet wird. https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-enabling-private-link.html["Erfahren Sie, wie Cloud Volumes ONTAP einen privaten Azure Link nutzt"^].
+
+
+
+=== Hinweis zu Google Cloud-Bereitstellungen
+
+Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann müssen Sie über einen Connector verfügen, der auch in Google Cloud läuft. Es kann kein Connector verwendet werden, der in AWS, Azure oder lokal ausgeführt wird.
+
+
+
+== Anschlüsse sollten weiterhin ausgeführt werden
+
+Ein Steckverbinder sollte immer weiter laufen. Es ist wichtig für den fortwährenden Zustand und Betrieb der Services, die Sie ermöglichen.
+
+Ein Connector ist beispielsweise eine wichtige Komponente im Zustand und Betrieb von Cloud Volumes ONTAP. Wenn ein Connector heruntergefahren wird, werden Cloud Volumes ONTAP PAYGO-Systeme und kapazitätsbasierte BYOL-Systeme heruntergefahren, nachdem die Kommunikation mit einem Connector über einen Zeitraum von mehr als 14 Tagen unterbrochen wurde. Dies geschieht, weil der Connector jeden Tag die Lizenzierung auf dem System aktualisiert.
+
+
+NOTE: Wenn Ihr Cloud Volumes ONTAP System über eine Node-basierte BYOL-Lizenz verfügt, wird das System nach 14 Tagen weiter ausgeführt, da die Lizenz auf dem Cloud Volumes ONTAP System installiert wird.
+
+
+
+== So erstellen Sie einen Konnektor
+
+Ein BlueXP-Kontoadministrator kann auf verschiedene Arten einen Connector erstellen:
+
+* Direkt von BlueXP (empfohlen)
++
+** link:task-creating-connectors-aws.html["In AWS erstellen"]
+** link:task-creating-connectors-azure.html["In Azure erstellen"]
+** link:task-creating-connectors-gcp.html["In GCP erstellen"]
+
+
+* Durch manuelle Installation der Software auf Ihrem eigenen Linux-Host
++
+** link:task-installing-linux.html["Auf einem Host mit Internetzugang"]
+** link:task-install-connector-onprem-no-internet.html["Auf einem lokalen Host, der keinen Internetzugang hat"]
+
+
+* Über den Markt Ihres Cloud-Providers
++
+** link:task-launching-aws-mktp.html["AWS Marketplace"]
+** link:task-launching-azure-mktp.html["Azure Marketplace"]
+
+
+
+
+Wenn Sie in einer Regierungsregion tätig sind, müssen Sie einen Connector vom Markt Ihres Cloud-Providers bereitstellen oder die Connector-Software manuell auf einem vorhandenen Linux-Host installieren. Sie können den Connector nicht auf der SaaS-Website von BlueXP in einer Regierungsregion bereitstellen.
+
+
+
+== Berechtigungen
+
+Zur Erstellung des Connectors sind spezielle Berechtigungen erforderlich, und für die Instanz des Connectors selbst sind weitere Berechtigungen erforderlich.
+
+
+
+=== Berechtigungen zum Erstellen eines Connectors
+
+Der Benutzer, der einen Connector von BlueXP erstellt, benötigt spezielle Berechtigungen, um die Instanz bei Ihrem bevorzugten Cloud-Provider bereitzustellen.
+
+* link:task-creating-connectors-aws.html["Zeigen Sie die erforderlichen AWS Berechtigungen an"]
+* link:task-creating-connectors-azure.html["Zeigen Sie die erforderlichen Azure Berechtigungen an"]
+* link:task-creating-connectors-gcp.html["Zeigen Sie die erforderlichen Google Cloud-Berechtigungen an"]
+
+
+
+
+=== Berechtigungen für die Connector-Instanz
+
+Für die Ausführung von Vorgängen in Ihrem Auftrag benötigt der Connector spezielle Cloud-Provider-Berechtigungen. Beispiel für die Implementierung und das Management von Cloud Volumes ONTAP.
+
+Wenn Sie einen Connector direkt aus BlueXP erstellen, erstellt BlueXP den Connector mit den erforderlichen Berechtigungen. Es gibt nichts, was Sie tun müssen.
+
+Wenn Sie den Connector selbst über AWS Marketplace, Azure Marketplace oder die Software manuell installieren, müssen Sie sicherstellen, dass die entsprechenden Berechtigungen vorhanden sind.
+
+* link:reference-permissions-aws.html["Erfahren Sie, wie der Connector AWS-Berechtigungen nutzt"]
+* link:reference-permissions-azure.html["Erfahren Sie, wie der Connector Azure-Berechtigungen nutzt"]
+* link:reference-permissions-gcp.html["Erfahren Sie, wie der Connector Google Cloud-Berechtigungen nutzt"]
+
+
+
+
+== Connector-Upgrades
+
+Wir aktualisieren die Connector-Software in der Regel jeden Monat, um neue Funktionen einzuführen und Stabilitätsverbesserungen zu ermöglichen. Während die meisten Services und Funktionen der BlueXP-Plattform über SaaS-basierte Software angeboten werden, sind einige Funktionen von der Version des Connectors abhängig. Dazu gehören Cloud Volumes ONTAP-Management, On-Premises-ONTAP-Cluster-Management, Einstellungen und Hilfe.
+
+Der Connector aktualisiert seine Software automatisch auf die neueste Version, solange er ausgehenden Internetzugriff hat, um das Softwareupdate zu erhalten.
+
+
+
+== Anzahl der Arbeitsumgebungen pro Connector
+
+Ein Connector kann mehrere Arbeitsumgebungen in BlueXP verwalten. Die maximale Anzahl von Arbeitsumgebungen, die ein einzelner Connector managen sollte, variiert. Das hängt von der Art der Arbeitsumgebungen, der Anzahl der Volumes, der zu verwaltenden Kapazität und der Anzahl der Benutzer ab.
+
+Nutzen Sie eine umfangreiche Implementierung, arbeiten Sie mit Ihrem NetApp Ansprechpartner zusammen, um die Größe Ihrer Umgebung zu dimensionieren. Sollten Sie während des gesamten Chats Probleme haben, können Sie sich mit uns in Verbindung setzen.
+
+
+
+== Wann werden mehrere Anschlüsse verwendet
+
+In einigen Fällen benötigen Sie möglicherweise nur einen Connector, aber Sie benötigen möglicherweise zwei oder mehr Anschlüsse.
+
+Hier nur ein paar Beispiele:
+
+* Sie nutzen eine Multi-Cloud-Umgebung (AWS und Azure), d. h. einen Connector in AWS und einen anderen in Azure. Jedes managt die Cloud Volumes ONTAP Systeme, die in diesen Umgebungen ausgeführt werden.
+* Ein Service Provider nutzt möglicherweise ein NetApp Konto, um seinen Kunden Services bereitzustellen, während er einen seiner Geschäftsbereiche mithilfe eines anderen Kontos Disaster Recovery unterstützt. Jedes Konto hätte separate Anschlüsse.
+
+
+
+
+== Verwendung mehrerer Steckverbinder mit derselben Arbeitsumgebung
+
+Sie können eine Arbeitsumgebung mit mehreren Connectors gleichzeitig für Disaster Recovery-Zwecke verwalten. Wenn ein Anschluss ausfällt, können Sie zum anderen Connector wechseln, um die Arbeitsumgebung sofort zu verwalten.
+
+So richten Sie diese Konfiguration ein:
+
+. link:task-managing-connectors.html["Wechseln Sie zu einem anderen Anschluss"]
+. Erkennung der vorhandenen Arbeitsumgebung
++
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-adding-systems.html["Fügen Sie vorhandene Cloud Volumes ONTAP-Systeme zu BlueXP hinzu"^]
+** https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["ONTAP Cluster erkennen"^]
+
+
+. Stellen Sie die ein https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-storage-management.html["Kapazitätsmanagement -Modus"^]
++
+Nur der Hauptanschluss sollte auf *Automatikmodus* eingestellt sein. Wenn Sie zu DR-Zwecken auf einen anderen Connector wechseln, können Sie den Kapazitätsverwaltungsmodus bei Bedarf ändern.
+
+
+
+
+
+== Wann muss zwischen den Anschlüssen gewechselt werden
+
+Wenn Sie Ihren ersten Connector erstellen, verwendet BlueXP diesen Connector automatisch für jede zusätzliche Arbeitsumgebung, die Sie erstellen. Wenn Sie einen zusätzlichen Connector erstellen, müssen Sie zwischen diesen wechseln, um die für jeden Connector spezifischen Arbeitsumgebungen zu sehen.
+
+link:task-managing-connectors.html["Erfahren Sie, wie Sie zwischen den Anschlüssen wechseln"].
+
+
+
+== Die lokale Benutzeroberfläche
+
+Während Sie fast alle Aufgaben aus dem ausführen sollten https://cloudmanager.netapp.com["SaaS-Benutzeroberfläche"^], Eine lokale Benutzeroberfläche ist weiterhin auf dem Connector verfügbar. Diese Schnittstelle ist erforderlich, wenn Sie den Connector in einer Umgebung installieren, die keinen Internetzugang hat (wie eine Regierungsregion) und für einige Aufgaben, die über den Connector selbst ausgeführt werden müssen, anstatt über die SaaS-Schnittstelle:
+
+* link:task-configuring-proxy.html["Festlegen eines Proxyservers"]
+* Installation eines Patches (Sie arbeiten in der Regel mit NetApp Mitarbeitern zusammen, um einen Patch zu installieren)
+* Herunterladen von AutoSupport-Meldungen (normalerweise gerichtet von NetApp Mitarbeitern, wenn Sie Probleme haben)
+
+
+link:task-managing-connectors.html#access-the-local-ui["Erfahren Sie, wie Sie auf die lokale Benutzeroberfläche zugreifen"].

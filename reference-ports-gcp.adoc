@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: reference-ports-gcp.html 
+keywords: ports, firewall rules, http, https, inbound, outbound 
+summary: Die Google Cloud Firewall-Regeln für den Connector erfordern sowohl ein- als auch ausgehende Regeln. 
+---
+= Firewall-Regeln in Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Google Cloud Firewall-Regeln für den Connector erfordern sowohl ein- als auch ausgehende Regeln.
+
+
+
+== Regeln für eingehende Anrufe
+
+[cols="10,10,80"]
+|===
+| Protokoll | Port | Zweck 
+
+
+| SSH | 22 | Bietet SSH-Zugriff auf den Connector-Host 
+
+
+| HTTP | 80 | Bietet HTTP-Zugriff von Client-Webbrowsern auf die lokale Benutzeroberfläche 
+
+
+| HTTPS | 443 | Bietet HTTPS-Zugriff von Client-Webbrowsern auf die lokale Benutzeroberfläche 
+
+
+| TCP | 3128 | Ermöglicht Cloud Volumes ONTAP den Zugang zum Internet, um AutoSupport-Nachrichten an den NetApp Support zu senden. Nach der Bereitstellung müssen Sie diesen Port manuell öffnen.  server for AutoSupport messages,Erfahren Sie mehr über den Proxy-Server des Connectors. 
+|===
+
+
+== Regeln für ausgehende Anrufe
+
+Die vordefinierten Firewall-Regeln für den Connector öffnen den gesamten ausgehenden Datenverkehr. Wenn dies akzeptabel ist, befolgen Sie die grundlegenden Regeln für ausgehende Anrufe. Wenn Sie strengere Regeln benötigen, verwenden Sie die erweiterten Outbound-Regeln.
+
+
+
+=== Grundlegende Regeln für ausgehende Anrufe
+
+Die vordefinierten Firewall-Regeln für den Connector enthalten die folgenden ausgehenden Regeln.
+
+[cols="20,20,60"]
+|===
+| Protokoll | Port | Zweck 
+
+
+| Alle TCP | Alle | Gesamter abgehender Datenverkehr 
+
+
+| Alle UDP-Protokolle | Alle | Gesamter abgehender Datenverkehr 
+|===
+
+
+=== Erweiterte Outbound-Regeln
+
+Wenn Sie starre Regeln für ausgehenden Datenverkehr benötigen, können Sie die folgenden Informationen verwenden, um nur die Ports zu öffnen, die für die ausgehende Kommunikation durch den Konnektor erforderlich sind.
+
+
+NOTE: Die Quell-IP-Adresse ist der Connector-Host.
+
+[cols="5*"]
+|===
+| Service | Protokoll | Port | Ziel | Zweck 
+
+
+| API-Aufrufe und AutoSupport | HTTPS | 443 | Outbound-Internet und ONTAP Cluster Management LIF | API-Aufrufe bei GCP und ONTAP, Cloud Data Sense, zum Ransomware-Service und dem Senden von AutoSupport Nachrichten an NetApp 
+
+
+| DNS | UDP | 53 | DNS | Wird für DNS Resolve von BlueXP verwendet 
+|===

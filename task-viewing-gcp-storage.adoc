@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: task-viewing-gcp-storage.html 
+keywords: google cloud storage buckets, google cloud storage, google cloud storage working environment 
+summary: Nach der Installation eines Connectors in Google Cloud kann BlueXP automatisch Informationen über die Google Cloud Buckets finden, die sich im Google-Konto befinden, in dem der Connector installiert ist. Eine Google Cloud Storage Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können. 
+---
+= Anzeigen Ihrer Google Cloud Storage Buckets
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach der Installation eines Connectors in Google Cloud kann BlueXP automatisch Informationen über die Google Cloud Storage Buckets finden, die sich im Google-Konto befinden, in dem der Connector installiert ist. Eine Google Cloud Storage Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können.
+
+Sie erhalten Details zu Ihren Google Cloud Storage Buckets, einschließlich Standort, Zugriffsstatus, Storage-Klasse, Gesamt- und genutzter Kapazität und mehr. Diese Buckets können als Ziele für Cloud-Backup, Cloud-Tiering oder Cloud Sync-Vorgänge verwendet werden.
+
+.Schritte
+. link:task-creating-connectors-gcp.html["Installieren Sie einen Anschluss"] In dem Google-Konto, in dem Sie Ihre Google Cloud Storage Buckets anzeigen möchten.
+. Wählen Sie im Navigationsmenü die Option *Storage > Canvas* aus.
++
+Kurz darauf sollten Sie automatisch eine Google Cloud Storage Arbeitsumgebung sehen.
+
++
+image:screenshot-gcp-cloud-storage-we.png["Ein Screenshot aus einer Google Cloud Storage Arbeitsumgebung."]
+
+. Klicken Sie auf die Arbeitsumgebung, und wählen Sie eine Aktion im rechten Fensterbereich aus.
++
+image:screenshot-gcp-cloud-storage-actions.png["Ein Screenshot, der das Aktionsfenster zeigt, nachdem Sie eine Arbeitsumgebung in Google Cloud Storage ausgewählt haben. Im Bereich werden die Gesamtzahl der Buckets und eine Aktion für die Verwendung des Sync-Service angezeigt."]
+
+. Klicken Sie auf *Daten synchronisieren*, um Daten mit oder von Google Cloud Storage Buckets zu synchronisieren.
++
+Weitere Informationen finden Sie unter https://docs.netapp.com/us-en/cloud-manager-sync/concept-cloud-sync.html["Überblick über den Cloud Sync Service"^].
+
+. Klicken Sie auf *Arbeitsumgebung eingeben*, um Details zu den Buckets in Ihrem Google-Konto anzuzeigen.
++
+image:screenshot-gcp-cloud-storage-details.png["Ein Screenshot, der die Details einer Google Cloud Storage Arbeitsumgebung zeigt, wie viele Buckets, Kapazitäten und Standorte insgesamt, und in einer Tabelle, in der Details zu den einzelnen Buckets angezeigt werden."]
+
+

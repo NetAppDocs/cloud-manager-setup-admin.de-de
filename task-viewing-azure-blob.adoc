@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: task-viewing-azure-blob.html 
+keywords: blob storage, blob working environment, azure blob storage accounts, azure blob working environment 
+summary: Nach der Installation eines Connectors in Azure erkennt BlueXP automatisch Informationen zu den Azure Storage-Konten, die sich in den Azure-Abonnements befinden, in denen der Connector installiert ist. Eine Azure Blob Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können. 
+---
+= Anzeigen Ihrer Azure Blob Konten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach der Installation eines Connectors in Azure erkennt BlueXP automatisch Informationen zu den Azure Storage-Konten, die sich in den Azure-Abonnements befinden, in denen der Connector installiert ist. Eine Azure Blob Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können.
+
+Sie sehen Details zu Ihren Azure Storage-Konten, einschließlich Standort, Ressourcengruppe, Gesamt- und genutzter Kapazität und mehr. Diese Konten können als Ziele für Cloud-Backup, Cloud-Tiering oder Cloud Sync-Vorgänge verwendet werden.
+
+.Schritte
+. link:task-creating-connectors-azure.html["Installieren Sie einen Anschluss"] Geben Sie im Azure-Konto Ihre Azure-Storage-Konten an.
+. Wählen Sie im Navigationsmenü die Option *Storage > Canvas* aus.
++
+Kurz danach wird eine Azure Blob Arbeitsumgebung bereitgestellt.
+
++
+image:screenshot-azure-blob-we.png["Ein Screenshot einer Azure Blob Arbeitsumgebung"]
+
+. Klicken Sie auf die Arbeitsumgebung, und wählen Sie eine Aktion im rechten Fensterbereich aus.
++
+image:screenshot-azure-actions.png["Ein Screenshot, der das Teilfenster „Aktionen“ zeigt, nachdem Sie eine Azure Blob Arbeitsumgebung ausgewählt haben Im Bereich werden die Gesamtzahl der Speicherkonten und eine Aktion für die Verwendung des Sync-Service angezeigt."]
+
+. Klicken Sie auf *Synchronisierungsdaten*, um Daten mit oder von Azure Blob Storage zu synchronisieren.
++
+Weitere Informationen finden Sie unter https://docs.netapp.com/us-en/cloud-manager-sync/concept-cloud-sync.html["Überblick über den Cloud Sync Service"^].
+
+. Klicken Sie auf *Enter Working Environment*, um Details zu den Azure Storage-Konten in Ihren Azure Blobs anzuzeigen.
++
+image:screenshot-azure-blob-details.png["Ein Screenshot, der die Details einer Azure Blob Arbeitsumgebung zeigt, wie viele Storage-Konten insgesamt, Standorte, Ressourcengruppen, die gesamte und genutzte Kapazität usw."]
+
+

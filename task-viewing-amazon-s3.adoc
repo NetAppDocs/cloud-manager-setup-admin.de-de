@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: task-viewing-amazon-s3.html 
+keywords: s3 buckets, s3 storage, s3 working environment, amazon s3 buckets, amazon s3 working environment 
+summary: Nach der Installation eines Connectors in AWS erkennt BlueXP automatisch Informationen zu den Amazon S3 Buckets, die sich im AWS Konto befinden, in dem der Connector installiert ist. Eine Amazon S3-Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können. 
+---
+= Anzeigen Ihrer Amazon S3 Buckets
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach der Installation eines Connectors in AWS erkennt BlueXP automatisch Informationen zu den Amazon S3 Buckets, die sich im AWS Konto befinden, in dem der Connector installiert ist. Eine Amazon S3-Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können.
+
+Sie erhalten Details zu Ihren S3 Buckets, einschließlich Region, Zugriffsrichtlinien, Konto, Gesamt- und genutzter Kapazität, und mehr. Diese Buckets können als Ziele für Cloud-Backup, Cloud-Tiering oder Cloud Sync-Vorgänge verwendet werden. Zudem können Sie mit Cloud Data Sense diese Buckets scannen.
+
+.Schritte
+. link:task-creating-connectors-aws.html["Installieren Sie einen Anschluss"] In dem AWS Konto, wo Sie Ihre Amazon S3 Buckets anzeigen möchten.
+. Wählen Sie im Navigationsmenü die Option *Storage > Canvas* aus.
++
+Sie sollten bald automatisch eine Amazon S3-Arbeitsumgebung sehen.
+
++
+image:screenshot_s3_we.gif["Ein Screenshot einer Amazon S3 Arbeitsumgebung"]
+
+. Klicken Sie auf die Arbeitsumgebung, und wählen Sie eine Aktion im rechten Fensterbereich aus.
++
+image:screenshot_s3_actions.gif["Ein Screenshot, der das Teilfenster „Aktionen“ zeigt, nachdem Sie eine Amazon S3-Arbeitsumgebung ausgewählt haben. Im Bereich werden Informationen über S3 angezeigt: Die Anzahl der Buckets und die verfügbaren Services."]
+
+. Klicken Sie auf *Daten synchronisieren*, um Daten mit oder von S3 Buckets zu synchronisieren.
++
+Weitere Informationen finden Sie unter https://docs.netapp.com/us-en/cloud-manager-sync/concept-cloud-sync.html["Überblick über den Cloud Sync Service"^].
+
+. Klicken Sie auf *Aktivieren*, wenn Cloud Data Sense die S3 Buckets nach persönlichen und sensiblen Daten scannen soll.
++
+Weitere Informationen finden Sie unter https://docs.netapp.com/us-en/cloud-manager-data-sense/task-scanning-s3.html["Erste Schritte mit Cloud Data Sense für Amazon S3"^].
+
+. Klicken Sie auf *Arbeitsumgebung eingeben*, um Details zu den S3-Buckets in Ihrem AWS-Konto anzuzeigen.
++
+image:screenshot_amazon_s3.gif["Ein Screenshot, der die Details einer Amazon S3 Arbeitsumgebung zeigt, wie viele Buckets und Regionen insgesamt, und in einer Tabelle, in der Details zu den einzelnen S3-Buckets aufgeführt sind"]
+
+

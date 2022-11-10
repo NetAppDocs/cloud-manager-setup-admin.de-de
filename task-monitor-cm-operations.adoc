@@ -1,0 +1,163 @@
+---
+sidebar: sidebar 
+permalink: task-monitor-cm-operations.html 
+keywords: administer, monitor, account, timeline, notifications, alerts, events, notification center, email 
+summary: Sie können den Status der Operationen überwachen, die BlueXP durchführt, um zu sehen, ob Probleme auftreten, die Sie beheben müssen. Sie können den Status im Benachrichtigungscenter, in der Zeitleiste anzeigen oder Benachrichtigungen an Ihre E-Mail senden. 
+---
+= Überwachen von Vorgängen in Ihrem Konto
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können den Status der Operationen überwachen, die BlueXP durchführt, um zu sehen, ob Probleme auftreten, die Sie beheben müssen. Sie können den Status im Benachrichtigungscenter, in der Zeitleiste anzeigen oder Benachrichtigungen an Ihre E-Mail senden.
+
+In dieser Tabelle werden das Benachrichtigungscenter und die Zeitleiste verglichen, damit Sie verstehen können, was die einzelnen Angebote zu bieten haben.
+
+[cols="47,47"]
+|===
+| Notification Center | Zeitachse 
+
+
+| Zeigt den allgemeinen Status von Ereignissen und Aktionen an | Enthält Details zu jedem Ereignis oder jeder Aktion zur weiteren Untersuchung 
+
+
+| Zeigt den Status der aktuellen Anmeldesitzung an. Die Informationen werden nach der Abmeldung nicht im Benachrichtigungscenter angezeigt | Behält den Status des letzten Monats bei 
+
+
+| Zeigt nur Aktionen an, die in der Benutzeroberfläche initiiert wurden | Zeigt alle Aktionen der UI oder der APIs an 
+
+
+| Zeigt benutzerinitiierte Aktionen an | Zeigt alle Aktionen an, ob vom Benutzer initiiert oder vom System initiiert 
+
+
+| Ergebnisse nach Bedeutung filtern | Filtern nach Dienst, Aktion, Benutzer, Status und mehr 
+
+
+| Ermöglicht das E-Mail-Versenden von Benachrichtigungen an Benutzer von Konten und an andere Benutzer | Keine E-Mail-Funktion 
+|===
+
+
+== Überwachen von Aktivitäten mithilfe des Benachrichtigungszentrums
+
+Benachrichtigungen verfolgen den Fortschritt der Vorgänge, die Sie in BlueXP initiiert haben, damit Sie überprüfen können, ob der Vorgang erfolgreich war oder nicht. Mit diesen können Sie den Status vieler BlueXP-Aktionen anzeigen, die Sie während Ihrer aktuellen Anmeldesitzung initiiert haben. Nicht alle Dienste berichten zu diesem Zeitpunkt Informationen in das Benachrichtigungszentrum.
+
+Sie können die Benachrichtigungen anzeigen, indem Sie auf die Benachrichtigungs-Bell ( klickenimage:icon_bell.png["Benachrichtigungsglocke"]) In der Menüleiste. Die Farbe der kleinen Blase in der Glocke zeigt die Meldung mit dem höchsten Schweregrad an, die aktiv ist. Wenn Sie also eine rote Blase sehen, bedeutet dies, dass eine wichtige Benachrichtigung angezeigt wird, die Sie sich ansehen sollten.
+
+image:screenshot_notification_full.png["Ein Screenshot mit einer Liste aktueller Benachrichtigungen im Benachrichtigungszentrum."]
+
+Außerdem können Sie BlueXP so konfigurieren, dass Benachrichtigungen per E-Mail versendet werden, damit Sie auch dann über wichtige Systemaktivitäten informiert werden können, wenn Sie nicht am System angemeldet sind. E-Mails können an alle Benutzer gesendet werden, die Teil Ihres NetApp Cloud Kontos sind, oder an andere Empfänger, die bestimmte Arten von Systemaktivitäten kennen müssen. Siehe  email notification settings,Einstellen der Einstellungen für E-Mail-Benachrichtigungen Unten.
+
+
+
+=== Benachrichtigungstypen
+
+Benachrichtigungen werden in die folgenden Kategorien eingeteilt:
+
+[cols="22,58"]
+|===
+| Benachrichtigungstyp | Beschreibung 
+
+
+| Kritisch | Ein Problem, das zu einer Serviceunterbrechung führen kann, wenn keine Korrekturmaßnahmen sofort ergriffen werden. 
+
+
+| Fehler | Eine Aktion oder ein Prozess wurde mit einem Fehler beendet oder könnte zu einem Fehler führen, wenn keine Korrekturmaßnahmen ergriffen werden. 
+
+
+| Warnung | Ein Problem, das Sie beachten sollten, um sicherzustellen, dass es den kritischen Schweregrad nicht erreicht. Benachrichtigungen dieses Schweregrades verursachen keine Serviceunterbrechungen und es sind möglicherweise keine sofortigen Korrekturmaßnahmen erforderlich. 
+
+
+| Empfehlung | Eine Systemempfehlung für Sie, Maßnahmen zur Verbesserung des Systems oder eines bestimmten Dienstes zu ergreifen, zum Beispiel: Kostenersparnis, Vorschlag für neue Dienste, empfohlene Sicherheitskonfiguration, etc 
+
+
+| Informationsdaten | Eine Meldung, die zusätzliche Informationen zu einer Aktion oder einem Prozess enthält. 
+
+
+| Erfolg | Eine Aktion oder ein Prozess erfolgreich abgeschlossen. 
+|===
+
+
+=== Filtern von Benachrichtigungen
+
+Standardmäßig werden alle Benachrichtigungen angezeigt. Sie können die Benachrichtigungen filtern, die im Benachrichtigungscenter angezeigt werden, um nur die Benachrichtigungen anzuzeigen, die für Sie wichtig sind. Sie können nach BlueXP „Service“ und nach Benachrichtigung „Typ“ filtern.
+
+image:screenshot_notification_filters.png["Ein Screenshot mit den beiden Filtertypen, die im Benachrichtigungszentrum verfügbar sind."]
+
+Wenn Sie beispielsweise nur „Fehler“ und „Warnung“ für BlueXP-Vorgänge sehen möchten, wählen Sie diese Einträge aus, und Sie werden nur die Arten von Benachrichtigungen sehen.
+
+
+
+=== Einstellen der Einstellungen für E-Mail-Benachrichtigungen
+
+Sie können bestimmte Arten von Benachrichtigungen per E-Mail versenden, damit Sie über wichtige Systemaktivitäten informiert werden können, auch wenn Sie nicht bei BlueXP angemeldet sind. E-Mails können an alle Benutzer gesendet werden, die Teil Ihres NetApp Kontos sind, oder an andere Empfänger, die bestimmte Arten von Systemaktivitäten kennen müssen.
+
+[NOTE]
+====
+* Derzeit senden nur Cloud Sync und Cloud Backup Benachrichtigungen per E-Mail. Weitere Services werden in zukünftigen Versionen hinzugefügt.
+* Das Senden von E-Mail-Benachrichtigungen wird nicht unterstützt, wenn der Connector auf einer Website ohne Internetzugang installiert ist.
+
+
+====
+Standardmäßig erhalten BlueXP-Kontoadministratoren E-Mails für alle „kritischen“ und „Empfehlungsbenachrichtigungen“. Alle anderen Benutzer und Empfänger sind standardmäßig so konfiguriert, dass sie keine Benachrichtigungs-E-Mails erhalten.
+
+Sie müssen ein Kontoadministrator sein, um die Benachrichtigungseinstellungen anzupassen.
+
+.Schritte
+. Klicken Sie in der Menüleiste von BlueXP auf *Einstellungen > Einstellungen für Warnungen und Benachrichtigungen*.
++
+image:screenshot-settings-notifications.png["Ein Screenshot, in dem die Seite „Einstellungen für Warnmeldungen und Benachrichtigungen“ angezeigt wird."]
+
+. Wählen Sie einen Benutzer oder mehrere Benutzer entweder auf der Registerkarte _Account Users_ oder auf der Registerkarte _Additional Recipients_ aus, und wählen Sie den Typ der zu sendenden Benachrichtigungen aus:
++
+** Um Änderungen an einem einzelnen Benutzer vorzunehmen, klicken Sie in der Spalte Benachrichtigungen für diesen Benutzer auf das Menü, überprüfen Sie die zu sendenden Benachrichtigungsarten und klicken Sie auf *Anwenden*.
+** Um Änderungen für mehrere Benutzer vorzunehmen, aktivieren Sie das Kontrollkästchen für jeden Benutzer, klicken Sie auf *E-Mail-Benachrichtigungen verwalten*, markieren Sie die zu sendenden Benachrichtigungsarten und klicken Sie auf *Anwenden*.
+
+
++
+image:screenshot-change-notifications.png["Ein Screenshot, in dem das Ändern von Benachrichtigungen für mehrere Benutzer angezeigt wird."]
+
+
+
+
+
+=== Hinzufügen von zusätzlichen E-Mail-Empfängern
+
+Die Benutzer, die auf der Registerkarte „_Account Users_“ angezeigt werden, werden automatisch von den Benutzern Ihres NetApp Kontos ausgefüllt (von der link:task-managing-netapp-accounts.html#creating-and-managing-users["Seite „Konto verwalten“"]). Sie können E-Mail-Adressen auf der Registerkarte „_Additional Recipients_“ für andere Personen oder Gruppen hinzufügen, die keinen Zugriff auf BlueXP haben, aber über bestimmte Arten von Warnungen und Benachrichtigungen benachrichtigt werden müssen.
+
+.Schritte
+. Klicken Sie auf der Seite Einstellungen für Warnungen und Benachrichtigungen auf *Neue Empfänger hinzufügen*.
++
+image:screenshot-add-email-recipient.png["Ein Screenshot, in dem das Hinzufügen neuer E-Mail-Empfänger für Benachrichtigungen und Benachrichtigungen angezeigt wird."]
+
+. Geben Sie den Namen, die E-Mail-Adresse ein, und wählen Sie die Art der Benachrichtigungen aus, die der Empfänger empfangen wird, und klicken Sie auf *Neuen Empfänger hinzufügen*.
+
+
+
+
+=== Benachrichtigungen nicht vorhanden
+
+Sie können Benachrichtigungen von der Seite entfernen, wenn Sie sie nicht mehr sehen müssen. Sie können alle Benachrichtigungen auf einmal verwerfen oder einzelne Benachrichtigungen verwerfen.
+
+Um alle Benachrichtigungen auszublenden, klicken Sie im Benachrichtigungscenter auf image:button_3_vert_dots.png[""] Und wählen Sie *Alle verwerfen*.image:screenshot_notification_menu.png["Ein Screenshot, in dem das Menü Benachrichtigungen angezeigt wird, um Einstellungen auszuwählen und alle Optionen auszublenden."]
+
+Um einzelne Benachrichtigungen zu verwerfen, bewegen Sie den Cursor über die Benachrichtigung und klicken auf *abweisen*.image:screenshot_notification_dismiss1.png["Ein Screenshot, in dem das Abblenden einer einzelnen Benachrichtigung angezeigt wird."]
+
+
+
+== Benutzeraktivitäten in Ihrem Konto prüfen
+
+In der Zeitleiste in BlueXP werden die Aktionen angezeigt, die Benutzer zur Verwaltung Ihres Kontos abgeschlossen haben. Dazu gehören Verwaltungsaktionen wie das Verknüpfen von Benutzern, das Erstellen von Arbeitsbereichen, das Erstellen von Connectors und vieles mehr.
+
+Das Prüfen der Zeitleiste kann hilfreich sein, wenn Sie feststellen müssen, wer eine bestimmte Aktion durchgeführt hat oder ob Sie den Status einer Aktion identifizieren müssen.
+
+.Schritte
+. Klicken Sie in der Menüleiste von BlueXP auf *Einstellungen > Timeline*.
+. Klicken Sie unter Filter auf *Service*, aktivieren Sie *Tenancy* und klicken Sie auf *Apply*.
+
+
+Die Zeitleiste wird aktualisiert, um Ihnen Aktionen zur Kontoverwaltung anzuzeigen.
