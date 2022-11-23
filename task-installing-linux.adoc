@@ -64,7 +64,6 @@ Festplattenspeicher in /var:: 20 gib Speicherplatz muss verfügbar sein
 Outbound-Internetzugang:: Das Installationsprogramm für den Connector muss während der Installation auf die folgenden URLs zugreifen:
 +
 --
-* \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 * \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
 * \https://*.blob.core.windows.net oder \https://hub.docker.com
 +

@@ -30,8 +30,8 @@ Der IAM-Benutzer, der den Connector erstellt, muss über AWS Marketplace-Berecht
 .Schritte
 . Einrichten von Berechtigungen in AWS:
 +
-.. Erstellen Sie von der IAM-Konsole aus Ihre eigene Richtlinie, indem Sie die Inhalte von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinie für den Connector"].
-.. Erstellen Sie eine IAM-Rolle mit dem Rollentyp Amazon EC2, und hängen Sie die im vorherigen Schritt erstellte Richtlinie an die Rolle an.
+.. Erstellen Sie über die IAM-Konsole die erforderlichen Richtlinien, indem Sie die Inhalte von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinien für den Connector"].
+.. Erstellen Sie eine IAM-Rolle mit dem Rollentyp Amazon EC2 und hängen Sie die Richtlinien an, die Sie im vorherigen Schritt erstellt haben.
 
 
 . Wechseln Sie zum https://aws.amazon.com/marketplace/pp/B018REK8QG["Seite „BlueXP“ im AWS Marketplace"^] So stellen Sie den Stecker über eine AMI bereit:

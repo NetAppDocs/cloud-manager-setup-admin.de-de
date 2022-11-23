@@ -24,7 +24,7 @@ AWS Zugangsdaten können zu einem vorhandenen Connector oder direkt zu BlueXP hi
 
 * Fügen Sie einem vorhandenen Connector zusätzliche AWS Zugangsdaten hinzu
 +
-Wenn Sie einem vorhandenen Connector neue AWS Zugangsdaten hinzufügen, können Sie Cloud Volumes ONTAP in einem anderen AWS Konto über denselben Connector bereitstellen.  additional credentials to a Connector,Erfahren Sie, wie Sie AWS Zugangsdaten zu einem Connector hinzufügen.
+Wenn Sie einem vorhandenen Connector AWS Zugangsdaten hinzufügen, erhalten Sie die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen in Ihrer Public-Cloud-Umgebung.  credentials to a Connector,Erfahren Sie, wie Sie AWS Zugangsdaten zu einem Connector hinzufügen.
 
 * Fügen Sie zur Erstellung eines Connectors AWS Credentials zu BlueXP hinzu
 +
@@ -48,18 +48,18 @@ Wenn Sie BlueXP mit AWS-Zugriffsschlüsseln zur Verfügung stellen, sollten Sie 
 
 
 
-== Fügen Sie zusätzliche Anmeldedaten zu einem Connector hinzu
+== Anmeldedaten zu einem Konnektor hinzufügen
 
-Fügen Sie AWS Zugangsdaten zu einem Connector hinzu, damit Cloud Volumes ONTAP in anderen AWS Konten bereitgestellt und gemanagt werden kann. Sie können entweder den ARN einer IAM-Rolle in einem anderen Konto bereitstellen oder AWS-Zugriffsschlüssel bereitstellen.
+Fügen Sie AWS Zugangsdaten zu einem Connector hinzu, damit die IT auch über die erforderlichen Berechtigungen zum Management von Ressourcen und Prozessen in Ihrer Public Cloud-Umgebung verfügt. Sie können entweder den ARN einer IAM-Rolle in einem anderen Konto bereitstellen oder AWS-Zugriffsschlüssel bereitstellen.
 
 
 
 === Berechtigungen erteilen
 
-Bevor Sie einem Connector zusätzliche AWS Zugangsdaten hinzufügen, müssen Sie die erforderlichen Berechtigungen bereitstellen. Mithilfe der Berechtigungen kann BlueXP Ressourcen und Prozesse innerhalb dieses AWS Kontos verwalten. Wie Sie die Berechtigungen bereitstellen, hängt davon ab, ob Sie BlueXP mit dem ARN einer Rolle in einem vertrauenswürdigen Konto oder AWS Schlüsseln bereitstellen möchten.
+Bevor Sie AWS Zugangsdaten zu einem Connector hinzufügen, müssen Sie die erforderlichen Berechtigungen bereitstellen. Mithilfe der Berechtigungen kann BlueXP Ressourcen und Prozesse innerhalb dieses AWS Kontos verwalten. Wie Sie die Berechtigungen bereitstellen, hängt davon ab, ob Sie BlueXP mit dem ARN einer Rolle in einem vertrauenswürdigen Konto oder AWS Schlüsseln bereitstellen möchten.
 
 
-NOTE: Wenn Sie einen Connector von BlueXP implementieren, hat BlueXP automatisch AWS-Anmeldeinformationen für das Konto hinzugefügt, in dem Sie den Connector bereitgestellt haben. Dieses erste Konto wird nicht hinzugefügt, wenn Sie die Connector-Software manuell auf einem vorhandenen System installiert haben. link:concept-accounts-aws.html["Weitere Informationen zu AWS Zugangsdaten und Berechtigungen"].
+NOTE: Wenn Sie einen Connector von BlueXP bereitgestellt haben, hat BlueXP automatisch AWS-Anmeldeinformationen für das Konto hinzugefügt, in dem Sie den Connector bereitgestellt haben. Dieses Erstkonto wird nicht hinzugefügt, wenn Sie den Connector über den AWS Marketplace bereitgestellt haben oder wenn Sie die Connector-Software manuell auf einem vorhandenen System installieren. link:concept-accounts-aws.html["Weitere Informationen zu AWS Zugangsdaten und Berechtigungen"].
 
 *Auswahl*
 
@@ -74,7 +74,7 @@ NOTE: Wenn Sie einen Connector von BlueXP implementieren, hat BlueXP automatisch
 Sie können eine Vertrauensbeziehung zwischen dem Quell-AWS-Konto einrichten, in dem Sie die Connector-Instanz und anderen AWS-Konten mithilfe von IAM-Rollen bereitgestellt haben. Dann würden Sie BlueXP über die vertrauenswürdigen Konten mit dem ARN der IAM-Rollen versorgen.
 
 .Schritte
-. Rufen Sie die IAM-Konsole im Zielkonto auf, in dem Sie Cloud Volumes ONTAP bereitstellen möchten.
+. Rufen Sie die IAM-Konsole im Zielkonto auf, in dem Sie dem Connector Berechtigungen erteilen möchten.
 . Klicken Sie unter Zugriffsverwaltung auf *Rollen > Rolle erstellen* und befolgen Sie die Schritte zum Erstellen der Rolle.
 +
 Gehen Sie wie folgt vor:
@@ -82,7 +82,7 @@ Gehen Sie wie folgt vor:
 +
 ** Wählen Sie unter *Vertrauenswürdiger Entitätstyp* *AWS-Konto* aus.
 ** Wählen Sie *ein weiteres AWS-Konto* aus, und geben Sie die ID des Kontos ein, auf dem sich die Connector-Instanz befindet.
-** Erstellen Sie eine Richtlinie, indem Sie den Inhalt von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinie für den Connector"].
+** Erstellen Sie die erforderlichen Richtlinien, indem Sie den Inhalt von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinien für den Connector"].
 
 
 . Kopieren Sie die Rolle ARN der IAM-Rolle, damit Sie sie später in BlueXP einfügen können.
@@ -97,11 +97,11 @@ Das Konto verfügt nun über die erforderlichen Berechtigungen. ,Sie können die
 Wenn Sie BlueXP für einen IAM-Benutzer AWS-Schlüssel bereitstellen möchten, müssen Sie diesem Benutzer die erforderlichen Berechtigungen erteilen. Die BlueXP IAM-Richtlinie definiert die AWS Aktionen und Ressourcen, die BlueXP verwenden darf.
 
 .Schritte
-. Erstellen Sie von der IAM-Konsole aus eine Richtlinie, indem Sie die Inhalte von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinie für den Connector"].
+. Erstellen Sie Richtlinien von der IAM-Konsole aus, indem Sie die Inhalte von kopieren und einfügen link:reference-permissions-aws.html["Die IAM-Richtlinien für den Connector"].
 +
 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AWS Dokumentation: Erstellung von IAM-Richtlinien"^]
 
-. Hängen Sie die Richtlinie an eine IAM-Rolle oder einen IAM-Benutzer an.
+. Hängen Sie die Richtlinien an eine IAM-Rolle oder einen IAM-Benutzer an.
 +
 ** https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html["AWS Documentation: Erstellung von IAM-Rollen"^]
 ** https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html["AWS Dokumentation: Hinzufügen und Entfernen von IAM-Richtlinien"^]

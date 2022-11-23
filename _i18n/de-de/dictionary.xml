@@ -720,7 +720,6 @@
   <block id="554841a7559bd190d883de523464d1d1" category="cell">\https://cloudmanagerinfraprod.azurecr.io \https://*.blob.core.windows.net</block>
   <block id="065880318484084e9bfe33ea9c6a8702" category="cell">Aktualisierung des Connectors und seiner Docker Komponenten.</block>
   <block id="8a4762cb5d44b37be8c41c99aa8c77d1" category="list-text">Wenn Sie den Connector manuell auf Ihrem eigenen Linux-Host installieren möchten (und dies nicht direkt über die BlueXP-Schnittstelle), benötigt das Installationsprogramm für den Connector während des Installationsvorgangs Zugriff auf die folgenden Endpunkte:</block>
-  <block id="1608afc958ae647f4bdf5b85e8f9a7b3" category="list-text">\https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</block>
   <block id="66f9783489f42faf5074015874cb1c5f" category="list-text">\https://s3.amazonaws.com/aws-cli/awscli-bundle.zip</block>
   <block id="b0d26ef113a60166d94bd96f9067b52b" category="list-text">\https://*.blob.core.windows.net oder \https://hub.docker.com</block>
   <block id="35bd57a4dcfbd7a695f9beb7d01913c6" category="paragraph">Der Host versucht möglicherweise, während der Installation Betriebssystempakete zu aktualisieren. Der Host kann verschiedene Spiegelungsstandorte für diese Betriebssystempakete kontaktieren.</block>
@@ -988,7 +987,6 @@
   <block id="2289c95473cffd95de217b1b675483e0" category="paragraph">AWS Zugangsdaten können zu einem vorhandenen Connector oder direkt zu BlueXP hinzugefügt werden:</block>
   <block id="19d38e2a40bebb64998474cbec167167" category="list-text">Fügen Sie einem vorhandenen Connector zusätzliche AWS Zugangsdaten hinzu</block>
   <block id="86ae9eb7648ce9574603dd22de833a70" category="inline-xref">Erfahren Sie, wie Sie AWS Zugangsdaten zu einem Connector hinzufügen</block>
-  <block id="2d85cb7a34de23c6b7db0459f207a310" category="paragraph">Wenn Sie einem vorhandenen Connector neue AWS Zugangsdaten hinzufügen, können Sie Cloud Volumes ONTAP in einem anderen AWS Konto über denselben Connector bereitstellen. <block ref="c25c39db29c727f1578fc8385e3c589b" category="inline-xref-macro-rx"></block>.</block>
   <block id="a6390625ed7305318bb287641e3ea65f" category="list-text">Fügen Sie zur Erstellung eines Connectors AWS Credentials zu BlueXP hinzu</block>
   <block id="7c45fb9face239cc4b78e899305dee96" category="inline-xref">Erfahren Sie, wie Sie AWS Zugangsdaten zu BlueXP hinzufügen</block>
   <block id="3ec77266ee6a41b1747d294029bbd73e" category="paragraph">Wenn Sie BlueXP neue AWS-Anmeldeinformationen hinzufügen, erhalten Sie mit BlueXP die erforderlichen Berechtigungen zum Erstellen eines Connectors. <block ref="45675543b86ad867a67fe4ac8024c9ea" category="inline-xref-macro-rx"></block>.</block>
@@ -1000,33 +998,25 @@
   <block id="9c92b299186eaf0673a98ba9b40f21d8" category="paragraph">Mit BlueXP können Sie AWS Zugangsdaten auf verschiedene Arten bereitstellen: Eine mit der Connector-Instanz verknüpfte IAM-Rolle, eine IAM-Rolle in einem vertrauenswürdigen Konto oder AWS-Zugriffsschlüssel. <block ref="327ad200be450c94b449dea92a32b142" category="inline-link-macro-rx"></block>.</block>
   <block id="dac708f9ff7b3626ce8ac5a2ec42c9cf" category="paragraph">Bei den ersten beiden Optionen verwendet BlueXP den AWS Security Token Service, um temporäre Anmeldedaten zu erhalten, die sich ständig drehen. Dieser Prozess ist die Best Practice, da er automatisch und sicher ist.</block>
   <block id="f265ab1711375ae7a7a4e8594c5e1395" category="paragraph">Wenn Sie BlueXP mit AWS-Zugriffsschlüsseln zur Verfügung stellen, sollten Sie die Schlüssel durch Aktualisierung in BlueXP in einem regelmäßigen Intervall drehen. Es handelt sich hierbei um einen vollständig manuellen Prozess.</block>
-  <block id="38d6d2ec27372e53c82e1227b5be44d4" category="section-title">Fügen Sie zusätzliche Anmeldedaten zu einem Connector hinzu</block>
-  <block id="448746f589ceea8f1b3191a05fe6c57c" category="paragraph">Fügen Sie AWS Zugangsdaten zu einem Connector hinzu, damit Cloud Volumes ONTAP in anderen AWS Konten bereitgestellt und gemanagt werden kann. Sie können entweder den ARN einer IAM-Rolle in einem anderen Konto bereitstellen oder AWS-Zugriffsschlüssel bereitstellen.</block>
   <block id="1b516070ab36ad4c186fe30bd203fb45" category="section-title">Berechtigungen erteilen</block>
-  <block id="a048177d059588f14caf812603cfdd39" category="paragraph">Bevor Sie einem Connector zusätzliche AWS Zugangsdaten hinzufügen, müssen Sie die erforderlichen Berechtigungen bereitstellen. Mithilfe der Berechtigungen kann BlueXP Ressourcen und Prozesse innerhalb dieses AWS Kontos verwalten. Wie Sie die Berechtigungen bereitstellen, hängt davon ab, ob Sie BlueXP mit dem ARN einer Rolle in einem vertrauenswürdigen Konto oder AWS Schlüsseln bereitstellen möchten.</block>
   <block id="e5fc05695d6d40579715f8fc43e17cf6" category="inline-link-macro">Weitere Informationen zu AWS Zugangsdaten und Berechtigungen</block>
-  <block id="84576afbb5fec67a524a7228418c58be" category="admonition">Wenn Sie einen Connector von BlueXP implementieren, hat BlueXP automatisch AWS-Anmeldeinformationen für das Konto hinzugefügt, in dem Sie den Connector bereitgestellt haben. Dieses erste Konto wird nicht hinzugefügt, wenn Sie die Connector-Software manuell auf einem vorhandenen System installiert haben. <block ref="36da95d92772c6b5e5c7802773061f54" category="inline-link-macro-rx"></block>.</block>
   <block id="70fbce3d6c9e05b51c53c71d08732426" category="paragraph">*Auswahl*</block>
   <block id="2dbbb3b6b99aebde1c79427caf3046e0" category="list-text"><block ref="02c78f765c83c4fb4a0370471b089610" category="inline-xref-macro-rx"></block></block>
   <block id="0db58c0529496c0e926af5f8c9002335" category="list-text"><block ref="60d271fc50ad3f5d03a8767578822d7b" category="inline-xref-macro-rx"></block></block>
   <block id="6fca6b826d3e4d0980a08d26e6cf905f" category="section-title">Erteilen Sie Berechtigungen, indem Sie eine IAM-Rolle in einem anderen Konto übernehmen</block>
   <block id="cc9abb75b8a4618db30dc1fa4729b191" category="paragraph">Sie können eine Vertrauensbeziehung zwischen dem Quell-AWS-Konto einrichten, in dem Sie die Connector-Instanz und anderen AWS-Konten mithilfe von IAM-Rollen bereitgestellt haben. Dann würden Sie BlueXP über die vertrauenswürdigen Konten mit dem ARN der IAM-Rollen versorgen.</block>
-  <block id="7ab2c48379bd2eb50d8191dc807ded90" category="list-text">Rufen Sie die IAM-Konsole im Zielkonto auf, in dem Sie Cloud Volumes ONTAP bereitstellen möchten.</block>
   <block id="7f4640b00b5df83a54d4aaaa51f7d6ab" category="list-text">Klicken Sie unter Zugriffsverwaltung auf *Rollen &gt; Rolle erstellen* und befolgen Sie die Schritte zum Erstellen der Rolle.</block>
   <block id="e1a3d580d5cb42904b96dc05c0e0903d" category="paragraph">Gehen Sie wie folgt vor:</block>
   <block id="e506de832b98c2693eb3f400ef0722c0" category="list-text">Wählen Sie unter *Vertrauenswürdiger Entitätstyp* *AWS-Konto* aus.</block>
   <block id="c8797509010c3097dda2b0cd6f8eb8ba" category="list-text">Wählen Sie *ein weiteres AWS-Konto* aus, und geben Sie die ID des Kontos ein, auf dem sich die Connector-Instanz befindet.</block>
   <block id="5233bb914244fc027aadf39f8fa71c54" category="inline-link-macro">Die IAM-Richtlinie für den Connector</block>
-  <block id="6686aeeff6eb0de250e6d134bb4b8cd5" category="list-text">Erstellen Sie eine Richtlinie, indem Sie den Inhalt von kopieren und einfügen <block ref="9b22ee86ed2d831066d00816566458ca" category="inline-link-macro-rx"></block>.</block>
   <block id="2a486959a51570756bb9f881e508d399" category="list-text">Kopieren Sie die Rolle ARN der IAM-Rolle, damit Sie sie später in BlueXP einfügen können.</block>
   <block id="119e27fea013f52fa0d99cc4eb1a4886" category="inline-xref">Sie können die Anmeldeinformationen jetzt einem Connector hinzufügen</block>
   <block id="0c618f5554982d1866596b56dc00c461" category="paragraph">Das Konto verfügt nun über die erforderlichen Berechtigungen. <block ref="513a481d36e6d6a9d162b21b254968af" category="inline-xref-macro-rx"></block>.</block>
   <block id="e7e95c3a4b88e02526b2bf48eb3cff3b" category="section-title">Erteilen Sie Berechtigungen durch die Bereitstellung von AWS Schlüsseln</block>
   <block id="c9c2739152f3fc14fabc2dda4c1578c8" category="paragraph">Wenn Sie BlueXP für einen IAM-Benutzer AWS-Schlüssel bereitstellen möchten, müssen Sie diesem Benutzer die erforderlichen Berechtigungen erteilen. Die BlueXP IAM-Richtlinie definiert die AWS Aktionen und Ressourcen, die BlueXP verwenden darf.</block>
-  <block id="f3a061f1a8165759dd31c8b1fe6bda72" category="list-text">Erstellen Sie von der IAM-Konsole aus eine Richtlinie, indem Sie die Inhalte von kopieren und einfügen <block ref="9b22ee86ed2d831066d00816566458ca" category="inline-link-macro-rx"></block>.</block>
   <block id="47d50d25f4b51617534e107d21701e80" category="inline-link">AWS Dokumentation: Erstellung von IAM-Richtlinien</block>
   <block id="8466ec46633472a027af5c909c923782" category="paragraph"><block ref="8466ec46633472a027af5c909c923782" category="inline-link-rx"></block></block>
-  <block id="923890d009c62cd46ebbcc491c981264" category="list-text">Hängen Sie die Richtlinie an eine IAM-Rolle oder einen IAM-Benutzer an.</block>
   <block id="001eb8189b805b3dbf012a0955d8682f" category="inline-link">AWS Documentation: Erstellung von IAM-Rollen</block>
   <block id="f470dc03b4486f269b32bef6a5d721d1" category="list-text"><block ref="f470dc03b4486f269b32bef6a5d721d1" category="inline-link-rx"></block></block>
   <block id="ae447524ca7a094fbd322687e0154e93" category="inline-link">AWS Dokumentation: Hinzufügen und Entfernen von IAM-Richtlinien</block>
@@ -1339,10 +1329,6 @@
   <block id="489db3f339b691ea4dea5f4572483024" category="paragraph">Wenn Sie die Standardsicherheitsgruppe für Cloud Volumes ONTAP verwenden, sind keine Änderungen an der Sicherheitsgruppe erforderlich. Wenn Sie aber strenge ausgehende Regeln für Cloud Volumes ONTAP definieren möchten, müssen Sie auch sicherstellen, dass die Cloud Volumes ONTAP-Sicherheitsgruppe _Outbound_-Verbindungen über Port 3128 zulässt.</block>
   <block id="0e4e5198cc4ce7f534d554683573c921" category="summary">Beim Start der Connector-Instanz in AWS hängt BlueXP eine Richtlinie an die Instanz an, die dem Connector Berechtigungen für das Management von Ressourcen und Prozessen innerhalb dieses AWS-Kontos bietet. Der Connector verwendet die Berechtigungen, um API-Aufrufe an verschiedene AWS Services wie EC2, S3, CloudFormation, IAM, Der Key Management Service und vieles mehr.</block>
   <block id="30782d3f448f611988824827b71e6b96" category="paragraph">Beim Start der Connector-Instanz in AWS hängt BlueXP eine Richtlinie an die Instanz an, die dem Connector Berechtigungen für das Management von Ressourcen und Prozessen innerhalb dieses AWS-Kontos bietet. Der Connector verwendet die Berechtigungen, um API-Aufrufe an verschiedene AWS Services wie EC2, S3, CloudFormation, IAM, Der Key Management Service (KMS) und vieles mehr.</block>
-  <block id="4e1f839391e849a6065024e60ace4c38" category="section-title">IAM-Richtlinie</block>
-  <block id="d4d0602f330087eb24859ead29d741c3" category="paragraph">Die unten dargestellte IAM-Richtlinie bietet die Berechtigungen, die ein Connector zur Verwaltung von Ressourcen und Prozessen innerhalb Ihrer Public-Cloud-Umgebung basierend auf Ihrer AWS-Region benötigt.</block>
-  <block id="025d94cf0afe9214e325eed1d6fcb08e" category="paragraph">Wenn Sie einen Connector direkt aus BlueXP erstellen, wendet BlueXP diese Richtlinie automatisch auf den Connector an.</block>
-  <block id="4862cb85107f653706d201ef95242294" category="paragraph">Wenn Sie den Connector über den AWS Marketplace bereitstellen oder den Connector manuell auf einem Linux-Host installieren, müssen Sie die Richtlinie selbst einrichten.</block>
   <block id="222ddb2f355a49f64fb3858123f2b97b" category="open-title">Standardregionen</block>
   <block id="1411debdb32e6b128ca27ec92a708cbd" category="open-title">GovCloud (USA) Regionen</block>
   <block id="a8416eae2db8c97eb943559351fab358" category="open-title">C2S-Umgebung</block>
@@ -2782,4 +2768,28 @@
   <block id="bd5465eb0e8cf8f303aee7ea9420c8b1" category="sidebar">BlueXP-Blog</block>
   <block id="ad203e818e0c9d7f42f1c260b33875f3" category="sidebar">Cloud-Webinare</block>
   <block id="7a45e6298bb69116e2c6db653fb88884" category="sidebar">Alle BlueXP-Dokumentationen</block>
+  <block id="2e5620a6569fc852b94b7e03a147a125" category="paragraph">Wenn Sie einem vorhandenen Connector AWS Zugangsdaten hinzufügen, erhalten Sie die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen in Ihrer Public-Cloud-Umgebung. <block ref="568ce14d3cdae759e790bc127b222228" category="inline-xref-macro-rx"></block>.</block>
+  <block id="2107472aff38cfdebba436df3f42b23b" category="section-title">Anmeldedaten zu einem Konnektor hinzufügen</block>
+  <block id="3b463d710672b6b69227759d4e8c954d" category="paragraph">Fügen Sie AWS Zugangsdaten zu einem Connector hinzu, damit die IT auch über die erforderlichen Berechtigungen zum Management von Ressourcen und Prozessen in Ihrer Public Cloud-Umgebung verfügt. Sie können entweder den ARN einer IAM-Rolle in einem anderen Konto bereitstellen oder AWS-Zugriffsschlüssel bereitstellen.</block>
+  <block id="c482e377fe0af4cde6c8150a691978b5" category="paragraph">Bevor Sie AWS Zugangsdaten zu einem Connector hinzufügen, müssen Sie die erforderlichen Berechtigungen bereitstellen. Mithilfe der Berechtigungen kann BlueXP Ressourcen und Prozesse innerhalb dieses AWS Kontos verwalten. Wie Sie die Berechtigungen bereitstellen, hängt davon ab, ob Sie BlueXP mit dem ARN einer Rolle in einem vertrauenswürdigen Konto oder AWS Schlüsseln bereitstellen möchten.</block>
+  <block id="907d45cdba89ff9735d0c51d08c2c193" category="admonition">Wenn Sie einen Connector von BlueXP bereitgestellt haben, hat BlueXP automatisch AWS-Anmeldeinformationen für das Konto hinzugefügt, in dem Sie den Connector bereitgestellt haben. Dieses Erstkonto wird nicht hinzugefügt, wenn Sie den Connector über den AWS Marketplace bereitgestellt haben oder wenn Sie die Connector-Software manuell auf einem vorhandenen System installieren. <block ref="36da95d92772c6b5e5c7802773061f54" category="inline-link-macro-rx"></block>.</block>
+  <block id="2c76935f38c3f21d03c203f5311fc4f4" category="list-text">Rufen Sie die IAM-Konsole im Zielkonto auf, in dem Sie dem Connector Berechtigungen erteilen möchten.</block>
+  <block id="d8abc68ad3edce81a2a9f0c17b141c80" category="inline-link-macro">Die IAM-Richtlinien für den Connector</block>
+  <block id="c2e4546cbde31fc634ce4d7fcdec56bb" category="list-text">Erstellen Sie die erforderlichen Richtlinien, indem Sie den Inhalt von kopieren und einfügen <block ref="ee2fdef0fe1bd713e3c2d2a78c0fdb68" category="inline-link-macro-rx"></block>.</block>
+  <block id="357f29ef130f7ac8015a481d6e7c76f7" category="list-text">Erstellen Sie Richtlinien von der IAM-Konsole aus, indem Sie die Inhalte von kopieren und einfügen <block ref="ee2fdef0fe1bd713e3c2d2a78c0fdb68" category="inline-link-macro-rx"></block>.</block>
+  <block id="681f994cad6161982250b03f44510310" category="list-text">Hängen Sie die Richtlinien an eine IAM-Rolle oder einen IAM-Benutzer an.</block>
+  <block id="c1141a37b962270fc1e8960233830c99" category="section-title">IAM-Richtlinien</block>
+  <block id="d169cac20ae3e0b6b9cec32d273de5f2" category="paragraph">Die unten verfügbaren IAM-Richtlinien bieten die Berechtigungen, die ein Connector zur Verwaltung von Ressourcen und Prozessen innerhalb Ihrer Public-Cloud-Umgebung basierend auf Ihrer AWS-Region benötigt.</block>
+  <block id="74b6a526e505305f967084e06fa6aaf3" category="paragraph">Wenn Sie einen Connector in einer standardmäßigen AWS-Region direkt aus BlueXP erstellen, wendet BlueXP automatisch Richtlinien auf den Connector an. Sie müssen in diesem Fall nichts tun.</block>
+  <block id="fb86f9a9f53ddf38f2b2297b0200b8a3" category="paragraph">Wenn Sie den Connector über den AWS Marketplace bereitstellen oder den Connector manuell auf einem Linux-Host installieren, müssen Sie die Richtlinien selbst festlegen.</block>
+  <block id="b8502b99c36d378968d3d20a7561e523" category="paragraph">Außerdem müssen Sie sicherstellen, dass die Richtlinien immer auf dem neuesten Stand sind, wenn neue Berechtigungen in nachfolgenden Releases hinzugefügt werden.</block>
+  <block id="de16d176ab7c6c01a7ce45f2e7213194" category="paragraph">Wählen Sie Ihre Region aus, um die erforderlichen Richtlinien anzuzeigen:</block>
+  <block id="481dd59686d42d2d6a74eae1a1d763ad" category="paragraph">Für Standardregionen werden die Berechtigungen auf zwei Richtlinien verteilt. Zwei Richtlinien sind aufgrund einer maximal zulässigen Zeichengröße für gemanagte Richtlinien in AWS erforderlich.</block>
+  <block id="989bc9b22ba83d48ca30cdc4d2a0cbb8" category="paragraph">Die erste Richtlinie bietet Berechtigungen für folgende Dienste:</block>
+  <block id="bf43596ea2ef9041f13ded2298cba686" category="paragraph">Die zweite Richtlinie bietet Berechtigungen für die folgenden Dienste:</block>
+  <block id="6db3bf95be125a91f9ff9118d152f966" category="list-text">AppTemplate-Tagging</block>
+  <block id="995c7db8420cf7c1d22ec979a1f735ba" category="open-title">Richtlinie #1</block>
+  <block id="897099bfef7e48dc4adcaa1be92bf1a8" category="open-title">Richtlinie #2</block>
+  <block id="d094d5c78e8dbf27acd1a70c29b4b863" category="list-text">Erstellen Sie über die IAM-Konsole die erforderlichen Richtlinien, indem Sie die Inhalte von kopieren und einfügen <block ref="ee2fdef0fe1bd713e3c2d2a78c0fdb68" category="inline-link-macro-rx"></block>.</block>
+  <block id="a6a23d0964b870781db3c2557ec3583c" category="list-text">Erstellen Sie eine IAM-Rolle mit dem Rollentyp Amazon EC2 und hängen Sie die Richtlinien an, die Sie im vorherigen Schritt erstellt haben.</block>
 </blocks>

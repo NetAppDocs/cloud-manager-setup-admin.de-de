@@ -98,7 +98,6 @@ Für den Konnektor ist ein abgehender Internetzugang erforderlich, um die folgen
 |===
 * Wenn Sie den Connector manuell auf Ihrem eigenen Linux-Host installieren möchten (und dies nicht direkt über die BlueXP-Schnittstelle), benötigt das Installationsprogramm für den Connector während des Installationsvorgangs Zugriff auf die folgenden Endpunkte:
 +
-** \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 ** \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
 ** \https://*.blob.core.windows.net oder \https://hub.docker.com
 +
