@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-23 17:09:44 +0000">11/23/2022</time>
+    <time datetime="2022-12-01 19:57:27 +0000">12/01/2022</time>
     
   
 
@@ -1516,6 +1516,9 @@ Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann
 </li>
 <li>
 <p>Red Hat Enterprise Linux 7.9</p>
+</li>
+<li>
+<p>Red Hat Enterprise Linux 8.6</p>
 <div class="paragraph">
 <p>Das Red Hat Enterprise Linux System muss beim Red Hat Subscription Management registriert sein. Wenn es nicht registriert ist, kann das System während der Connector-Installation nicht auf Repositories zugreifen, um die erforderliche Software von Drittanbietern zu aktualisieren.</p>
 </div>
@@ -1539,6 +1542,10 @@ Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann
 <dt class="hdlist1">Festplattenspeicher in /var</dt>
 <dd>
 <p>20 gib Speicherplatz muss verfügbar sein</p>
+</dd>
+<dt class="hdlist1">Docker Engine</dt>
+<dd>
+<p>Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener">"Installationsanweisungen anzeigen"</a></p>
 </dd>
 <dt class="hdlist1">Outbound-Internetzugang</dt>
 <dd>
@@ -1592,6 +1599,14 @@ Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann
 <div class="title">Schritte</div>
 <ol class="arabic">
 <li>
+<p>Vergewissern Sie sich, dass der Docker aktiviert ist und ausgeführt wird.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-cli" data-lang="cli">sudo systemctl enable docker &amp;&amp; sudo systemctl start docker</code></pre>
+</div>
+</div>
+</li>
+<li>
 <p>Laden Sie die Connector-Software von der herunter <a href="https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab" target="_blank" rel="noopener">"NetApp Support Website"</a>, Und dann kopieren Sie es auf den Linux-Host.</p>
 <div class="paragraph">
 <p>Informationen zum Verbinden und Kopieren der Datei auf eine EC2-Instanz in AWS finden Sie unter <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html" target="_blank" rel="noopener">"AWS Documentation: Herstellen einer Verbindung zu Ihrer Linux-Instanz mithilfe von SSH"</a>.</p>
@@ -1601,7 +1616,7 @@ Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann
 <p>Weisen Sie Berechtigungen zum Ausführen des Skripts zu.</p>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cli" data-lang="cli">chmod +x OnCommandCloudManager-V3.9.19.sh</code></pre>
+<pre class="highlight"><code class="language-cli" data-lang="cli">chmod +x OnCommandCloudManager-V3.9.23.sh</code></pre>
 </div>
 </div>
 </li>
@@ -1612,27 +1627,9 @@ Wenn Sie ein Cloud Volumes ONTAP-System in Google Cloud erstellen möchten, dann
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-cli" data-lang="cli"> ./OnCommandCloudManager-V3.9.19.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]</code></pre>
+<pre class="highlight"><code class="language-cli" data-lang="cli"> ./OnCommandCloudManager-V3.9.23.sh --proxy http://occm:password@10.0.0.30:9090/ --cacert /root/rootca.pem</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p><em>Silent</em> führt die Installation aus, ohne dass Sie zur Information aufgefordert werden.</p>
-</div>
-<div class="paragraph">
-<p><em>Proxy</em> ist erforderlich, wenn sich der Host hinter einem Proxy-Server befindet.</p>
-</div>
-<div class="paragraph">
-<p><em>proxyport</em> ist der Port für den Proxy-Server.</p>
-</div>
-<div class="paragraph">
-<p><em>Proxyuser</em> ist der Benutzername für den Proxy-Server, wenn eine grundlegende Authentifizierung erforderlich ist.</p>
-</div>
-<div class="paragraph">
-<p><em>Proxypwd</em> ist das Passwort für den von Ihnen angegebenen Benutzernamen.</p>
-</div>
-</li>
-<li>
-<p>Wenn Sie nicht den Silent-Parameter angegeben haben, geben Sie <strong>Y</strong> ein, um mit der Installation fortzufahren.</p>
 <div class="paragraph">
 <p>Der Connector ist jetzt installiert. Am Ende der Installation wird der Connector-Dienst (occm) zweimal neu gestartet, wenn Sie einen Proxy-Server angegeben haben.</p>
 </div>
