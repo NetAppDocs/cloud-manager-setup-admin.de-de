@@ -541,7 +541,6 @@
   <block id="764d44260ad297eee560240a0f9876dc" category="paragraph">BlueXP installiert die folgenden Pakete auf dem Linux-Host, falls diese noch nicht installiert sind:</block>
   <block id="0cc88c75f9ccb3b092b1a9e54edf31dd" category="list-text">7-Zip</block>
   <block id="824e65f15b61863b18403a352208dbf8" category="list-text">AWSCLI</block>
-  <block id="c5fd214cdd0d2b3b4272e73b022ba5c2" category="list-text">Docker</block>
   <block id="d52387880e1ea22817a72d3759213819" category="list-text">Java</block>
   <block id="6f49e891fdb1bb11823492f4d315b2fd" category="list-text">Kubectl</block>
   <block id="62a004b95946bb97541afa471dcca73a" category="list-text">MySQL</block>
@@ -785,7 +784,6 @@
   <block id="00fc9d0c515c69ea2c368521453d982e" category="inline-xref">Erfahren Sie, wie Sie sich mit NetApp anmelden können</block>
   <block id="97454ce87333f7ebd50ee38b8126fb39" category="paragraph"><block ref="37544f11913357c4e8c8a4ec607ae247" category="inline-xref-macro-rx"></block>.</block>
   <block id="a92ec860f505b318fd0f0eba6165d607" category="section-title">Fügen Sie ein NSS-Konto zu BlueXP hinzu</block>
-  <block id="77bdda0b5be7d2725f2b5941d74db0e2" category="paragraph">Über das Support Dashboard können Sie Ihre NetApp Support Site Konten für die Verwendung mit Cloud Manager hinzufügen und managen.</block>
   <block id="328a2c1e7778e9edaf79d90c51409ac4" category="list-text">Wenn Sie über ein Konto auf Kundenebene verfügen, können Sie ein oder mehrere NSS-Konten hinzufügen.</block>
   <block id="4fde72c535fd0cd463dbeb49347cdfae" category="list-text">Wenn Sie ein Partner- oder Reseller-Konto haben, können Sie ein oder mehrere NSS-Konten hinzufügen, aber sie können nicht neben Kunden-Level-Accounts hinzugefügt werden.</block>
   <block id="868d9aa88f16ea923af1d15eac5d2647" category="paragraph"><block ref="868d9aa88f16ea923af1d15eac5d2647" category="inline-image-macro-rx" type="image"></block></block>
@@ -815,17 +813,14 @@
   <block id="5226d4ec1f4f81b740cbbd27635b441f" category="list-text">Kopieren Sie unbedingt die oben verwendete BlueXP-Kontonummer (960xxxx) für das Feld Seriennummer. Dadurch wird die Kontobearbeitung beschleunigt.</block>
   <block id="e9b1f53d6cabb3394833a4e102eb6a69" category="section-title">Neu bei NetApp</block>
   <block id="c20c107d0d4eef6351660f3590324232" category="paragraph">Wenn Sie neu bei NetApp sind und über keinen NSS-Account verfügen, befolgen Sie jeden Schritt unten.</block>
-  <block id="59dd2a274c2c6a3cc5b3dce08109019d" category="list-text">Suchen Sie die Seriennummer Ihres Cloud Manager-Kontos auf der Seite für die Support-Registrierung.</block>
   <block id="ef5e63bb6b6827440a13cc2ec7e9cf56" category="paragraph"><block ref="ef5e63bb6b6827440a13cc2ec7e9cf56" category="inline-image-macro-rx" type="image"></block></block>
   <block id="dd50e314c18933734174c1156dd9237f" category="inline-link">Die Support-Registrierungs-Website von NetApp</block>
   <block id="78f94e749b89d69dcbf3baff21ccb958" category="list-text">Navigieren Sie zu<block ref="e1c4be66250fd76d5c52bfe2cb7daee2" category="inline-link-rx"></block> Und wählen Sie *Ich bin kein registrierter NetApp Kunde*.</block>
   <block id="d4f633ef130727b2776fa7f45024ca7d" category="list-text">Füllen Sie die Pflichtfelder aus (mit roten Sternchen).</block>
   <block id="1128fc8d5ec64880f4d49337ed798d31" category="list-text">Wählen Sie im Feld *Product Line* die Option *Cloud Manager* aus, und wählen Sie dann den gewünschten Abrechnungsanbieter aus.</block>
-  <block id="1192dec4cc2b923397748a651cef178f" category="list-text">Kopieren Sie die Seriennummer des Cloud Manager Kontos von Schritt 2 oben, füllen Sie die Sicherheitsprüfung aus und bestätigen Sie dann, dass Sie die globale Datenschutzrichtlinie von NetApp lesen.</block>
   <block id="3a24c87c9971d2011b4df223718f84b4" category="paragraph">Zur Fertigstellung dieser sicheren Transaktion wird sofort eine E-Mail an die angegebene Mailbox gesendet. Überprüfen Sie Ihre Spam-Ordner, wenn die Validierungs-E-Mail nicht in wenigen Minuten ankommt.</block>
   <block id="03413baeca1ff7222737d8ce299bd4e8" category="list-text">Bestätigen Sie die Aktion in der E-Mail.</block>
   <block id="201080500e946070a2e4873042507c77" category="paragraph">Indem Sie Ihre Anfrage an NetApp senden, wird Ihnen die Erstellung eines NetApp Support Site Kontos empfohlen.</block>
-  <block id="d6cb31c22f8f843a781cccec33157281" category="list-text">Kopieren Sie die oben angegebene Cloud Manager Account Seriennummer (960xxxx) für das Feld Seriennummer. Dadurch wird die Kontobearbeitung beschleunigt.</block>
   <block id="684375e279a289295b72a006d93e2c4c" category="paragraph">NetApp sollte sich bei diesem Prozess mit Ihnen in Verbindung setzen. Dies ist eine einmalige Onboarding-Übung für neue Benutzer.</block>
   <block id="1c0e45ef07d0dbc13ca2394d5e285fd7" category="paragraph">Sobald Sie Ihren NetApp Support Site Account besitzen, können Sie im Portal BlueXP diesen NSS-Account für zukünftige Registrierungen hinzufügen.</block>
   <block id="c9df4195a305212ffd7b56d24f67129d" category="summary">NetApp bietet Unterstützung für BlueXP auf verschiedene Weise. Umfassende kostenlose Self-Support-Optionen stehen rund um die Uhr zur Verfügung, wie etwa Knowledge Base-Artikel (KB) und ein Community-Forum. Ihre Support-Registrierung umfasst technischen Remote-Support über Web-Ticketing.</block>
@@ -1978,12 +1973,6 @@
   <block id="880818f23f18d557a415dab94d58f242" category="paragraph">Informationen zum Verbinden und Kopieren der Datei auf eine EC2-Instanz in AWS finden Sie unter<block ref="dc4460aa50f8a612f26d39414027ad75" category="inline-link-rx"></block>.</block>
   <block id="325740f998865be7879e32048d406868" category="list-text">Führen Sie das Installationsskript aus.</block>
   <block id="d2da61b44f426c871849fe81368a8e4f" category="paragraph">Wenn Sie über einen Proxy-Server verfügen, müssen Sie die unten aufgeführten Befehlsparameter eingeben. Das Installationsprogramm fordert Sie nicht auf, Informationen über einen Proxy einzugeben.</block>
-  <block id="4043a6aa3722544830ff194f0161ca4b" category="paragraph">_Silent_ führt die Installation aus, ohne dass Sie zur Information aufgefordert werden.</block>
-  <block id="9c0cac643033d0d66c01380a30a07c17" category="paragraph">_Proxy_ ist erforderlich, wenn sich der Host hinter einem Proxy-Server befindet.</block>
-  <block id="35ab3a8c7fbb3509e0d9eafded99ef1c" category="paragraph">_proxyport_ ist der Port für den Proxy-Server.</block>
-  <block id="03834e3dec93fe21ff1b9d27519ca584" category="paragraph">_Proxyuser_ ist der Benutzername für den Proxy-Server, wenn eine grundlegende Authentifizierung erforderlich ist.</block>
-  <block id="d042e0838b4543f156e8d676bacd546c" category="paragraph">_Proxypwd_ ist das Passwort für den von Ihnen angegebenen Benutzernamen.</block>
-  <block id="e9d18c6194bd419fb0e88978d07225d6" category="list-text">Wenn Sie nicht den Silent-Parameter angegeben haben, geben Sie *Y* ein, um mit der Installation fortzufahren.</block>
   <block id="e832abccfbda1e1df2db47f59705c74c" category="paragraph">Der Connector ist jetzt installiert. Am Ende der Installation wird der Connector-Dienst (occm) zweimal neu gestartet, wenn Sie einen Proxy-Server angegeben haben.</block>
   <block id="2b7648ae4507d851df87a08114c2876e" category="list-text">Anmelden oder anmelden.</block>
   <block id="39f494161fdf724ac76591cdc35c1a8a" category="list-text">Wenn Sie den Connector in Google Cloud installiert haben, richten Sie ein Servicekonto ein, das über die Berechtigungen verfügt, die BlueXP zum Erstellen und Verwalten von Cloud Volumes ONTAP-Systemen in Projekten benötigt.</block>
@@ -2694,9 +2683,7 @@
   <block id="c51a904de7f2c01a69a504d625a71354" category="list-text">Eine SSD ist erforderlich</block>
   <block id="681992b8581f6d4247af5523a14d0ce4" category="list-text">Docker Engine</block>
   <block id="117c0c98e2a5cb3503de68c655378d13" category="inline-link">Installationsanweisungen anzeigen</block>
-  <block id="d0866929c01f04a0947060329c774b7b" category="list-text">Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren.<block ref="bbcf0e5e8b0c8687d84c2c22a5ad2ecf" category="inline-link-rx"></block>.</block>
   <block id="9764d03a6c521ac6bf9cc6db107b8351" category="list-text">Vergewissern Sie sich, dass der Docker aktiviert ist und ausgeführt wird.</block>
-  <block id="5ddb110e3aced51416d4de7b0626d696" category="list-text">Laden Sie die BlueXP-Software von der herunter<block ref="99637e01fa8caa34a544049093cac68c" category="inline-link-rx"></block>.</block>
   <block id="a4a102a53f92d88c7ff8bca53cc859e3" category="list-text">Öffnen Sie einen Webbrowser, und geben Sie ein<block ref="e3a51e84cbbae6e45a585984f3be3fd0" category="inline-link-rx"></block> Wobei _ipaddress_ die IP-Adresse des Linux-Hosts ist.</block>
   <block id="31f7ed39632ba5f8fbafe2e78de61213" category="paragraph">Der folgende Bildschirm sollte angezeigt werden.</block>
   <block id="87c4a866519ae557380141f0da21e74f" category="inline-image-macro">Ein Screenshot der Begrüßungsseite, die angezeigt wird, nachdem Sie die IP-Adresse des Connectors in Ihren Webbrowser eingegeben haben.</block>
@@ -2792,4 +2779,21 @@
   <block id="897099bfef7e48dc4adcaa1be92bf1a8" category="open-title">Richtlinie #2</block>
   <block id="d094d5c78e8dbf27acd1a70c29b4b863" category="list-text">Erstellen Sie über die IAM-Konsole die erforderlichen Richtlinien, indem Sie die Inhalte von kopieren und einfügen <block ref="ee2fdef0fe1bd713e3c2d2a78c0fdb68" category="inline-link-macro-rx"></block>.</block>
   <block id="a6a23d0964b870781db3c2557ec3583c" category="list-text">Erstellen Sie eine IAM-Rolle mit dem Rollentyp Amazon EC2 und hängen Sie die Richtlinien an, die Sie im vorherigen Schritt erstellt haben.</block>
+  <block id="80829c0bc33e1821173e296173ba0a8d" category="list-text">Red Hat Enterprise Linux 8.6</block>
+  <block id="4e7880d4f8d9cf685f649e74e34a3de7" category="list-text">Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren.<block ref="bbcf0e5e8b0c8687d84c2c22a5ad2ecf" category="inline-link-rx"></block></block>
+  <block id="64a39273573e4fc2b712d51106db7a4e" category="section-title">Änderungsprotokoll</block>
+  <block id="3133cc4fd29893a0163684e3e3f59633" category="paragraph">Wenn Berechtigungen hinzugefügt und entfernt werden, werden wir diese in den folgenden Abschnitten zur Kenntnis nehmen.</block>
+  <block id="a6123430b152ca358cd64ba937f6f1b9" category="section-title">Dezember 2022</block>
+  <block id="2b4c0f2b7b106fa61101f47cad35238a" category="paragraph">Die folgende Berechtigung wurde der JSON-Richtlinie hinzugefügt. Sie ist für Cloud Backup und Cloud Tiering erforderlich.</block>
+  <block id="a8a929fafb2eb09e993d8c797a52b5ef" category="paragraph">Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt. Sie werden nicht mehr benötigt.</block>
+  <block id="ac692d638162a1dc479fa6a76fb4e114" category="list-text">Microsoft.Compute/images/write</block>
+  <block id="61d40b12dddcd9e571bbe7a89b0fbae8" category="list-text">Microsoft.Network/loadBalancers/backendAddressPools/join/action</block>
+  <block id="7c90682779ddf616c80c90bad703eddd" category="list-text">Microsoft.Network/loadBalancers/frontendIPConfigurations/read</block>
+  <block id="3af64a9cb34f4b06a9e496f1f6a05879" category="list-text">Microsoft.Storage/StorageAccounts/Generationkey/Aktion</block>
+  <block id="2ba7eb945a77498b8342e4be53a3761e" category="list-text">Laden Sie die Connector-Software von der herunter<block ref="99637e01fa8caa34a544049093cac68c" category="inline-link-rx"></block></block>
+  <block id="f2575f6d19024f7288cf78d7dc5b3db9" category="paragraph">Über das Support Dashboard können Sie Ihre NetApp Support Site Konten zur Verwendung mit BlueXP hinzufügen und managen.</block>
+  <block id="e3cd99e4aa330ae6bdfb3754d83ae962" category="list-text">Wenn Sie einen Partner- oder Reseller-Account haben, können Sie ein oder mehrere NSS-Konten hinzufügen, können aber nicht neben Kunden-Level Accounts hinzugefügt werden.</block>
+  <block id="2974170a8b1b5b4a2ac69aacd4c1c9c3" category="list-text">Suchen Sie auf der Seite für die Support-Registrierung die Seriennummer Ihres Kontos.</block>
+  <block id="50a1dc01b7312307c34a888071586955" category="list-text">Kopieren Sie die Seriennummer des Kontos von Schritt 2 oben, füllen Sie die Sicherheitsprüfung aus und bestätigen Sie dann, dass Sie die globale Datenschutzrichtlinie von NetApp lesen.</block>
+  <block id="cc8b0535948da368f832027c19b7f853" category="list-text">Kopieren Sie die oben angegebene Seriennummer (960xxxx) für das Feld „Seriennummer“. Dadurch wird die Kontobearbeitung beschleunigt.</block>
 </blocks>

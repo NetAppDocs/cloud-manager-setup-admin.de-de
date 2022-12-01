@@ -118,9 +118,9 @@ Aktualisieren Sie das Betriebssystem auf dem Konnektor, um sicherzustellen, dass
 [source, cli]
 ----
 sudo -s
-service service-manager stop
+service netapp-service-manager stop
 yum -y update –-security
-service service-manager start
+service netapp-service-manager start
 ----
 
 

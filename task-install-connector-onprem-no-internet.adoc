@@ -38,6 +38,7 @@ Unterstützte Betriebssysteme::
 * Red Hat Enterprise Linux 7.7
 * Red Hat Enterprise Linux 7.8
 * Red Hat Enterprise Linux 7.9
+* Red Hat Enterprise Linux 8.6
 +
 Das Red Hat Enterprise Linux System muss beim Red Hat Subscription Management registriert sein. Wenn es nicht registriert ist, kann das System während der Connector-Installation nicht auf Repositories zugreifen, um die erforderliche Software von Drittanbietern zu aktualisieren.
 
@@ -51,7 +52,7 @@ Hypervisor:: Ein Bare Metal- oder gehosteter Hypervisor, der für die Ausführun
 Festplattentyp:: Eine SSD ist erforderlich
 Speicherplatz in /opt:: 100 gib Speicherplatz muss verfügbar sein
 Festplattenspeicher in /var:: 20 gib Speicherplatz muss verfügbar sein
-Docker Engine:: Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. https://docs.docker.com/engine/install/["Installationsanweisungen anzeigen"^].
+Docker Engine:: Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. https://docs.docker.com/engine/install/["Installationsanweisungen anzeigen"^]
 
 
 
@@ -69,19 +70,19 @@ Zur Installation des Connectors sind Root-Berechtigungen erforderlich.
 ----
 sudo systemctl enable docker && sudo systemctl start docker
 ----
-. Laden Sie die BlueXP-Software von der herunter https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab["NetApp Support Website"^].
+. Laden Sie die Connector-Software von der herunter https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab["NetApp Support Website"^]
 . Kopieren Sie das Installationsprogramm auf den Linux-Host.
 . Weisen Sie Berechtigungen zum Ausführen des Skripts zu.
 +
 [source, cli]
 ----
-chmod +x /path/cloud-manager-connector-offline-v3.9.19
+chmod +x /path/cloud-manager-connector-offline-v3.9.23
 ----
 . Führen Sie das Installationsskript aus:
 +
 [source, cli]
 ----
-sudo /path/cloud-manager-connector-offline-v3.9.19
+sudo /path/cloud-manager-connector-offline-v3.9.23
 ----
 . Öffnen Sie einen Webbrowser, und geben Sie ein https://_ipaddress_[] Wobei _ipaddress_ die IP-Adresse des Linux-Hosts ist.
 +

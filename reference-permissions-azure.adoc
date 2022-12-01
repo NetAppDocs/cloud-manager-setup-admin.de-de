@@ -48,7 +48,6 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Compute/virtualMachines/start/action",
                     "Microsoft.Compute/virtualMachines/vmSizes/read",
                     "Microsoft.Compute/virtualMachines/write",
-                    "Microsoft.Compute/images/write",
                     "Microsoft.Compute/images/read",
                     "Microsoft.Network/locations/operationResults/read",
                     "Microsoft.Network/locations/operations/read",
@@ -79,9 +78,9 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Storage/storageAccounts/listkeys/action",
                     "Microsoft.Storage/storageAccounts/read",
                     "Microsoft.Storage/storageAccounts/delete",
-                    "Microsoft.Storage/storageAccounts/regeneratekey/action",
                     "Microsoft.Storage/storageAccounts/write",
                     "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/write",
                     "Microsoft.Storage/usages/read",
                     "Microsoft.Compute/snapshots/write",
                     "Microsoft.Compute/snapshots/read",
@@ -94,8 +93,6 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Network/loadBalancers/write",
                     "Microsoft.Network/loadBalancers/delete",
                     "Microsoft.Network/loadBalancers/backendAddressPools/read",
-                    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-                    "Microsoft.Network/loadBalancers/frontendIPConfigurations/read",
                     "Microsoft.Network/loadBalancers/loadBalancingRules/read",
                     "Microsoft.Network/loadBalancers/probes/read",
                     "Microsoft.Network/loadBalancers/probes/join/action",
@@ -740,4 +737,26 @@ Der Connector stellt folgende API-Anforderungen zur Erkennung und Verwaltung von
 * Microsoft.Ressourcen/Abonnements/Ressourcengruppen/Ressourcen/Lesen
 * Microsoft.ContainerService/manageCluster/lesen
 * Microsoft.ContainerService/verwaltungCluster/listClusterUserCredential/Action
+
+
+
+
+== Änderungsprotokoll
+
+Wenn Berechtigungen hinzugefügt und entfernt werden, werden wir diese in den folgenden Abschnitten zur Kenntnis nehmen.
+
+
+
+=== Dezember 2022
+
+Die folgende Berechtigung wurde der JSON-Richtlinie hinzugefügt. Sie ist für Cloud Backup und Cloud Tiering erforderlich.
+
+Microsoft.Storage/StorageAccounts/blobServices/Container/write
+
+Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt. Sie werden nicht mehr benötigt.
+
+* Microsoft.Compute/images/write
+* Microsoft.Network/loadBalancers/backendAddressPools/join/action
+* Microsoft.Network/loadBalancers/frontendIPConfigurations/read
+* Microsoft.Storage/StorageAccounts/Generationkey/Aktion
 

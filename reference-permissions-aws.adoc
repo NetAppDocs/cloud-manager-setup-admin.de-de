@@ -31,6 +31,7 @@ Außerdem müssen Sie sicherstellen, dass die Richtlinien immer auf dem neuesten
 Wählen Sie Ihre Region aus, um die erforderlichen Richtlinien anzuzeigen:
 
 .Standardregionen
+[%collapsible]
 ====
 Für Standardregionen werden die Berechtigungen auf zwei Richtlinien verteilt. Zwei Richtlinien sind aufgrund einer maximal zulässigen Zeichengröße für gemanagte Richtlinien in AWS erforderlich.
 
@@ -401,6 +402,7 @@ Die zweite Richtlinie bietet Berechtigungen für die folgenden Dienste:
 =====
 ====
 .GovCloud (USA) Regionen
+[%collapsible]
 ====
 [source, json]
 ----
@@ -562,6 +564,7 @@ Die zweite Richtlinie bietet Berechtigungen für die folgenden Dienste:
 ----
 ====
 .C2S-Umgebung
+[%collapsible]
 ====
 [source, json]
 ----

@@ -108,7 +108,6 @@ BlueXP installiert die folgenden Pakete auf dem Linux-Host, falls diese noch nic
 
 * 7-Zip
 * AWSCLI
-* Docker
 * Java
 * Kubectl
 * MySQL
