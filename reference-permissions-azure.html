@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-01 19:57:27 +0000">12/01/2022</time>
+    <time datetime="2022-12-01 22:45:32 +0000">12/01/2022</time>
     
   
 
@@ -1548,7 +1548,6 @@
                     "Microsoft.Compute/snapshots/delete",
                     "Microsoft.Network/privateEndpoints/delete",
                     "Microsoft.Compute/availabilitySets/delete",
-                    "Microsoft.Network/loadBalancers/delete",
                     "Microsoft.KeyVault/vaults/read",
                     "Microsoft.KeyVault/vaults/accessPolicies/write",
                     "Microsoft.Compute/diskEncryptionSets/write",
@@ -1574,6 +1573,7 @@
                     "Microsoft.Synapse/workspaces/firewallRules/read",
                     "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
                     "Microsoft.Synapse/workspaces/operationResults/read",
+                    "Microsoft.Network/publicIPAddresses/delete",
                     "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
     ],
     "NotActions": [],
@@ -2764,13 +2764,26 @@
 <div class="sect2">
 <h3 id="dezember-2022">Dezember 2022</h3>
 <div class="paragraph">
-<p>Die folgende Berechtigung wurde der JSON-Richtlinie hinzugefügt. Sie ist für Cloud Backup und Cloud Tiering erforderlich.</p>
+<p>Die folgenden Berechtigungen wurden der JSON-Richtlinie hinzugefügt:</p>
 </div>
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>Microsoft.Storage/StorageAccounts/blobServices/Container/write</p>
+<div class="paragraph">
+<p>Diese Berechtigung ist für Cloud Backup und Cloud Tiering erforderlich.</p>
+</div>
+</li>
+<li>
+<p>Microsoft.Network/publicIPAddresses/delete</p>
+<div class="paragraph">
+<p>Diese Berechtigungen sind für Cloud Backup erforderlich.</p>
+</div>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt. Sie werden nicht mehr benötigt.</p>
+<p>Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt, da sie nicht mehr erforderlich sind:</p>
 </div>
 <div class="ulist">
 <ul>
