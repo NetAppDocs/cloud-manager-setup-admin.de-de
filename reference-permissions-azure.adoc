@@ -128,7 +128,6 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Compute/snapshots/delete",
                     "Microsoft.Network/privateEndpoints/delete",
                     "Microsoft.Compute/availabilitySets/delete",
-                    "Microsoft.Network/loadBalancers/delete",
                     "Microsoft.KeyVault/vaults/read",
                     "Microsoft.KeyVault/vaults/accessPolicies/write",
                     "Microsoft.Compute/diskEncryptionSets/write",
@@ -154,6 +153,7 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Synapse/workspaces/firewallRules/read",
                     "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
                     "Microsoft.Synapse/workspaces/operationResults/read",
+                    "Microsoft.Network/publicIPAddresses/delete",
                     "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
     ],
     "NotActions": [],
@@ -749,11 +749,19 @@ Wenn Berechtigungen hinzugefügt und entfernt werden, werden wir diese in den fo
 
 === Dezember 2022
 
-Die folgende Berechtigung wurde der JSON-Richtlinie hinzugefügt. Sie ist für Cloud Backup und Cloud Tiering erforderlich.
+Die folgenden Berechtigungen wurden der JSON-Richtlinie hinzugefügt:
 
-Microsoft.Storage/StorageAccounts/blobServices/Container/write
+* Microsoft.Storage/StorageAccounts/blobServices/Container/write
++
+Diese Berechtigung ist für Cloud Backup und Cloud Tiering erforderlich.
 
-Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt. Sie werden nicht mehr benötigt.
+* Microsoft.Network/publicIPAddresses/delete
++
+Diese Berechtigungen sind für Cloud Backup erforderlich.
+
+
+
+Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt, da sie nicht mehr erforderlich sind:
 
 * Microsoft.Compute/images/write
 * Microsoft.Network/loadBalancers/backendAddressPools/join/action

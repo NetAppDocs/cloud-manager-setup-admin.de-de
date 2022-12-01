@@ -2784,8 +2784,6 @@
   <block id="64a39273573e4fc2b712d51106db7a4e" category="section-title">Änderungsprotokoll</block>
   <block id="3133cc4fd29893a0163684e3e3f59633" category="paragraph">Wenn Berechtigungen hinzugefügt und entfernt werden, werden wir diese in den folgenden Abschnitten zur Kenntnis nehmen.</block>
   <block id="a6123430b152ca358cd64ba937f6f1b9" category="section-title">Dezember 2022</block>
-  <block id="2b4c0f2b7b106fa61101f47cad35238a" category="paragraph">Die folgende Berechtigung wurde der JSON-Richtlinie hinzugefügt. Sie ist für Cloud Backup und Cloud Tiering erforderlich.</block>
-  <block id="a8a929fafb2eb09e993d8c797a52b5ef" category="paragraph">Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt. Sie werden nicht mehr benötigt.</block>
   <block id="ac692d638162a1dc479fa6a76fb4e114" category="list-text">Microsoft.Compute/images/write</block>
   <block id="61d40b12dddcd9e571bbe7a89b0fbae8" category="list-text">Microsoft.Network/loadBalancers/backendAddressPools/join/action</block>
   <block id="7c90682779ddf616c80c90bad703eddd" category="list-text">Microsoft.Network/loadBalancers/frontendIPConfigurations/read</block>
@@ -2796,4 +2794,8 @@
   <block id="2974170a8b1b5b4a2ac69aacd4c1c9c3" category="list-text">Suchen Sie auf der Seite für die Support-Registrierung die Seriennummer Ihres Kontos.</block>
   <block id="50a1dc01b7312307c34a888071586955" category="list-text">Kopieren Sie die Seriennummer des Kontos von Schritt 2 oben, füllen Sie die Sicherheitsprüfung aus und bestätigen Sie dann, dass Sie die globale Datenschutzrichtlinie von NetApp lesen.</block>
   <block id="cc8b0535948da368f832027c19b7f853" category="list-text">Kopieren Sie die oben angegebene Seriennummer (960xxxx) für das Feld „Seriennummer“. Dadurch wird die Kontobearbeitung beschleunigt.</block>
+  <block id="0b4c13076b9b5e7ba5fa39333693ef77" category="paragraph">Die folgenden Berechtigungen wurden der JSON-Richtlinie hinzugefügt:</block>
+  <block id="e9c8bdcc91d25115e46e6c43d23fe563" category="paragraph">Diese Berechtigung ist für Cloud Backup und Cloud Tiering erforderlich.</block>
+  <block id="175e0c32b0d1e82352dde70ca6ad31a2" category="paragraph">Diese Berechtigungen sind für Cloud Backup erforderlich.</block>
+  <block id="1ff61a19534f16f8c2b0aa752b13fb0a" category="paragraph">Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt, da sie nicht mehr erforderlich sind:</block>
 </blocks>
