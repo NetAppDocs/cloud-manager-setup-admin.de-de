@@ -219,7 +219,7 @@ link:task-managing-connectors.html["Erfahren Sie, wie Sie zwischen den Anschlüs
 
 == Die lokale Benutzeroberfläche
 
-Während Sie fast alle Aufgaben aus dem ausführen sollten https://cloudmanager.netapp.com["SaaS-Benutzeroberfläche"^], Eine lokale Benutzeroberfläche ist weiterhin auf dem Connector verfügbar. Diese Schnittstelle ist erforderlich, wenn Sie den Connector in einer Umgebung installieren, die keinen Internetzugang hat (wie eine Regierungsregion) und für einige Aufgaben, die über den Connector selbst ausgeführt werden müssen, anstatt über die SaaS-Schnittstelle:
+Während Sie fast alle Aufgaben aus dem ausführen sollten https://console.bluexp.netapp.com["SaaS-Benutzeroberfläche"^], Eine lokale Benutzeroberfläche ist weiterhin auf dem Connector verfügbar. Diese Schnittstelle ist erforderlich, wenn Sie den Connector in einer Umgebung installieren, die keinen Internetzugang hat (wie eine Regierungsregion) und für einige Aufgaben, die über den Connector selbst ausgeführt werden müssen, anstatt über die SaaS-Schnittstelle:
 
 * link:task-configuring-proxy.html["Festlegen eines Proxyservers"]
 * Installation eines Patches (Sie arbeiten in der Regel mit NetApp Mitarbeitern zusammen, um einen Patch zu installieren)

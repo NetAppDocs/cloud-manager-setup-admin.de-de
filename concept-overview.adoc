@@ -69,7 +69,7 @@ BlueXP verfügt über eine SaaS-basierte Schnittstelle, die in die BlueXP-Websit
 
 === Software-as-a-Service
 
-Auf BlueXP kann über eine zugegriffen werden https://cloudmanager.netapp.com["SaaS-basierte Benutzeroberfläche"^] Und APIs. Mit dieser SaaS-Erfahrung können Sie bei Veröffentlichung automatisch auf die neuesten Funktionen zugreifen und einfach zwischen Ihren NetApp Konten und Connectors wechseln.
+Auf BlueXP kann über eine zugegriffen werden https://console.bluexp.netapp.com["SaaS-basierte Benutzeroberfläche"^] Und APIs. Mit dieser SaaS-Erfahrung können Sie bei Veröffentlichung automatisch auf die neuesten Funktionen zugreifen und einfach zwischen Ihren NetApp Konten und Connectors wechseln.
 
 
 TIP: Wenn Sie in einer Umgebung arbeiten, in der kein abgehender Internetzugang verfügbar ist, können Sie die Connector-Software in dieser Umgebung installieren und auf die lokale Benutzeroberfläche zugreifen, die auf dem Connector verfügbar ist. link:concept-connectors.html["Erfahren Sie mehr über Steckverbinder"].

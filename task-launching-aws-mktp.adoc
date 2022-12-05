@@ -84,7 +84,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Co
 
 
 
-. Öffnen Sie einen Webbrowser, und gehen Sie zu https://cloudmanager.netapp.com[] Um den Connector mit BlueXP zu verwenden.
+. Öffnen Sie einen Webbrowser, und gehen Sie zu https://console.bluexp.netapp.com[] Um den Connector mit BlueXP zu verwenden.
 
 
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun link:task-managing-connectors.html["Wechseln Sie zwischen ihnen"].
@@ -159,7 +159,7 @@ Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet.
 
 Wenn Sie BlueXP verwenden möchten, öffnen Sie Ihren Webbrowser und stellen Sie eine Verbindung zur IP-Adresse der Connector-Instanz her: https://_ipaddress_[]
 
-Da der Connector in einer Regierungsregion eingesetzt wurde, ist er von nicht zugänglich https://cloudmanager.netapp.com[].
+Da der Connector in einer Regierungsregion eingesetzt wurde, ist er von nicht zugänglich https://console.bluexp.netapp.com[].
 
 
 

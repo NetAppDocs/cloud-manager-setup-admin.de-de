@@ -25,7 +25,7 @@ Netzwerkzugriff über einen Webbrowser zu mehreren Endpunkten:: Die BlueXP-Benut
 | Endpunkte | Zweck 
 
 
-| \http://cloudmanager.netapp.com | Ihr Webbrowser kontaktiert diese URL, wenn Sie die SaaS-Benutzeroberfläche verwenden. 
+| \https://console.bluexp.netapp.com | Ihr Webbrowser kontaktiert diese URL, wenn Sie die SaaS-Benutzeroberfläche verwenden. 
 
 
  a| 
@@ -91,7 +91,7 @@ Für den Konnektor ist ein abgehender Internetzugang erforderlich, um die folgen
 | \https://support.netapp.com | Um Lizenzinformationen zu erhalten und AutoSupport Meldungen an den NetApp Support zu senden. 
 
 
-| \https://*.cloudmanager.cloud.netapp.com \https://cloudmanager.cloud.netapp.com | Um SaaS-Funktionen und -Services in BlueXP zur Verfügung zu stellen. 
+| \https://*.api.bluexp.netapp.com \https://api.bluexp.netapp.com \https://*.cloudmanager.cloud.netapp.com \https://cloudmanager.cloud.netapp.com | Um SaaS-Funktionen und -Services in BlueXP zur Verfügung zu stellen. HINWEIS: Der Connector kontaktiert derzeit "cloudmanager.cloud.netapp.com" aber er beginnt mit der Kontaktaufnahme mit "api.bluexp.netapp.com" in einer kommenden Version. 
 
 
 | \https://cloudmanagerinfraprod.azurecr.io \https://*.blob.core.windows.net | Aktualisierung des Connectors und seiner Docker Komponenten. 

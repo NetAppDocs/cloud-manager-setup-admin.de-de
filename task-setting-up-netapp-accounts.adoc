@@ -27,7 +27,7 @@ Richten Sie Ihr NetApp Konto ein, damit Benutzer über einen Arbeitsbereich auf 
 In BlueXP können Sie mithilfe von Workspaces eine Reihe von Arbeitsumgebungen von anderen Arbeitsumgebungen und anderen Benutzern isolieren. Sie können beispielsweise zwei Arbeitsbereiche erstellen und jedem Arbeitsbereich separate Benutzer zuordnen.
 
 .Schritte
-. Von oben https://cloudmanager.netapp.com["BlueXP"^]Klicken Sie auf das Dropdown-Menü *Konto*.
+. Von oben https://console.bluexp.netapp.com["BlueXP"^]Klicken Sie auf das Dropdown-Menü *Konto*.
 +
 image:screenshot-account-settings-menu.png["Ein Screenshot, in dem die Option Kontoeinstellungen im oberen Banner von BlueXP angezeigt wird."]
 
@@ -50,7 +50,7 @@ Verknüpfen Sie Benutzer mit Ihrem NetApp Konto, damit diese Benutzer Arbeitsumg
 
 .Schritte
 . Wenn der Benutzer dies noch nicht getan hat, bitten Sie den Benutzer, zu wechseln https://cloud.netapp.com["NetApp BlueXP Website"^] Und melden Sie sich an.
-. Von oben https://cloudmanager.netapp.com["BlueXP"^]Klicken Sie auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
+. Von oben https://console.bluexp.netapp.com["BlueXP"^]Klicken Sie auf das Dropdown-Menü *Konto* und klicken Sie auf *Konto verwalten*.
 +
 image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option „Kontoeinstellungen verwalten“ angezeigt wird, die im Dropdown-Menü „Konto“ verfügbar ist."]
 
