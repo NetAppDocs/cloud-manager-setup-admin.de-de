@@ -40,6 +40,7 @@ image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option 
 . Geben Sie einen Namen für den Arbeitsbereich ein und klicken Sie auf *Hinzufügen*.
 
 
+.Nachdem Sie fertig sind
 Wenn ein Workspace-Administrator Zugriff auf diesen Arbeitsbereich benötigt, müssen Sie den Benutzer zuordnen. Außerdem müssen Sie Connectors mit dem Arbeitsbereich verknüpfen, damit Arbeitsbereichsadministratoren diese Connectors verwenden können.
 
 
@@ -70,6 +71,7 @@ image:screenshot_associate_user.gif["Ein Screenshot, der zeigt, wie ein Benutzer
 . Klicken Sie Auf *Mitarbeiter*.
 
 
+.Ergebnis
 Der Benutzer sollte eine E-Mail von der NetApp BlueXP Website mit dem Titel „Account Association“ erhalten. Die E-Mail enthält die Informationen, die für den Zugriff auf BlueXP erforderlich sind.
 
 
@@ -91,6 +93,7 @@ image:screenshot_associate_user_workspace.png["Ein Screenshot, der das Aktionsme
 . Wählen Sie einen oder mehrere Arbeitsbereiche aus, und klicken Sie auf *Anwenden*.
 
 
+.Ergebnis
 Der Benutzer kann jetzt von BlueXP auf diese Arbeitsbereiche zugreifen, solange der Connector auch mit den Arbeitsbereichen verknüpft war.
 
 
@@ -113,6 +116,7 @@ image:screenshot-manage-account-settings.png["Ein Screenshot, in dem die Option 
 . Wählen Sie einen oder mehrere Arbeitsbereiche aus, und klicken Sie auf *Anwenden*.
 
 
+.Ergebnis
 Workspace-Administratoren können diese Anschlüsse jetzt verwenden, um Cloud Volumes ONTAP-Systeme zu erstellen.
 
 

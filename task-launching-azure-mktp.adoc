@@ -75,6 +75,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Bl
 
 
 
+.Ergebnis
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet.
 
 Wenn sich der Connector in einer kommerziellen Azure-Region befindet, öffnen Sie einen Webbrowser, und gehen Sie zu https://console.bluexp.netapp.com[] Um den Connector mit BlueXP zu verwenden.
@@ -154,6 +155,7 @@ NOTE: BlueXP Operator ist der Standardname, der in der BlueXP-Richtlinie angegeb
 
 
 
+.Ergebnis
 Der Connector verfügt nun über die Berechtigungen, die die IT für das Management von Ressourcen und Prozessen in Ihrer Public Cloud-Umgebung benötigt. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun link:task-managing-connectors.html["Wechseln Sie zwischen ihnen"].
 
 Wenn Sie Azure Blob Storage in demselben Azure Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Azure Blob Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-azure-blob.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].

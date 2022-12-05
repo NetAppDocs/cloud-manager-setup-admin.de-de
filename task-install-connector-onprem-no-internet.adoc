@@ -61,6 +61,7 @@ Docker Engine:: Docker Engine Version 19 oder höher ist auf dem Host erforderli
 
 Nachdem Sie sich vergewissern, dass Sie über einen unterstützten Linux-Host verfügen, können Sie die Connector-Software erwerben und dann installieren.
 
+.Erforderliche Berechtigungen
 Zur Installation des Connectors sind Root-Berechtigungen erforderlich.
 
 .Schritte
@@ -107,9 +108,10 @@ Dieses Benutzerkonto wird lokal auf dem System ausgeführt. Über BlueXP ist kei
 . Melden Sie sich mit dem gerade erstellten Admin-Benutzer bei BlueXP an.
 
 
+.Ergebnis
 Der Connector ist jetzt installiert und Sie können die BlueXP-Funktionen nutzen, die bei der Installation an dunklen Standorten verfügbar sind.
 
-.Was und#8217;s als Nächstes?
+.Was kommt als Nächstes?
 * https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Erkennen von On-Premises-ONTAP-Clustern"^]
 * https://docs.netapp.com/us-en/cloud-manager-replication/task-replicating-data.html["Replizieren von Daten zwischen lokalen ONTAP Clustern"^]
 * https://docs.netapp.com/us-en/cloud-manager-backup-restore/task-backup-onprem-private-cloud.html["On-Premises-ONTAP-Volume-Daten werden mit Cloud-Backup in StorageGRID gesichert"^]

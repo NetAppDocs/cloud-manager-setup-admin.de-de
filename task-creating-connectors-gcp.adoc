@@ -29,28 +29,31 @@ TIP: Wenn Sie Ihre erste Cloud Volumes ONTAP-Arbeitsumgebung erstellen, werden S
 
 Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den verbleibenden Abschnitten, um ausführliche Informationen zu erhalten.
 
-.<span class=„image“><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"[] alt=„One“></span> Berechtigungen einrichten
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"] Berechtigungen einrichten
+[role="quick-margin-list"]
 * Stellen Sie sicher, dass Ihr Google Cloud-Konto über die richtigen Berechtigungen verfügt, indem Sie eine benutzerdefinierte Rolle erstellen und anhängen.
 +
- up permissions to deploy the Connector.
+<<Richten Sie Berechtigungen für die Bereitstellung des Connectors ein>>.
 
 * Wenn Sie die Connector-VM erstellen, müssen Sie sie einem Servicekonto zuordnen. Dieses Servicekonto muss über eine benutzerdefinierte Rolle verfügen, die Berechtigungen zum Managen von Ressourcen in Google Cloud hat.
 +
- up a service account for the Connector.
+<<Richten Sie ein Servicekonto für den Konnektor ein>>.
 
 * Wenn Sie eine gemeinsame VPC verwenden, legen Sie Berechtigungen im Service-Projekt und im Host-Projekt ein.
 +
- up shared VPC permissions.
+<<Gemeinsame VPC-Berechtigungen einrichten>>.
 
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"] Netzwerk einrichten
 [role="quick-margin-para"]
 Sie benötigen eine VPC und ein Subnetz mit Outbound-Internetzugang zu bestimmten Endpunkten. Wenn ein HTTP-Proxy für das ausgehende Internet erforderlich ist, benötigen Sie die IP-Adresse, die Anmeldeinformationen und das HTTPS-Zertifikat.
 
 [role="quick-margin-para"]
- up networking,Netzwerkanforderungen anzeigen.
+<<Netzwerk einrichten,Netzwerkanforderungen anzeigen>>.
 
-.<span class=„image“><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"[] alt=„drei“></span> Google Cloud APIs aktivieren
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drittens"] Aktivieren Sie Google Cloud-APIs
+[role="quick-margin-list"]
 * Cloud Deployment Manager V2-API
 * Cloud-ProtokollierungsAPI
 * Cloud Resource Manager API
@@ -58,11 +61,12 @@ Sie benötigen eine VPC und ein Subnetz mit Outbound-Internetzugang zu bestimmte
 * IAM-API (Identitäts- und Zugriffsmanagement
 
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"] Erstellen Sie den Konnektor
 [role="quick-margin-para"]
 Klicken Sie auf das Dropdown-Menü Connector, wählen Sie *Anschluss hinzufügen* aus, und folgen Sie den Anweisungen.
 
 [role="quick-margin-para"]
- a Connector,Befolgen Sie die Schritt-für-Schritt-Anweisungen.
+<<Einen Konnektor erstellen,Befolgen Sie die Schritt-für-Schritt-Anweisungen>>.
 
 
 
@@ -150,6 +154,7 @@ includedPermissions:
 . Fügen Sie die benutzerdefinierte Rolle dem Benutzer an, der den Connector von BlueXP bereitstellen wird.
 
 
+.Ergebnis
 Der Google Cloud-Nutzer hat jetzt die erforderlichen Berechtigungen zum Erstellen des Connectors.
 
 
@@ -266,6 +271,7 @@ includedPermissions:
 . Wenn Sie Cloud Volumes ONTAP in anderen Projekten implementieren möchten, https://cloud.google.com/iam/docs/granting-changing-revoking-access#granting-console["Gewähren Sie Zugriff, indem Sie dem Projekt das Servicekonto mit der Rolle BlueXP hinzufügen"^]. Sie müssen diesen Schritt für jedes Projekt wiederholen.
 
 
+.Ergebnis
 Das Servicekonto für die Connector-VM wird eingerichtet.
 
 
@@ -546,6 +552,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Co
 
 --
 ====
+.Ergebnis
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun link:task-managing-connectors.html["Wechseln Sie zwischen ihnen"].
 
 Wenn Sie Google Cloud Storage Buckets im gleichen Google Cloud-Konto haben, wo Sie den Connector erstellt haben, wird automatisch eine Google Cloud Storage-Arbeitsumgebung auf dem Bildschirm angezeigt. link:task-viewing-gcp-storage.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].

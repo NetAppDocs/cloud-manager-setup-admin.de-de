@@ -217,7 +217,6 @@
   <block id="62d4c1187f5c26c9b533034e1decce4b" category="list-text">Gehen Sie zu BlueXP, und öffnen Sie die Arbeitsumgebung.</block>
   <block id="1962304593497a2b02537345ac7be337" category="list-text">Klicken Sie auf das Menü und wählen Sie *Erweitert &gt; Konfigurations-Backups*.</block>
   <block id="b30f3d123c465c70e2c71150136ed92d" category="list-text">Klicken Sie Auf *Backup-Ziel Festlegen*.</block>
-  <block id="0e4dffadcdac4ac871fee08c9b43fc4e" category="section-title">Bearbeiten Sie die URIs eines Connectors</block>
   <block id="e2729464f9bccb35f8d10ba5019f3955" category="paragraph">Fügen Sie die URIs für einen Konnektor hinzu und entfernen Sie sie.</block>
   <block id="f59199a4e91ea99e7e6961a3fb8c39ad" category="list-text">Klicken Sie in der BlueXP-Kopfzeile auf das Dropdown-Menü *Connector*.</block>
   <block id="5e6a0548d1a9b870a897fd2b63da39c6" category="list-text">Klicken Sie Auf *Connectors Verwalten*.</block>
@@ -572,7 +571,6 @@
   <block id="82538689c7a66297973814120306d42f" category="section-title">Es wird nur ein HTTP-Proxyserver unterstützt</block>
   <block id="d4150be963d8e8a8648985d057b82c98" category="paragraph">Wenn Sie in Ihren Unternehmensrichtlinien einen Proxyserver für die gesamte HTTP-Kommunikation mit dem Internet verwenden müssen, müssen Sie Ihre Connectors so konfigurieren, dass sie diesen HTTP-Proxyserver verwenden. Der Proxyserver kann sich in der Cloud oder im Netzwerk befinden.</block>
   <block id="2b82837bf5cef64e65d0df717eafd918" category="paragraph">BlueXP unterstützt die Verwendung eines HTTPS-Proxys mit dem Connector nicht.</block>
-  <block id="e65172f12d5a004e18b6be974b9871c6" category="section-title">SSL-Entschlüsselung wird nicht unterstützt</block>
   <block id="5f06d23f83d6190c4d06ff980526b619" category="paragraph">BlueXP unterstützt keine Firewall-Konfigurationen, bei denen die SSL-Entschlüsselung aktiviert ist. Wenn die SSL-Entschlüsselung aktiviert ist, werden Fehlermeldungen in BlueXP angezeigt, und die Connector-Instanz wird als inaktiv angezeigt.</block>
   <block id="7bd92bd111bfbf23b12f73672eb0dd1c" category="inline-link-macro">Installieren eines von einer Zertifizierungsstelle (CA) signierten HTTPS-Zertifikats</block>
   <block id="c3ce271d53cbf6a7afd137a37f4ee8d6" category="paragraph">Um die Sicherheit zu erhöhen, haben Sie die Möglichkeit <block ref="11df3d19916b70ba1d82d33e876689bc" category="inline-link-macro-rx"></block>.</block>
@@ -1113,7 +1111,6 @@
   <block id="7d033896524ebe16495f74d9f7202783" category="paragraph"><block ref="cf2050a2914e59a752ab48465ba00e16" category="inline-link-macro-rx"></block>.</block>
   <block id="33e248648a845f8d6e538dfb02e4620f" category="list-text">Klicken Sie auf *Arbeitsbereiche verwalten* für den Konnektor, den Sie verknüpfen möchten.</block>
   <block id="211c1a963db0ec4433679bba9d1a1973" category="paragraph">Workspace-Administratoren können diese Anschlüsse jetzt verwenden, um Cloud Volumes ONTAP-Systeme zu erstellen.</block>
-  <block id="3f297ef15cde0668e93b35f2752fd4fd" category="section-title">Was kommt als Nächstes?</block>
   <block id="a85cd5dda897ee694c0a8a7ebe893293" category="inline-link-macro">Erfahren Sie, wie Sie Ihr Konto verwalten</block>
   <block id="e93366502d593964f54fa78a54256cef" category="paragraph">Nachdem Sie Ihr Konto eingerichtet haben, können Sie es jederzeit verwalten, indem Sie Benutzer entfernen, Arbeitsbereiche, Connectors und Abonnements verwalten. <block ref="4b4f4de61b1c0103e06c096d3b330838" category="inline-link-macro-rx"></block>.</block>
   <block id="efd9710de9c698fbbeb7b7b11597f70b" category="summary">Nach der Installation eines Connectors in AWS erkennt BlueXP automatisch Informationen zu den Amazon S3 Buckets, die sich im AWS Konto befinden, in dem der Connector installiert ist. Eine Amazon S3-Arbeitsumgebung wird dem Canvas hinzugefügt, damit Sie diese Informationen anzeigen können.</block>
@@ -1160,7 +1157,6 @@
   <block id="7d47c08c62bfd8717441ac37ee9dae9d" category="admonition">Wenn Sie Ihre erste Cloud Volumes ONTAP-Arbeitsumgebung erstellen, werden Sie von BlueXP aufgefordert, einen Konnektor zu erstellen, falls Sie noch keinen haben.</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="section-title">Schnellstart</block>
   <block id="91e06e9a9ef97681b798e2e5e007ba97" category="paragraph">Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den verbleibenden Abschnitten, um ausführliche Informationen zu erhalten.</block>
-  <block id="2e984b55a3264399d03f7fc4df06df78" category="list-title">&lt;span class=„image“&gt;&lt;img src=<block ref="0c3becc25d95e48b9ca863002a042824" category="inline-link-rx"></block> alt=„One“&gt;&lt;/span&gt; Berechtigungen einrichten</block>
   <block id="a4359ad4c0ffb5518aa6c64f29f02b5b" category="list-text">Stellen Sie sicher, dass Ihr Google Cloud-Konto über die richtigen Berechtigungen verfügt, indem Sie eine benutzerdefinierte Rolle erstellen und anhängen.</block>
   <block id="6e1d3688abed116ca1fcde1dce3ec4f4" category="paragraph"><block ref="68a9c9d924aeef1d7ada39f0d3540b49" category="inline-xref-macro-rx"></block>.</block>
   <block id="f3644ee5935c45fc9eda641aff25c872" category="list-text">Wenn Sie die Connector-VM erstellen, müssen Sie sie einem Servicekonto zuordnen. Dieses Servicekonto muss über eine benutzerdefinierte Rolle verfügen, die Berechtigungen zum Managen von Ressourcen in Google Cloud hat.</block>
@@ -1170,7 +1166,6 @@
   <block id="3d19b00e58ef1af50dd7a50cb57d2a9b" category="paragraph">Sie benötigen eine VPC und ein Subnetz mit Outbound-Internetzugang zu bestimmten Endpunkten. Wenn ein HTTP-Proxy für das ausgehende Internet erforderlich ist, benötigen Sie die IP-Adresse, die Anmeldeinformationen und das HTTPS-Zertifikat.</block>
   <block id="0adaf59e592ea102330ecf66723d01c0" category="inline-xref">Netzwerkanforderungen anzeigen</block>
   <block id="e18d3aaf46d9323ec3d44fd9d3878734" category="paragraph"><block ref="77e8c70950b7db505fe53c4bcd55f41a" category="inline-xref-macro-rx"></block>.</block>
-  <block id="ecd9b46cc61d7175d5da2c42f7b70152" category="list-title">&lt;span class=„image“&gt;&lt;img src=<block ref="ddd753dc2858fe3a5582f20b300a0541" category="inline-link-rx"></block> alt=„drei“&gt;&lt;/span&gt; Google Cloud APIs aktivieren</block>
   <block id="d82c8fcef9b6dd8fb6808c96dcbc5bb5" category="list-text">Cloud Deployment Manager V2-API</block>
   <block id="1439ef482dee1b1e4b2daac93de36c44" category="list-text">Cloud-ProtokollierungsAPI</block>
   <block id="9e636409b20980fb5089c87705851b4d" category="list-text">Cloud Resource Manager API</block>
@@ -1684,7 +1679,6 @@
   <block id="660b1fe0314b1f04b1a5427df89916e5" category="paragraph">Die Trennung der Verknüpfung eines Benutzers wird dadurch ermöglicht, dass er nicht mehr auf die Ressourcen eines NetApp Kontos zugreifen kann.</block>
   <block id="6bd6a4807d0f305654a405a52bb8f189" category="list-text">Klicken Sie zur Bestätigung auf *Benutzer entzuordnen* und klicken Sie zur Bestätigung auf *Mitarbeiter nicht zuordnen*.</block>
   <block id="7892544a93f2a4d39f1ef832ba4d1eff" category="paragraph">Der Anwender kann nicht mehr auf die Ressourcen in diesem NetApp Konto zugreifen.</block>
-  <block id="c467a2567dd5be7e777708d1616b892d" category="section-title">Arbeitsbereiche eines Arbeitsbereichs-Administrators verwalten</block>
   <block id="8ecff25aa4ee2497099b60f83bd4dde7" category="paragraph">Sie können Workspace-Administratoren jederzeit mit Arbeitsbereichen verknüpfen und sie ablösen. Durch die Verknüpfung des Benutzers können die Arbeitsumgebungen in diesem Arbeitsbereich erstellt und angezeigt werden.</block>
   <block id="9c3fb861370470582b50839e482bd5f9" category="list-text">Wählen Sie die Arbeitsbereiche aus, die dem Benutzer zugeordnet werden sollen, und klicken Sie auf *Anwenden*.</block>
   <block id="7ef475b3aa654a4c77b576b7b693b979" category="section-title">Erstellen und Verwalten von Servicekonten</block>
@@ -1724,7 +1718,6 @@
   <block id="e6b782b96ee9fd72a275037e1f900b6f" category="list-text">Klicken Sie auf *Neuen Arbeitsbereich hinzufügen*, um einen neuen Arbeitsbereich zu erstellen.</block>
   <block id="9606b9dd050f482ce022efaf9f3754c9" category="list-text">Klicken Sie auf *Umbenennen*, um den Arbeitsbereich umzubenennen.</block>
   <block id="ca4a2e09f147267af54ea5fd1d962c6a" category="list-text">Klicken Sie auf *Löschen*, um den Arbeitsbereich zu löschen.</block>
-  <block id="3bf33688db3de262b29d7aef6461deb2" category="section-title">Verwalten der Arbeitsbereiche eines Connectors</block>
   <block id="e98ed4965158505163fc6b7ffa9ba9b0" category="paragraph">Sie müssen den Connector mit Arbeitsbereichen verknüpfen, damit Workspace-Administratoren von BlueXP auf diese Arbeitsbereiche zugreifen können.</block>
   <block id="cda68882da0fbacdfcd7b3b52e15c47f" category="list-text">Wählen Sie die Arbeitsbereiche aus, die mit dem Connector verknüpft werden sollen, und klicken Sie auf *Anwenden*.</block>
   <block id="95a0841b9a7d083d0e92b10bbb2d9538" category="section-title">Verwalten von Abonnements</block>
@@ -2206,7 +2199,6 @@
   <block id="f6d4189bf00021bb75f4f2f5b11507bf" category="paragraph">Der Azure-Benutzer verfügt nun über die erforderlichen Berechtigungen für die Bereitstellung des Connectors von BlueXP.</block>
   <block id="d1935eb90cca6ebd3015d6f8e86defe1" category="section-title">Erstellen Sie den Connector, indem Sie sich mit Ihrem Azure Konto anmelden</block>
   <block id="6fa0787ae77e9d276706e7cfe71c89b0" category="paragraph">Mit BlueXP können Sie einen Connector in Azure direkt über die Benutzeroberfläche erstellen.</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">Was Sie und#8217;ll benötigen</block>
   <block id="cec61994be2c9633fc4acb202e4b9c41" category="list-text">Ein Azure Abonnement.</block>
   <block id="3c8e2502b00949bb2ead22830ddfa05d" category="list-text">Eine vnet und Subnetz in Ihrer bevorzugten Azure-Region.</block>
   <block id="bc3d26f932a03033b70d3ed650139a18" category="inline-link-macro">Verwenden der Richtlinie auf dieser Seite</block>
@@ -2685,7 +2677,6 @@
   <block id="b530111cab51b765877bc100b0a43e1f" category="list-text">*Review*: Lesen Sie die Details durch, akzeptieren Sie die Lizenzvereinbarung und klicken Sie dann auf *Einrichten*.</block>
   <block id="d847fd38c43b77f685712342ed5f2a9a" category="list-text">Melden Sie sich mit dem gerade erstellten Admin-Benutzer bei BlueXP an.</block>
   <block id="5ded89bfcfe21d36760adef8e81a559d" category="paragraph">Der Connector ist jetzt installiert und Sie können die BlueXP-Funktionen nutzen, die bei der Installation an dunklen Standorten verfügbar sind.</block>
-  <block id="7c3983f18df54b898b386f7cf4a7d05c" category="list-title">Was und#8217;s als Nächstes?</block>
   <block id="cc9787ce69467700348def59db8ff725" category="inline-link">Erkennen von On-Premises-ONTAP-Clustern</block>
   <block id="533c556705825be9a1a97d191373f80f" category="list-text"><block ref="533c556705825be9a1a97d191373f80f" category="inline-link-rx"></block></block>
   <block id="8160a46a5d4541efd7702f3fa8a2ecad" category="inline-link">Replizieren von Daten zwischen lokalen ONTAP Clustern</block>
@@ -2807,4 +2798,25 @@
   <block id="115781a0043a85f8707c5c99fd02dc75" category="paragraph">\https://cloudmanager.cloud.netapp.com</block>
   <block id="23486ca53d499245ebae5460cf6d10ad" category="paragraph">Um SaaS-Funktionen und -Services in BlueXP zur Verfügung zu stellen.</block>
   <block id="7eea1027ea51763c57b7b5965f1ba900" category="admonition">Der Connector kontaktiert derzeit „cloudmanager.cloud.netapp.com", er beginnt jedoch mit der Kontaktaufnahme mit „api.bluexp.netapp.com" in einer kommenden Version.</block>
+  <block id="ffe7522d9ea3d134eb0a945275d454d7" category="paragraph-title">Erforderliche Berechtigungen</block>
+  <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Ergebnis</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">Nachdem Sie fertig sind</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="list-title">Was Sie benötigen</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="paragraph-title">Bevor Sie beginnen</block>
+  <block id="1bc21092e961975ea4123f4414693f69" category="section-title">SSL-Entschlüsselung wird nicht unterstützt</block>
+  <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">Eins</block>
+  <block id="38850c0d5ada5706d4546808821a96d1" category="paragraph-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Richten Sie die Authentifizierung ein</block>
+  <block id="aada29daee1d64ed0fe907043855cb7e" category="inline-image-macro">Zwei</block>
+  <block id="0acd6f364c67bcef47587e5727525116" category="paragraph-title"><block ref="54f425ce8d89f4ed6b8a546561af5d60" category="inline-image-macro-rx" type="image"></block> Netzwerk einrichten</block>
+  <block id="ca8a2087e5557e317599344687a57391" category="inline-image-macro">Drittens</block>
+  <block id="aea46324800b152c6a50caff1d14e2fc" category="paragraph-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> Erstellen Sie den Konnektor</block>
+  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="paragraph-title">Was kommt als Nächstes?</block>
+  <block id="eb9bb09a006b6e7bcc7d0b9525344bcf" category="section-title">Bearbeiten Sie die URIs eines Connectors</block>
+  <block id="62804365dc8c62cf4546f894ddfc5e1c" category="list-title"><block ref="58f667aaf05f87159670e12bd9bc076b" category="inline-image-macro-rx" type="image"></block> Berechtigungen einrichten</block>
+  <block id="b74f07963110d8742672d27a25bb3383" category="list-title"><block ref="05b2444faffd66d76e88602ea7dd353f" category="inline-image-macro-rx" type="image"></block> Aktivieren Sie Google Cloud-APIs</block>
+  <block id="981b8fcee42e1e726a67a2b9a98ea6e9" category="inline-image-macro">Vier</block>
+  <block id="3b9dafc67ff049020d09b9ebd18aaa5d" category="paragraph-title"><block ref="beadfa85a2fdca06b91edc1131c603e6" category="inline-image-macro-rx" type="image"></block> Erstellen Sie den Konnektor</block>
+  <block id="5ccc745272c52ce1868d5bcf2b07705a" category="section-title">Arbeitsbereiche eines Arbeitsbereichs-Administrators verwalten</block>
+  <block id="1cf32fb78afaf111cd4c8421dc8592a6" category="section-title">Verwalten von Arbeitsumgebungen eines Connectors</block>
+  <block id="c558073ec27a1686dce5ebbe5da43092" category="paragraph-title">Anmeldeoptionen</block>
 </blocks>

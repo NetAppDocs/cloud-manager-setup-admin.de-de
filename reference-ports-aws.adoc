@@ -34,7 +34,7 @@ Für die AWS Sicherheitsgruppe für den Connector sind sowohl ein- als auch ausg
 | HTTPS | 443 | Bietet HTTPS-Zugriff von Client-Webbrowsern zur lokalen Benutzeroberfläche und Verbindungen aus der Cloud Data Sense Instanz 
 
 
-| TCP | 3128 | Ermöglicht Cloud Volumes ONTAP den Zugang zum Internet, um AutoSupport-Nachrichten an den NetApp Support zu senden. Nach der Bereitstellung müssen Sie diesen Port manuell öffnen.  server for AutoSupport messages,Erfahren Sie mehr über den Proxy-Server des Connectors. 
+| TCP | 3128 | Ermöglicht Cloud Volumes ONTAP den Zugang zum Internet, um AutoSupport-Nachrichten an den NetApp Support zu senden. Nach der Bereitstellung müssen Sie diesen Port manuell öffnen. <<Proxy server for AutoSupport messages,Erfahren Sie mehr über den Proxy-Server des Connectors>>. 
 
 
 | TCP | 9060 | Ermöglicht die Aktivierung und Nutzung von Cloud Data Sense und Cloud Backup in öffentlicher Cloud-Implementierungen. Dieser Port ist auch für Cloud Backup erforderlich, wenn Sie die SaaS-Schnittstelle in Ihrem BlueXP-Konto deaktivieren. 

@@ -34,7 +34,7 @@ Die Google Cloud Firewall-Regeln für den Connector erfordern sowohl ein- als au
 | HTTPS | 443 | Bietet HTTPS-Zugriff von Client-Webbrowsern auf die lokale Benutzeroberfläche 
 
 
-| TCP | 3128 | Ermöglicht Cloud Volumes ONTAP den Zugang zum Internet, um AutoSupport-Nachrichten an den NetApp Support zu senden. Nach der Bereitstellung müssen Sie diesen Port manuell öffnen.  server for AutoSupport messages,Erfahren Sie mehr über den Proxy-Server des Connectors. 
+| TCP | 3128 | Ermöglicht Cloud Volumes ONTAP den Zugang zum Internet, um AutoSupport-Nachrichten an den NetApp Support zu senden. Nach der Bereitstellung müssen Sie diesen Port manuell öffnen. <<Proxy server for AutoSupport messages,Erfahren Sie mehr über den Proxy-Server des Connectors>>. 
 |===
 
 

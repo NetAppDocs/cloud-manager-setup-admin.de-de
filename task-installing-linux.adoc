@@ -82,6 +82,7 @@ Der Host versucht möglicherweise, während der Installation Betriebssystempaket
 
 Nachdem Sie sich vergewissern, dass Sie über einen unterstützten Linux-Host verfügen, können Sie die Connector-Software erwerben und dann installieren.
 
+.Erforderliche Berechtigungen
 Zur Installation des Connectors sind Root-Berechtigungen erforderlich.
 
 .Über diese Aufgabe
@@ -151,8 +152,10 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm zu
 
 
 
+.Ergebnis
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen.
 
+.Nachdem Sie fertig sind
 Richten Sie Berechtigungen ein, damit BlueXP Ressourcen und Prozesse in Ihrer Public Cloud-Umgebung verwalten kann:
 
 * AWS, link:task-adding-aws-accounts.html["Richten Sie ein AWS-Konto ein und fügen Sie es dann BlueXP hinzu"]

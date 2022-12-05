@@ -18,6 +18,7 @@ summary: Über eine SaaS-basierte Benutzeroberfläche ist BlueXP über Ihren Web
 
 Wenn Sie über eine Regierungsregion oder eine Website ohne Outbound-Internetzugang auf BlueXP zugreifen, müssen Sie sich bei der BlueXP-Benutzeroberfläche anmelden, die lokal auf dem Connector ausgeführt wird. link:task-managing-connectors.html#access-the-local-ui["Erfahren Sie, wie Sie auf die lokale Benutzeroberfläche des Connectors zugreifen können"].
 
+.Anmeldeoptionen
 Sie können sich unter BlueXP mit einer der folgenden Optionen anmelden:
 
 * Ihre vorhandenen Zugangsdaten für die NetApp Support Site (NSS
@@ -59,4 +60,5 @@ Nachdem Sie sich angemeldet haben, erhalten Sie eine E-Mail von NetApp. Klicken 
 
 
 
+.Ergebnis
 Sie sind jetzt angemeldet und können mit BlueXP Ihre Hybrid-Multi-Cloud-Infrastruktur managen.

@@ -24,11 +24,11 @@ AWS Zugangsdaten können zu einem vorhandenen Connector oder direkt zu BlueXP hi
 
 * Fügen Sie einem vorhandenen Connector zusätzliche AWS Zugangsdaten hinzu
 +
-Wenn Sie einem vorhandenen Connector AWS Zugangsdaten hinzufügen, erhalten Sie die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen in Ihrer Public-Cloud-Umgebung.  credentials to a Connector,Erfahren Sie, wie Sie AWS Zugangsdaten zu einem Connector hinzufügen.
+Wenn Sie einem vorhandenen Connector AWS Zugangsdaten hinzufügen, erhalten Sie die erforderlichen Berechtigungen für das Management von Ressourcen und Prozessen in Ihrer Public-Cloud-Umgebung. <<Anmeldedaten zu einem Konnektor hinzufügen,Erfahren Sie, wie Sie AWS Zugangsdaten zu einem Connector hinzufügen>>.
 
 * Fügen Sie zur Erstellung eines Connectors AWS Credentials zu BlueXP hinzu
 +
-Wenn Sie BlueXP neue AWS-Anmeldeinformationen hinzufügen, erhalten Sie mit BlueXP die erforderlichen Berechtigungen zum Erstellen eines Connectors.  credentials to BlueXP for creating a Connector,Erfahren Sie, wie Sie AWS Zugangsdaten zu BlueXP hinzufügen.
+Wenn Sie BlueXP neue AWS-Anmeldeinformationen hinzufügen, erhalten Sie mit BlueXP die erforderlichen Berechtigungen zum Erstellen eines Connectors. <<Fügen Sie für die Erstellung eines Connectors Anmeldeinformationen zu BlueXP hinzu,Erfahren Sie, wie Sie AWS Zugangsdaten zu BlueXP hinzufügen>>.
 
 * Fügen Sie AWS Credentials zu BlueXP für FSX für ONTAP hinzu
 +
@@ -63,8 +63,8 @@ NOTE: Wenn Sie einen Connector von BlueXP bereitgestellt haben, hat BlueXP autom
 
 *Auswahl*
 
-*  permissions by assuming an IAM role in another account
-*  permissions by providing AWS keys
+* <<Erteilen Sie Berechtigungen, indem Sie eine IAM-Rolle in einem anderen Konto übernehmen>>
+* <<Erteilen Sie Berechtigungen durch die Bereitstellung von AWS Schlüsseln>>
 
 
 
@@ -88,7 +88,8 @@ Gehen Sie wie folgt vor:
 . Kopieren Sie die Rolle ARN der IAM-Rolle, damit Sie sie später in BlueXP einfügen können.
 
 
-Das Konto verfügt nun über die erforderlichen Berechtigungen. ,Sie können die Anmeldeinformationen jetzt einem Connector hinzufügen.
+.Ergebnis
+Das Konto verfügt nun über die erforderlichen Berechtigungen. <<add-the-credentials,Sie können die Anmeldeinformationen jetzt einem Connector hinzufügen>>.
 
 
 
@@ -109,7 +110,8 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html["AW
 
 
 
-Das Konto verfügt nun über die erforderlichen Berechtigungen. ,Sie können die Anmeldeinformationen jetzt einem Connector hinzufügen.
+.Ergebnis
+Das Konto verfügt nun über die erforderlichen Berechtigungen. <<add-the-credentials,Sie können die Anmeldeinformationen jetzt einem Connector hinzufügen>>.
 
 
 
@@ -117,6 +119,7 @@ Das Konto verfügt nun über die erforderlichen Berechtigungen. ,Sie können die
 
 Nachdem Sie ein AWS Konto mit den erforderlichen Berechtigungen bereitgestellt haben, können Sie die Anmeldedaten für dieses Konto einem bestehenden Connector hinzufügen. Damit können Sie Cloud Volumes ONTAP-Systeme in diesem Konto mit demselben Connector starten.
 
+.Bevor Sie beginnen
 Falls Sie diese Zugangsdaten gerade bei Ihrem Cloud-Provider erstellt haben, kann es einige Minuten dauern, bis sie zur Verwendung verfügbar sind. Warten Sie einige Minuten, bevor Sie BlueXP die Anmeldeinformationen hinzufügen.
 
 .Schritte
@@ -138,6 +141,7 @@ Damit Cloud Volumes ONTAP mit stündlichem Tarif (PAYGO) oder mit einem Jahresve
 
 
 
+.Ergebnis
 Sie können jetzt bei der Erstellung einer neuen Arbeitsumgebung auf eine andere Gruppe von Anmeldeinformationen von der Seite Details und Anmeldeinformationen wechseln:
 
 image:screenshot_accounts_switch_aws.png["Ein Screenshot, in dem die Auswahl zwischen Cloud-Provider-Konten angezeigt wird, nachdem Sie auf der Seite Details  Credentials auf Switch Account geklickt haben."]
@@ -174,7 +178,8 @@ Gehen Sie wie folgt vor:
 . Kopieren Sie die Rolle ARN der IAM-Rolle, sodass Sie sie im nächsten Schritt in BlueXP einfügen können.
 
 
-Die IAM-Rolle verfügt nun über die erforderlichen Berechtigungen. ,Sie können es jetzt zu BlueXP hinzufügen.
+.Ergebnis
+Die IAM-Rolle verfügt nun über die erforderlichen Berechtigungen. <<add-the-credentials-2,Sie können es jetzt zu BlueXP hinzufügen>>.
 
 
 
@@ -182,6 +187,7 @@ Die IAM-Rolle verfügt nun über die erforderlichen Berechtigungen. ,Sie können
 
 Nachdem Sie die IAM-Rolle mit den erforderlichen Berechtigungen angegeben haben, fügen Sie die Rolle ARN zu BlueXP hinzu.
 
+.Bevor Sie beginnen
 Wenn Sie gerade die IAM-Rolle erstellt haben, kann es ein paar Minuten dauern, bis sie zur Verwendung verfügbar sind. Warten Sie einige Minuten, bevor Sie BlueXP die Anmeldeinformationen hinzufügen.
 
 .Schritte
@@ -198,6 +204,7 @@ image:screenshot_settings_icon.gif["Ein Screenshot, in dem das Symbol Einstellun
 
 
 
+.Ergebnis
 Sie können die Anmeldeinformationen jetzt beim Erstellen eines neuen Connectors verwenden.
 
 
@@ -212,6 +219,7 @@ Es gibt zwei Szenarien, in denen Sie ein AWS Marketplace-Abonnement verknüpfen 
 * Sie möchten ein vorhandenes AWS Marketplace Abonnement durch ein neues Abonnement ersetzen.
 
 
+.Was Sie benötigen
 Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie, wie Sie einen Konnektor erstellen"].
 
 .Schritte

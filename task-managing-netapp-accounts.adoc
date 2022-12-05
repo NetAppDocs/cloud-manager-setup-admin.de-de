@@ -64,6 +64,7 @@ image:screenshot_associate_user.gif["Ein Screenshot, der zeigt, wie ein Benutzer
 . Klicken Sie Auf *Mitarbeiter*.
 
 
+.Ergebnis
 Der Benutzer sollte eine E-Mail von NetApp BlueXP mit dem Titel „Account Association“ erhalten. Die E-Mail enthält die Informationen, die für den Zugriff auf BlueXP erforderlich sind.
 
 
@@ -84,6 +85,7 @@ image:screenshot_associate_user_workspace.png["Ein Screenshot, der das Aktionsme
 . Klicken Sie zur Bestätigung auf *Benutzer entzuordnen* und klicken Sie zur Bestätigung auf *Mitarbeiter nicht zuordnen*.
 
 
+.Ergebnis
 Der Anwender kann nicht mehr auf die Ressourcen in diesem NetApp Konto zugreifen.
 
 
@@ -105,6 +107,7 @@ image:screenshot_associate_user_workspace.png["Ein Screenshot, der das Aktionsme
 . Wählen Sie die Arbeitsbereiche aus, die dem Benutzer zugeordnet werden sollen, und klicken Sie auf *Anwenden*.
 
 
+.Ergebnis
 Der Benutzer kann jetzt von BlueXP auf diese Arbeitsbereiche zugreifen, solange der Connector auch mit den Arbeitsbereichen verknüpft war.
 
 
@@ -220,7 +223,7 @@ Verwalten Sie Ihre Arbeitsbereiche, indem Sie sie erstellen, umbenennen und lös
 
 
 
-== Verwalten der Arbeitsbereiche eines Connectors
+== Verwalten von Arbeitsumgebungen eines Connectors
 
 Sie müssen den Connector mit Arbeitsbereichen verknüpfen, damit Workspace-Administratoren von BlueXP auf diese Arbeitsbereiche zugreifen können.
 

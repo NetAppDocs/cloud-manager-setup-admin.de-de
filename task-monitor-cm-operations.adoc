@@ -50,7 +50,7 @@ Sie können die Benachrichtigungen anzeigen, indem Sie auf die Benachrichtigungs
 
 image:screenshot_notification_full.png["Ein Screenshot mit einer Liste aktueller Benachrichtigungen im Benachrichtigungszentrum."]
 
-Außerdem können Sie BlueXP so konfigurieren, dass Benachrichtigungen per E-Mail versendet werden, damit Sie auch dann über wichtige Systemaktivitäten informiert werden können, wenn Sie nicht am System angemeldet sind. E-Mails können an alle Benutzer gesendet werden, die Teil Ihres NetApp Cloud Kontos sind, oder an andere Empfänger, die bestimmte Arten von Systemaktivitäten kennen müssen. Siehe  email notification settings,Einstellen der Einstellungen für E-Mail-Benachrichtigungen Unten.
+Außerdem können Sie BlueXP so konfigurieren, dass Benachrichtigungen per E-Mail versendet werden, damit Sie auch dann über wichtige Systemaktivitäten informiert werden können, wenn Sie nicht am System angemeldet sind. E-Mails können an alle Benutzer gesendet werden, die Teil Ihres NetApp Cloud Kontos sind, oder an andere Empfänger, die bestimmte Arten von Systemaktivitäten kennen müssen. Siehe <<Einstellen der Einstellungen für E-Mail-Benachrichtigungen,Einstellen der Einstellungen für E-Mail-Benachrichtigungen>> Unten.
 
 
 
@@ -160,4 +160,5 @@ Das Prüfen der Zeitleiste kann hilfreich sein, wenn Sie feststellen müssen, we
 . Klicken Sie unter Filter auf *Service*, aktivieren Sie *Tenancy* und klicken Sie auf *Apply*.
 
 
+.Ergebnis
 Die Zeitleiste wird aktualisiert, um Ihnen Aktionen zur Kontoverwaltung anzuzeigen.

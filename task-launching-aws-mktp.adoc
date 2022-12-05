@@ -25,6 +25,7 @@ TIP: Sie können die Connector-Software auch auf einem bestehenden Linux-Host in
 
 Sie können die Connector-Instanz direkt aus dem AWS Marketplace-Angebot für BlueXP in einer kommerziellen AWS-Region starten.
 
+.Bevor Sie beginnen
 Der IAM-Benutzer, der den Connector erstellt, muss über AWS Marketplace-Berechtigungen zum Abonnieren und Abbestellen verfügen.
 
 .Schritte
@@ -87,6 +88,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Co
 . Öffnen Sie einen Webbrowser, und gehen Sie zu https://console.bluexp.netapp.com[] Um den Connector mit BlueXP zu verwenden.
 
 
+.Ergebnis
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun link:task-managing-connectors.html["Wechseln Sie zwischen ihnen"].
 
 Wenn Sie Amazon S3 Buckets im gleichen AWS-Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Amazon S3-Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-amazon-s3.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].
@@ -155,6 +157,7 @@ image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Co
 
 
 
+.Ergebnis
 Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet.
 
 Wenn Sie BlueXP verwenden möchten, öffnen Sie Ihren Webbrowser und stellen Sie eine Verbindung zur IP-Adresse der Connector-Instanz her: https://_ipaddress_[]

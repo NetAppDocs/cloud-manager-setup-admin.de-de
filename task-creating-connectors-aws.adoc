@@ -26,23 +26,26 @@ Diese Schritte müssen von einem Benutzer ausgeführt werden, der die Rolle „A
 
 Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den verbleibenden Abschnitten, um ausführliche Informationen zu erhalten.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"] Richten Sie die Authentifizierung ein
 [role="quick-margin-para"]
 Um den Connector in AWS zu starten, muss BlueXP sich mit AWS authentifizieren, indem er entweder eine IAM-Rolle übernimmt oder AWS-Zugriffsschlüssel verwendet. Bei beiden Optionen ist eine IAM-Richtlinie erforderlich.
 
 [role="quick-margin-para"]
- an IAM policy,IAM-Rolle anzeigen Oder  up AWS authentication,Befolgen Sie die Schritt-für-Schritt-Anweisungen.
+<<IAM-Richtlinie erstellen,IAM-Rolle anzeigen>> Oder <<AWS-Authentifizierung einrichten,Befolgen Sie die Schritt-für-Schritt-Anweisungen>>.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"] Netzwerk einrichten
 [role="quick-margin-para"]
 Sie benötigen eine VPC und ein Subnetz mit Outbound-Internetzugang zu bestimmten Endpunkten. Wenn ein HTTP-Proxy für das ausgehende Internet erforderlich ist, benötigen Sie die IP-Adresse, die Anmeldeinformationen und das HTTPS-Zertifikat.
 
 [role="quick-margin-para"]
- up networking,Netzwerkanforderungen anzeigen.
+<<Netzwerk einrichten,Netzwerkanforderungen anzeigen>>.
 
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drittens"] Erstellen Sie den Konnektor
 [role="quick-margin-para"]
 Klicken Sie auf das Dropdown-Menü Connector, wählen Sie *Anschluss hinzufügen* aus, und folgen Sie den Anweisungen.
 
 [role="quick-margin-para"]
- a Connector,Befolgen Sie die Schritt-für-Schritt-Anweisungen.
+<<Einen Konnektor erstellen,Befolgen Sie die Schritt-für-Schritt-Anweisungen>>.
 
 
 
@@ -145,6 +148,7 @@ Wenn BlueXP den Connector erstellt, wendet er eine neue Reihe von Berechtigungen
 . Klicken Sie auf *Create Policy*.
 
 
+.Was kommt als Nächstes?
 Hängen Sie die Richtlinie entweder an eine IAM-Rolle an, die BlueXP übernehmen kann, oder an einen IAM-Benutzer.
 
 
@@ -168,6 +172,7 @@ Gehen Sie wie folgt vor:
 . Nachdem Sie die Rolle erstellt haben, kopieren Sie die Rolle ARN, sodass Sie sie bei der Erstellung des Connectors in BlueXP einfügen können.
 
 
+.Ergebnis
 Die IAM-Rolle verfügt nun über die erforderlichen Berechtigungen.
 
 
@@ -184,6 +189,7 @@ Wenn Sie einen Connector erstellen, können Sie einen AWS-Zugriffsschlüssel und
 . Stellen Sie sicher, dass Sie Zugriff auf einen Zugriffsschlüssel und einen geheimen Schlüssel für den IAM-Benutzer haben.
 
 
+.Ergebnis
 Der AWS-Benutzer verfügt nun über die erforderlichen Berechtigungen, um den Connector von BlueXP zu erstellen. Wenn Sie dazu aufgefordert werden, müssen Sie die AWS-Zugriffsschlüssel für diesen Benutzer angeben.
 
 
@@ -303,6 +309,7 @@ Die Instanz sollte in ca. 7 Minuten fertig sein. Sie sollten auf der Seite bleib
 
 
 
+.Nachdem Sie fertig sind
 Wenn Sie Amazon S3 Buckets im gleichen AWS-Konto haben, in dem Sie den Connector erstellt haben, wird automatisch eine Amazon S3-Arbeitsumgebung auf dem Canvas angezeigt. link:task-viewing-amazon-s3.html["Erfahren Sie mehr darüber, was Sie mit dieser Arbeitsumgebung tun können"].
 
 
