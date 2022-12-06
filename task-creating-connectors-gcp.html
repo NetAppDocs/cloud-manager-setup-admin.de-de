@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-05 22:32:24 +0000">12/05/2022</time>
+    <time datetime="2022-12-06 09:42:34 +0000">12/06/2022</time>
     
   
 
@@ -1457,45 +1457,38 @@ Wenn Sie Ihre erste Cloud Volumes ONTAP-Arbeitsumgebung erstellen, werden Sie vo
 <div class="paragraph">
 <p>Führen Sie diese Schritte schnell durch, oder scrollen Sie nach unten zu den verbleibenden Abschnitten, um ausführliche Informationen zu erhalten.</p>
 </div>
-<div class="ulist">
-<div class="title">&lt;span class=„image“&gt;&lt;img src="<a href="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"" class="bare">https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png"</a> alt=„One“&gt;&lt;/span&gt; Berechtigungen einrichten</div>
+<div class="ulist quick-margin-list">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png" alt="Eins"></span> Berechtigungen einrichten</div>
 <ul>
 <li>
 <p>Stellen Sie sicher, dass Ihr Google Cloud-Konto über die richtigen Berechtigungen verfügt, indem Sie eine benutzerdefinierte Rolle erstellen und anhängen.</p>
-<div class="literalblock">
-<div class="content">
-<pre>up permissions to deploy the Connector.</pre>
-</div>
+<div class="paragraph">
+<p><a href="#richten-sie-berechtigungen-für-die-bereitstellung-des-connectors-ein">Richten Sie Berechtigungen für die Bereitstellung des Connectors ein</a>.</p>
 </div>
 </li>
 <li>
 <p>Wenn Sie die Connector-VM erstellen, müssen Sie sie einem Servicekonto zuordnen. Dieses Servicekonto muss über eine benutzerdefinierte Rolle verfügen, die Berechtigungen zum Managen von Ressourcen in Google Cloud hat.</p>
-<div class="literalblock">
-<div class="content">
-<pre>up a service account for the Connector.</pre>
-</div>
+<div class="paragraph">
+<p><a href="#richten-sie-ein-servicekonto-für-den-konnektor-ein">Richten Sie ein Servicekonto für den Konnektor ein</a>.</p>
 </div>
 </li>
 <li>
 <p>Wenn Sie eine gemeinsame VPC verwenden, legen Sie Berechtigungen im Service-Projekt und im Host-Projekt ein.</p>
-<div class="literalblock">
-<div class="content">
-<pre>up shared VPC permissions.</pre>
-</div>
+<div class="paragraph">
+<p><a href="#gemeinsame-vpc-berechtigungen-einrichten">Gemeinsame VPC-Berechtigungen einrichten</a>.</p>
 </div>
 </li>
 </ul>
 </div>
 <div class="paragraph quick-margin-para">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png" alt="Zwei"></span> Netzwerk einrichten</div>
 <p>Sie benötigen eine VPC und ein Subnetz mit Outbound-Internetzugang zu bestimmten Endpunkten. Wenn ein HTTP-Proxy für das ausgehende Internet erforderlich ist, benötigen Sie die IP-Adresse, die Anmeldeinformationen und das HTTPS-Zertifikat.</p>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>up networking,Netzwerkanforderungen anzeigen.</pre>
+<div class="paragraph quick-margin-para">
+<p><a href="#netzwerk-einrichten">Netzwerkanforderungen anzeigen</a>.</p>
 </div>
-</div>
-<div class="ulist">
-<div class="title">&lt;span class=„image“&gt;&lt;img src="<a href="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"" class="bare">https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png"</a> alt=„drei“&gt;&lt;/span&gt; Google Cloud APIs aktivieren</div>
+<div class="ulist quick-margin-list">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png" alt="Drittens"></span> Aktivieren Sie Google Cloud-APIs</div>
 <ul>
 <li>
 <p>Cloud Deployment Manager V2-API</p>
@@ -1515,12 +1508,11 @@ Wenn Sie Ihre erste Cloud Volumes ONTAP-Arbeitsumgebung erstellen, werden Sie vo
 </ul>
 </div>
 <div class="paragraph quick-margin-para">
+<div class="title"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png" alt="Vier"></span> Erstellen Sie den Konnektor</div>
 <p>Klicken Sie auf das Dropdown-Menü Connector, wählen Sie <strong>Anschluss hinzufügen</strong> aus, und folgen Sie den Anweisungen.</p>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>a Connector,Befolgen Sie die Schritt-für-Schritt-Anweisungen.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="#einen-konnektor-erstellen">Befolgen Sie die Schritt-für-Schritt-Anweisungen</a>.</p>
 </div>
 </div>
 </div>
@@ -1624,6 +1616,7 @@ includedPermissions:
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Der Google Cloud-Nutzer hat jetzt die erforderlichen Berechtigungen zum Erstellen des Connectors.</p>
 </div>
 </div>
@@ -1750,6 +1743,7 @@ includedPermissions:
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Das Servicekonto für die Connector-VM wird eingerichtet.</p>
 </div>
 </div>
@@ -2257,6 +2251,7 @@ Wenn der Befehl ausgeführt wird, wird der Connector mit dem Golden Image von Ne
 </div>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Der Connector ist jetzt mit Ihrem NetApp Konto installiert und eingerichtet. BlueXP verwendet diesen Connector automatisch, wenn Sie neue Arbeitsumgebungen erstellen. Aber wenn Sie mehr als einen Connector haben, müssen Sie dies tun <a href="task-managing-connectors.html">"Wechseln Sie zwischen ihnen"</a>.</p>
 </div>
 <div class="paragraph">

@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-05 22:32:24 +0000">12/05/2022</time>
+    <time datetime="2022-12-06 09:42:34 +0000">12/06/2022</time>
     
   
 
@@ -1452,18 +1452,14 @@
 <ol class="arabic">
 <li>
 <p>Melden Sie sich bei Aufforderung mit Ihrem Microsoft-Konto an. Dieses Konto muss über spezifische Azure Berechtigungen verfügen. Dies ist die Standardoption.</p>
-<div class="literalblock">
-<div class="content">
-<pre>a Connector using your Azure account,Führen Sie die nachstehenden Schritte aus, um zu starten.</pre>
-</div>
+<div class="paragraph">
+<p><a href="#erstellen-sie-mit-ihrem-azure-konto-einen-connector">Führen Sie die nachstehenden Schritte aus, um zu starten</a>.</p>
 </div>
 </li>
 <li>
 <p>Geben Sie Details zu einem Azure AD-Serviceprincipal an. Dieser Service-Principal erfordert auch spezielle Berechtigungen.</p>
-<div class="literalblock">
-<div class="content">
-<pre>a Connector using a service principal,Führen Sie die nachstehenden Schritte aus, um zu starten.</pre>
-</div>
+<div class="paragraph">
+<p><a href="#erstellen-sie-einen-konnektor-mithilfe-eines-service-principal">Führen Sie die nachstehenden Schritte aus, um zu starten</a>.</p>
 </div>
 </li>
 </ol>
@@ -1778,6 +1774,7 @@ Azure SetupAsService ist der Standardname, der in der Connector Deployment Polic
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Der Azure-Benutzer verfügt nun über die erforderlichen Berechtigungen für die Bereitstellung des Connectors von BlueXP.</p>
 </div>
 </div>
@@ -1787,7 +1784,7 @@ Azure SetupAsService ist der Standardname, der in der Connector Deployment Polic
 <p>Mit BlueXP können Sie einen Connector in Azure direkt über die Benutzeroberfläche erstellen.</p>
 </div>
 <div class="ulist">
-<div class="title">Was Sie und#8217;ll benötigen</div>
+<div class="title">Was Sie benötigen</div>
 <ul>
 <li>
 <p>Ein Azure Abonnement.</p>
@@ -1884,6 +1881,7 @@ Wenn Sie bereits bei einem Azure-Konto angemeldet sind, nutzt BlueXP das Konto a
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Nachdem Sie fertig sind</div>
 <p>Sie müssen einen Connector mit Arbeitsbereichen verknüpfen, damit Arbeitsbereichsadministratoren diese Connectors zum Erstellen von Cloud Volumes ONTAP-Systemen verwenden können. Wenn Sie nur Kontoadministratoren haben, ist es nicht erforderlich, den Connector mit Arbeitsbereichen zu verknüpfen. Kontoadministratoren haben standardmäßig die Möglichkeit, auf alle Arbeitsbereiche in BlueXP zuzugreifen. <a href="task-setting-up-netapp-accounts.html#associating-connectors-with-workspaces">"Weitere Informationen ."</a>.</p>
 </div>
 <div class="paragraph">
@@ -1907,19 +1905,19 @@ Wenn Sie bereits bei einem Azure-Konto angemeldet sind, nutzt BlueXP das Konto a
 <div class="title">Schritte</div>
 <ol class="arabic">
 <li>
-<p>an Azure Active Directory application.</p>
+<p><a href="#erstellen-sie-eine-azure-active-directory-anwendung">Erstellen Sie eine Azure Active Directory-Anwendung</a>.</p>
 </li>
 <li>
-<p>the application to a role.</p>
+<p><a href="#anwendung-einer-rolle-zuweisen">Anwendung einer Rolle zuweisen</a>.</p>
 </li>
 <li>
-<p>Windows Azure Service Management API permissions.</p>
+<p><a href="#fügen-sie-windows-azure-service-management-api-berechtigungen-hinzu">Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu</a>.</p>
 </li>
 <li>
-<p>the application ID and directory ID.</p>
+<p><a href="#holen-sie-die-anwendungs-id-und-die-verzeichnis-id-ab">Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab</a>.</p>
 </li>
 <li>
-<p>a client secret.</p>
+<p><a href="#erstellen-sie-einen-clientschlüssel">Erstellen Sie einen Clientschlüssel</a>.</p>
 </li>
 </ol>
 </div>
@@ -1929,6 +1927,7 @@ Wenn Sie bereits bei einem Azure-Konto angemeldet sind, nutzt BlueXP das Konto a
 <p>Erstellen Sie eine Applikation und einen Service-Principal für Azure Active Directory (AD), die BlueXP zur Bereitstellung des Connectors verwenden kann.</p>
 </div>
 <div class="paragraph">
+<div class="title">Bevor Sie beginnen</div>
 <p>Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/" target="_blank" rel="noopener">"Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"</a>.</p>
 </div>
 <div class="olist arabic">
@@ -1968,6 +1967,7 @@ Wenn Sie bereits bei einem Azure-Konto angemeldet sind, nutzt BlueXP das Konto a
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Sie haben die AD-Anwendung und den Service-Principal erstellt.</p>
 </div>
 </div>
@@ -2254,6 +2254,7 @@ Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector 
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in BlueXP eingeben, wenn Sie den Connector erstellen.</p>
 </div>
 </div>
@@ -2264,7 +2265,7 @@ Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector 
 <p>Mit BlueXP können Sie einen Connector in Azure direkt über die Benutzeroberfläche erstellen.</p>
 </div>
 <div class="ulist">
-<div class="title">Was Sie und#8217;ll benötigen</div>
+<div class="title">Was Sie benötigen</div>
 <ul>
 <li>
 <p>Ein Azure Abonnement.</p>
@@ -2317,13 +2318,13 @@ Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector 
 <div class="ulist">
 <ul>
 <li>
-<p>Anwendungs-ID (Client): Siehe  the application ID and directory ID.</p>
+<p>Anwendungs-ID (Client): Siehe <a href="#holen-sie-die-anwendungs-id-und-die-verzeichnis-id-ab">Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab</a>.</p>
 </li>
 <li>
-<p>Verzeichnis-ID (Mandant): Siehe  the application ID and directory ID.</p>
+<p>Verzeichnis-ID (Mandant): Siehe <a href="#holen-sie-die-anwendungs-id-und-die-verzeichnis-id-ab">Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab</a>.</p>
 </li>
 <li>
-<p>Client Secret: Siehe  a client secret.</p>
+<p>Client Secret: Siehe <a href="#erstellen-sie-einen-clientschlüssel">Erstellen Sie einen Clientschlüssel</a>.</p>
 </li>
 </ul>
 </div>
@@ -2381,6 +2382,7 @@ Diese Richtlinie enthält nur die Berechtigungen, die zum Starten der Connector 
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Nachdem Sie fertig sind</div>
 <p>Sie müssen einen Connector mit Arbeitsbereichen verknüpfen, damit Arbeitsbereichsadministratoren diese Connectors zum Erstellen von Cloud Volumes ONTAP-Systemen verwenden können. Wenn Sie nur Kontoadministratoren haben, ist es nicht erforderlich, den Connector mit Arbeitsbereichen zu verknüpfen. Kontoadministratoren haben standardmäßig die Möglichkeit, auf alle Arbeitsbereiche in BlueXP zuzugreifen. <a href="task-setting-up-netapp-accounts.html#associating-connectors-with-workspaces">"Weitere Informationen ."</a>.</p>
 </div>
 <div class="paragraph">

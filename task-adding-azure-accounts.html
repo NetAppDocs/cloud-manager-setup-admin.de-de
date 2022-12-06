@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-17 05:22:16 +0000">11/17/2022</time>
+    <time datetime="2022-12-06 09:42:34 +0000">12/06/2022</time>
     
   
 
@@ -1453,6 +1453,7 @@
 <p>Mit BlueXP können Sie die Azure Zugangsdaten und das Azure Abonnement auswählen, in dem Sie Cloud Volumes ONTAP bereitstellen möchten. Sie können kein anderes Azure-Abonnement für das verwaltete Identitätsprofil auswählen, es sei denn, Sie verknüpfen das <a href="https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview" target="_blank" rel="noopener">"Verwaltete Identität"</a> Mit diesen Abonnements.</p>
 </div>
 <div class="paragraph">
+<div class="title">Über diese Aufgabe</div>
 <p>Eine verwaltete Identität ist <a href="concept-accounts-azure.html">"Zunächst das Azure-Konto"</a> Wenn Sie einen Connector von BlueXP bereitstellen. Wenn Sie den Connector bereitgestellt haben, hat BlueXP die Rolle BlueXP Operator erstellt und der virtuellen Connector-Maschine zugewiesen.</p>
 </div>
 <div class="olist arabic">
@@ -1511,6 +1512,7 @@ BlueXP Operator ist der Standardname, der in der Connector-Richtlinie angegeben 
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Wenn Sie eine neue Arbeitsumgebung erstellen, sollten Sie nun über mehrere Azure-Abonnements für das verwaltete Identitätsprofil verfügen.</p>
 </div>
 <div class="paragraph">
@@ -1545,6 +1547,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 <p>Für Aktionen in Azure benötigt BlueXP Berechtigungen. Sie können einem Azure-Konto die erforderlichen Berechtigungen erteilen, indem Sie einen Service-Principal in Azure Active Directory erstellen und einrichten, sowie die für BlueXP erforderlichen Azure Zugangsdaten erhalten.</p>
 </div>
 <div class="paragraph">
+<div class="title">Über diese Aufgabe</div>
 <p>Die folgende Abbildung zeigt, wie BlueXP Berechtigungen zur Durchführung von Operationen in Azure erhält. Ein Service-Principal-Objekt, das an ein oder mehrere Azure-Abonnements gebunden ist, repräsentiert BlueXP in Azure Active Directory und wird einer benutzerdefinierten Rolle zugewiesen, die die erforderlichen Berechtigungen zulässt.</p>
 </div>
 <div class="paragraph">
@@ -1554,19 +1557,19 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 <div class="title">Schritte</div>
 <ol class="arabic">
 <li>
-<p>an Azure Active Directory application,Erstellen Sie eine Azure Active Directory-Anwendung.</p>
+<p><a href="#erstellen-einer-azure-active-directory-anwendung">Erstellen Sie eine Azure Active Directory-Anwendung</a>.</p>
 </li>
 <li>
-<p>the application to a role,Anwendung einer Rolle zuweisen.</p>
+<p><a href="#anwendung-einer-rolle-zuweisen">Anwendung einer Rolle zuweisen</a>.</p>
 </li>
 <li>
-<p>Windows Azure Service Management API permissions,Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu.</p>
+<p><a href="#windows-azure-service-management-api-berechtigungen-werden-hinzugefügt">Fügen Sie Windows Azure Service Management-API-Berechtigungen hinzu</a>.</p>
 </li>
 <li>
-<p>the application ID and directory ID,Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab.</p>
+<p><a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Holen Sie die Anwendungs-ID und die Verzeichnis-ID ab</a>.</p>
 </li>
 <li>
-<p>a client secret,Erstellen Sie einen Clientschlüssel.</p>
+<p><a href="#erstellen-eines-clientgeheimnisses">Erstellen Sie einen Clientschlüssel</a>.</p>
 </li>
 </ol>
 </div>
@@ -1576,6 +1579,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 <p>Erstellen Sie eine Applikation und einen Service-Principal für Azure Active Directory (AD), die BlueXP für die rollenbasierte Zugriffssteuerung verwenden kann.</p>
 </div>
 <div class="paragraph">
+<div class="title">Bevor Sie beginnen</div>
 <p>Sie müssen über die richtigen Berechtigungen in Azure verfügen, um eine Active Directory-Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/" target="_blank" rel="noopener">"Microsoft Azure-Dokumentation: Erforderliche Berechtigungen"</a>.</p>
 </div>
 <div class="olist arabic">
@@ -1615,6 +1619,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Sie haben die AD-Anwendung und den Service-Principal erstellt.</p>
 </div>
 </div>
@@ -1830,6 +1835,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Ihr Service-Principal ist jetzt eingerichtet und Sie sollten die Anwendungs- (Client-)ID, die Verzeichnis- (Mandanten-)ID und den Wert des Clientgeheimnisses kopiert haben. Sie müssen diese Informationen in BlueXP eingeben, wenn Sie ein Azure-Konto hinzufügen.</p>
 </div>
 </div>
@@ -1840,9 +1846,11 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 <p>Nachdem Sie ein Azure-Konto mit den erforderlichen Berechtigungen angegeben haben, können Sie die Anmeldedaten für dieses Konto bei BlueXP hinzufügen. Durch diesen Schritt können Sie Cloud Volumes ONTAP mit unterschiedlichen Azure Zugangsdaten starten.</p>
 </div>
 <div class="paragraph">
+<div class="title">Bevor Sie beginnen</div>
 <p>Falls Sie diese Zugangsdaten gerade bei Ihrem Cloud-Provider erstellt haben, kann es einige Minuten dauern, bis sie zur Verwendung verfügbar sind. Warten Sie einige Minuten, bevor Sie BlueXP die Anmeldeinformationen hinzufügen.</p>
 </div>
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. <a href="concept-connectors.html#how-to-create-a-connector">"Erfahren Sie, wie"</a>.</p>
 </div>
 <div class="olist arabic">
@@ -1866,13 +1874,13 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 <div class="ulist">
 <ul>
 <li>
-<p>Anwendungs-ID (Client): Siehe  the application ID and directory ID.</p>
+<p>Anwendungs-ID (Client): Siehe <a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Abrufen der Anwendungs-ID und der Verzeichnis-ID</a>.</p>
 </li>
 <li>
-<p>Verzeichnis-ID (Mandant): Siehe  the application ID and directory ID.</p>
+<p>Verzeichnis-ID (Mandant): Siehe <a href="#abrufen-der-anwendungs-id-und-der-verzeichnis-id">Abrufen der Anwendungs-ID und der Verzeichnis-ID</a>.</p>
 </li>
 <li>
-<p>Client Secret: Siehe  a client secret.</p>
+<p>Client Secret: Siehe <a href="#erstellen-eines-clientgeheimnisses">Erstellen eines Clientgeheimnisses</a>.</p>
 </li>
 </ul>
 </div>
@@ -1892,6 +1900,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Ergebnis</div>
 <p>Auf der Seite Details und Anmeldeinformationen können Sie nun zu verschiedenen Anmeldeinformationen wechseln <a href="https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-deploying-otc-azure.html" target="_blank" rel="noopener">"Beim Erstellen einer neuen Arbeitsumgebung"</a></p>
 </div>
 <div class="paragraph">
@@ -1925,6 +1934,7 @@ Ein erster Satz von Anmeldeinformationen wird nicht hinzugefügt, wenn Sie die C
 </ul>
 </div>
 <div class="paragraph">
+<div class="title">Was Sie benötigen</div>
 <p>Sie müssen einen Konnektor erstellen, bevor Sie BlueXP-Einstellungen ändern können. <a href="concept-connectors.html#how-to-create-a-connector">"Erfahren Sie, wie"</a>.</p>
 </div>
 <div class="olist arabic">
