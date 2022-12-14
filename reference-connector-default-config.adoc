@@ -79,9 +79,10 @@ Der Installationsordner des Connectors befindet sich an folgender Stelle:
 
 Protokolldateien sind in den folgenden Ordnern enthalten:
 
-* /opt/application/netapp/cloudmanager/log
+* /Opt/Applikation/netapp/Cloud Manager/log oder
+* /Opt/Application/netapp/Service-Manager-2/logs (beginnend mit den neuen 3.9.23 Installationen)
 +
-Die Protokolle in diesem Ordner enthalten Details zu den Konnektor- und Docker-Images.
+Die Protokolle in diesen Ordnern enthalten Details zu den Konnektor- und Docker-Images.
 
 * /Opt/Application/netapp/CloudManager/docker_occm/Data/log
 +
@@ -102,32 +103,12 @@ Wenn der MySQL-Dienst nicht verf체gbar ist, ist auch der occm-Dienst nicht verf�
 
 
 
-=== Pakete
-
-BlueXP installiert die folgenden Pakete auf dem Linux-Host, falls diese noch nicht installiert sind:
-
-* 7-Zip
-* AWSCLI
-* Java
-* Kubectl
-* MySQL
-* Tridentctl
-* Ziehen
-* Wget
-
-
-
-
 === Ports
 
 Der Connector verwendet die folgenden Ports auf dem Linux-Host:
 
 * 80 f체r HTTP-Zugriff
 * 443 f체r HTTPS-Zugriff
-* 3306 f체r die BlueXP-Datenbank
-* 8080 f체r den BlueXP API Proxy
-* 8666 f체r die Service Manager API
-* 8777 f체r die Health-Checker Container Service API
 
 
 

@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-installing-linux.html 
 keywords: install connector, manually install connector, install connector software, installation, installing, linux, installer, software, on prem, on-prem, silent, configurations, ec2, vm, ports, ram, operating system, os, host, requirement, requirements, hypervisor, disk, space, mysql, centos, rhel, red hat, cpu, disk space 
-summary: Die häufigste Möglichkeit zur Erstellung eines Connectors liegt direkt über BlueXP oder über den Markt eines Cloud-Providers. Sie haben jedoch die Möglichkeit, die Connector-Software auf einem bestehenden Linux-Host in Ihrem Netzwerk oder in der Cloud herunterzuladen und zu installieren. 
+summary: Die häufigste Möglichkeit zur Erstellung eines Connectors liegt direkt über BlueXP oder über den Markt eines Cloud-Providers. Sie haben jedoch die Möglichkeit, die Connector-Software auf einem bestehenden Linux-Host in Ihrem Netzwerk oder in der Cloud herunterzuladen und zu installieren. Diese Schritte sind spezifisch für Hosts mit Internetzugang. 
 ---
 = Installieren Sie den Connector auf einem vorhandenen Linux-Host mit Internetzugang
 :hardbreaks:
@@ -62,16 +62,20 @@ Der Connector wird auf Englisch-sprachigen Versionen dieser Betriebssysteme unte
 Hypervisor:: Ein Bare Metal- oder gehosteter Hypervisor, der für die Ausführung von CentOS oder Red hat Enterprise Linux zertifiziert isthttps://access.redhat.com/certified-hypervisors["Red hat Solution: Welche Hypervisoren sind für die Ausführung von Red hat Enterprise Linux zertifiziert?"^]
 Speicherplatz in /opt:: 100 gib Speicherplatz muss verfügbar sein
 Festplattenspeicher in /var:: 20 gib Speicherplatz muss verfügbar sein
-Docker Engine:: Docker Engine Version 19 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. https://docs.docker.com/engine/install/["Installationsanweisungen anzeigen"^]
+Docker Engine:: Docker Engine Version 19.3.1 oder höher ist auf dem Host erforderlich, bevor Sie den Connector installieren. https://docs.docker.com/engine/install/["Installationsanweisungen anzeigen"^]
 Outbound-Internetzugang:: Das Installationsprogramm für den Connector muss während der Installation auf die folgenden URLs zugreifen:
 +
 --
-* \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
-* \https://*.blob.core.windows.net oder \https://hub.docker.com
-+
+* \https://support.netapp.com
+* \https://mysupport.netapp.com
+* \https://cloudmanager.cloud.netapp.com/tenancy
+* \https://stream.cloudmanager.cloud.netapp.com
+* \https://cloudmanagerinfraprod.azurecr.io
+* \https://production-artifacts.cloudmanager.cloud.netapp.com
+* \https://*.blob.core.windows.net
+
+
 Der Host versucht möglicherweise, während der Installation Betriebssystempakete zu aktualisieren. Der Host kann verschiedene Spiegelungsstandorte für diese Betriebssystempakete kontaktieren.
-
-
 
 --
 
@@ -82,8 +86,14 @@ Der Host versucht möglicherweise, während der Installation Betriebssystempaket
 
 Nachdem Sie sich vergewissern, dass Sie über einen unterstützten Linux-Host verfügen, können Sie die Connector-Software erwerben und dann installieren.
 
-.Erforderliche Berechtigungen
-Zur Installation des Connectors sind Root-Berechtigungen erforderlich.
+.Was Sie benötigen
+* Root-Berechtigungen zum Installieren des Connectors.
+* Details zu einem Proxy-Server, falls ein Proxy für den Internetzugriff über den Connector erforderlich ist.
++
+Sie haben die Möglichkeit, nach der Installation einen Proxyserver zu konfigurieren, aber dafür muss der Connector neu gestartet werden.
+
+* Ein von einer Zertifizierungsstelle signiertes Zertifikat, wenn der Proxy-Server HTTPS verwendet.
+
 
 .Über diese Aufgabe
 * Die Installation installiert die AWS Befehlszeilen-Tools (awscli), um Recovery-Verfahren durch den NetApp Support zu ermöglichen.
@@ -102,26 +112,56 @@ sudo systemctl enable docker && sudo systemctl start docker
 ----
 . Laden Sie die Connector-Software von der herunter https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab["NetApp Support Website"^], Und dann kopieren Sie es auf den Linux-Host.
 +
-Informationen zum Verbinden und Kopieren der Datei auf eine EC2-Instanz in AWS finden Sie unter http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html["AWS Documentation: Herstellen einer Verbindung zu Ihrer Linux-Instanz mithilfe von SSH"^].
+Sie sollten das Connector-Installationsprogramm herunterladen, das für die Verwendung in Ihrem Netzwerk oder in der Cloud bestimmt ist.
 
 . Weisen Sie Berechtigungen zum Ausführen des Skripts zu.
 +
 [source, cli]
 ----
-chmod +x OnCommandCloudManager-V3.9.23.sh
+chmod +x OnCommandCloudManager-V3.9.23
 ----
 . Führen Sie das Installationsskript aus.
 +
-Wenn Sie über einen Proxy-Server verfügen, müssen Sie die unten aufgeführten Befehlsparameter eingeben. Das Installationsprogramm fordert Sie nicht auf, Informationen über einen Proxy einzugeben.
+[source, cli]
+----
+ ./OnCommandCloudManager-V3.9.23 --proxy <HTTP or HTTPS proxy server> --cacert <path and file name of a CA-signed certificate>
+----
++
+Die Parameter --Proxy und --cacert sind optional. Wenn Sie über einen Proxyserver verfügen, müssen Sie die Parameter wie dargestellt eingeben. Das Installationsprogramm fordert Sie nicht auf, Informationen über einen Proxy einzugeben.
+
++
+Hier sehen Sie ein Beispiel für den Befehl mit beiden optionalen Parametern:
 
 +
 [source, cli]
 ----
- ./OnCommandCloudManager-V3.9.23.sh --proxy http://occm:password@10.0.0.30:9090/ --cacert /root/rootca.pem
+ ./OnCommandCloudManager-V3.9.23 --proxy https://user:password@10.0.0.30:8080/ --cacert /tmp/cacert/certificate.cer
 ----
 +
+--Proxy konfiguriert den Connector so, dass er einen HTTP- oder HTTPS-Proxy-Server in einem der folgenden Formate verwendet:
+
++
+** \http://address:port
+** \http://username:password@address:port
+** \https://address:port
+** \https://username:password@address:port
+
+
++
+--cacert gibt ein CA-signiertes Zertifikat für den HTTPS-Zugriff zwischen dem Connector und dem Proxy-Server an. Dieser Parameter ist nur erforderlich, wenn Sie einen HTTPS-Proxyserver angeben.
+
+
+
+.Ergebnis
 Der Connector ist jetzt installiert. Am Ende der Installation wird der Connector-Dienst (occm) zweimal neu gestartet, wenn Sie einen Proxy-Server angegeben haben.
 
+
+
+== Richten Sie den Anschluss ein
+
+Melden Sie sich an oder melden Sie sich an, und richten Sie dann den Konnektor ein, um mit Ihrem Konto zu arbeiten.
+
+.Schritte
 . Öffnen Sie einen Webbrowser, und geben Sie die folgende URL ein:
 +
 https://_ipaddress_[]
@@ -145,9 +185,6 @@ _Ipaddress_ kann abhängig von der Konfiguration des Hosts localhost, eine priva
 link:concept-netapp-accounts.html["Informationen zu NetApp Accounts"].
 
 .. Geben Sie einen Namen für das System ein.
-+
-image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm zum Einrichten zeigt, in dem Sie ein NetApp Konto auswählen und das System benennen können."]
-
 
 
 
@@ -160,5 +197,5 @@ Richten Sie Berechtigungen ein, damit BlueXP Ressourcen und Prozesse in Ihrer Pu
 
 * AWS, link:task-adding-aws-accounts.html["Richten Sie ein AWS-Konto ein und fügen Sie es dann BlueXP hinzu"]
 * Azure: link:task-adding-azure-accounts.html["Richten Sie ein Azure-Konto ein und fügen Sie es dann BlueXP hinzu"]
-* Google Cloud: Siehe Schritt 7 oben
+* Google Cloud: Siehe Schritt 3 oben
 

@@ -38,7 +38,7 @@ Der IAM-Benutzer, der den Connector erstellt, muss über AWS Marketplace-Berecht
 . Wechseln Sie zum https://aws.amazon.com/marketplace/pp/B018REK8QG["Seite „BlueXP“ im AWS Marketplace"^] So stellen Sie den Stecker über eine AMI bereit:
 . Klicken Sie auf der Marketplace-Seite auf *Weiter zur Anmeldung* und dann auf *Weiter zur Konfiguration*.
 +
-image:screenshot_subscribe_cm.gif["Ein Screenshot, der die Schaltflächen „Weiter zu Abonnieren“ und „Weiter zu Konfiguration“ im AWS Marketplace zeigt."]
+image:screenshot-subscribe-aws.png["Ein Screenshot, der die Schaltflächen „Weiter zu Abonnieren“ und „Weiter zu Konfiguration“ im AWS Marketplace zeigt."]
 
 . Ändern Sie eine der Standardoptionen, und klicken Sie auf *Weiter zum Starten*.
 . Wählen Sie unter *Aktion auswählen* *über EC2 starten* und klicken Sie dann auf *Start*.
@@ -80,9 +80,6 @@ https://_ipaddress_[]
 link:concept-netapp-accounts.html["Informationen zu NetApp Accounts"].
 
 .. Geben Sie einen Namen für das System ein.
-+
-image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Connector einrichten zeigt, in dem Sie ein NetApp Konto auswählen und das System benennen können."]
-
 
 
 . Öffnen Sie einen Webbrowser, und gehen Sie zu https://console.bluexp.netapp.com[] Um den Connector mit BlueXP zu verwenden.
@@ -150,9 +147,6 @@ https://_ipaddress_[]
 link:concept-netapp-accounts.html["Informationen zu NetApp Accounts"].
 
 .. Geben Sie einen Namen für das System ein.
-+
-image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm Connector einrichten zeigt, in dem Sie ein NetApp Konto auswählen und das System benennen können."]
-
 
 
 

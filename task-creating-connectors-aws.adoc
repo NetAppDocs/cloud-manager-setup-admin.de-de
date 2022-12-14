@@ -14,11 +14,13 @@ summary: Ein BlueXP-Kontoadministrator muss einen Connector bereitstellen, bevor
 
 
 [role="lead"]
-Ein BlueXP-Kontoadministrator muss einen _Connector_ bereitstellen, bevor Sie die meisten BlueXP-Funktionen nutzen können. Mit dem Connector kann BlueXP Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten. link:concept-connectors.html["Informieren Sie sich, wann ein Anschluss erforderlich ist"].
+Ein BlueXP-Kontoadministrator muss einen _Connector_ bereitstellen, bevor Sie die meisten BlueXP-Funktionen nutzen können. Mit dem Connector kann BlueXP Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten.
 
-Auf dieser Seite wird beschrieben, wie Sie einen Connector in AWS direkt aus BlueXP erstellen. link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie mehr über andere Möglichkeiten zur Bereitstellung eines Connectors"].
+In diesen Schritten wird beschrieben, wie Sie einen Connector in einer kommerziellen AWS-Region direkt von der BlueXP SaaS-Website erstellen.
 
-Diese Schritte müssen von einem Benutzer ausgeführt werden, der die Rolle „Account Admin“ hat. Ein Workspace-Administrator kann keinen Konnektor erstellen.
+* link:task-create-connectors-gov.html["Erfahren Sie, wie Sie einen Connector in einer Regierungsregion bereitstellen"]
+* link:concept-connectors.html#how-to-create-a-connector["Erfahren Sie mehr über andere Möglichkeiten zur Bereitstellung eines Connectors"]
+
 
 
 

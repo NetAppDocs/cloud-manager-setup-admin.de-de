@@ -68,9 +68,6 @@ https://_ipaddress_[]
 link:concept-netapp-accounts.html["Informationen zu NetApp Accounts"].
 
 .. Geben Sie einen Namen für das System ein.
-+
-image:screenshot_set_up_cloud_manager.gif["Ein Screenshot, der den Bildschirm BlueXP einrichten zeigt, über den Sie ein NetApp Konto auswählen und das System benennen können."]
-
 
 
 
