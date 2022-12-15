@@ -34,14 +34,6 @@ Siehe Knowledge Base-Artikel link:https://kb.netapp.com/Advice_and_Troubleshooti
 
 
 
-=== Es wird nur ein HTTP-Proxyserver unterstützt
-
-Wenn Sie in Ihren Unternehmensrichtlinien einen Proxyserver für die gesamte HTTP-Kommunikation mit dem Internet verwenden müssen, müssen Sie Ihre Connectors so konfigurieren, dass sie diesen HTTP-Proxyserver verwenden. Der Proxyserver kann sich in der Cloud oder im Netzwerk befinden.
-
-BlueXP unterstützt die Verwendung eines HTTPS-Proxys mit dem Connector nicht.
-
-
-
 === SSL-Entschlüsselung wird nicht unterstützt
 
 BlueXP unterstützt keine Firewall-Konfigurationen, bei denen die SSL-Entschlüsselung aktiviert ist. Wenn die SSL-Entschlüsselung aktiviert ist, werden Fehlermeldungen in BlueXP angezeigt, und die Connector-Instanz wird als inaktiv angezeigt.
@@ -83,21 +75,3 @@ Das bedeutet, dass nur privilegierte Benutzer, die auf die interne VPC/vnet des 
 Beachten Sie, dass nur Cloud Volumes ONTAP, Cloud-Backup, Cloud-Datensense und Replizierung unterstützt werden. Andere NetApp Services werden in Regionen der öffentlichen Hand nicht unterstützt.
 
 link:task-managing-connectors.html#access-the-local-ui["Erfahren Sie, wie Sie auf die lokale Benutzeroberfläche des Connectors zugreifen können"].
-
-
-
-== Einschränkungen des Marktes
-
-
-
-=== Für Azure und Google Cloud Partner ist kein „Pay-as-you-go“-Modell verfügbar
-
-Wenn Sie ein Microsoft Cloud Solution Provider (CSP)-Partner oder Google Cloud-Partner sind, stehen NetApp Pay-as-you-go-Abonnements nicht zur Verfügung. Kunden müssen eine Lizenz erwerben und NetApp Cloud-Lösungen mit einer BYOL-Lizenz implementieren.
-
-Abonnements auf Nutzung sind für die folgenden NetApp Cloud-Services nicht verfügbar:
-
-* Cloud Volumes ONTAP
-* Cloud Tiering
-* Cloud-Backup
-* Cloud-Daten Sinnvoll
-
