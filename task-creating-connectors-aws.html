@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 20:18:51 +0000">12/14/2022</time>
+    <time datetime="2022-12-15 18:25:00 +0000">12/15/2022</time>
     
   
 
@@ -1680,15 +1680,15 @@
 <h2 id="netzwerk-einrichten">Netzwerk einrichten</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Richten Sie Ihr Netzwerk ein, damit der Connector Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung managen kann. Abgesehen von einer VPC und einem Subnetz für den Connector müssen Sie sicherstellen, dass die folgenden Anforderungen erfüllt sind.</p>
+<p>Richten Sie Ihr Netzwerk ein, damit der Connector Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung managen kann. Abgesehen von einem virtuellen Netzwerk und einem Subnetz für den Connector müssen Sie sicherstellen, dass die folgenden Anforderungen erfüllt sind.</p>
 </div>
 <div class="sect2">
 <h3 id="verbindung-zu-zielnetzwerken">Verbindung zu Zielnetzwerken</h3>
 <div class="paragraph">
-<p>Ein Connector erfordert eine Netzwerkverbindung zu der Art der Arbeitsumgebung, die Sie erstellen und die Dienste, die Sie planen zu ermöglichen.</p>
+<p>Ein Connector erfordert eine Netzwerkverbindung zu der Art der Arbeitsumgebung, die Sie erstellen, und den Diensten, die Sie aktivieren möchten.</p>
 </div>
 <div class="paragraph">
-<p>Wenn Sie beispielsweise einen Connector in Ihrem Unternehmensnetzwerk installieren, müssen Sie eine VPN-Verbindung zu der VPC einrichten, in der Sie Cloud Volumes ONTAP starten.</p>
+<p>Wenn Sie beispielsweise einen Konnektor in Ihrem Unternehmensnetzwerk installieren, müssen Sie eine VPN-Verbindung zum virtuellen Netzwerk einrichten, in dem Sie Cloud Volumes ONTAP starten.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1770,13 +1770,13 @@ Der Connector kontaktiert derzeit „cloudmanager.cloud.netapp.com", er beginnt 
 <div class="sect2">
 <h3 id="sicherheitsgruppe">Sicherheitsgruppe</h3>
 <div class="paragraph">
-<p>Es gibt keinen eingehenden Datenverkehr zum Konnektor, es sei denn, Sie initiieren ihn oder wenn der Connector als Proxy für AutoSupport-Nachrichten verwendet wird. HTTP und HTTPS bieten den Zugriff auf <a href="concept-connectors.html#the-local-user-interface">"Lokale Benutzeroberfläche"</a>, Die Sie in seltenen Fällen verwenden. SSH ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen.</p>
+<p>Es gibt keinen eingehenden Datenverkehr zum Konnektor, es sei denn, Sie initiieren ihn oder wenn der Connector als Proxy für AutoSupport-Nachrichten verwendet wird. HTTP und HTTPS bieten den Zugriff auf <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/concept-connectors.html#the-local-user-interface">"Lokale Benutzeroberfläche"</a>, Die Sie in seltenen Fällen verwenden. SSH ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="einschränkung-der-ip-adresse">Einschränkung der IP-Adresse</h3>
 <div class="paragraph">
-<p>Es besteht ein möglicher Konflikt mit IP-Adressen im Bereich 172. <a href="reference-limitations.html">"Erfahren Sie mehr über diese Einschränkung"</a>.</p>
+<p>Es besteht ein möglicher Konflikt mit IP-Adressen im Bereich 172. <a href="https://docs.netapp.com/us-en/cloud-manager-setup-admin/reference-limitations.html">"Erfahren Sie mehr über diese Einschränkung"</a>.</p>
 </div>
 </div>
 </div>
