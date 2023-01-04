@@ -1416,7 +1416,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 20:18:51 +0000">12/14/2022</time>
+    <time datetime="2023-01-04 17:36:09 +0000">01/04/2023</time>
     
   
 
@@ -1515,7 +1515,7 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Die IP-Adresse des Connectors</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>In den meisten Fällen sollten Sie mit BlueXP von der SaaS-UI arbeiten, aber <a href="concept-connectors.html#the-local-user-interface">"Wenn Sie die lokale UI verwenden"</a>, Dann müssen Sie die IP-Adresse des Hosts von einem Web-Browser eingeben.</p>
+<p>In den meisten Fällen sollten Sie mit BlueXP von der SaaS-UI arbeiten, aber <a href="concept-connectors.html#the-local-user-interface">"Wenn Sie die lokale UI verwenden"</a>, Dann müssen Sie die IP-Adresse des Hosts von einem Webbrowser eingeben.</p>
 </div>
 <div class="paragraph">
 <p>Verwenden Sie je nach Anbindung an Ihren Cloud-Provider die private IP oder eine dem Host zugewiesene öffentliche IP:</p>
@@ -1612,7 +1612,7 @@ Der Connector kontaktiert derzeit „cloudmanager.cloud.netapp.com", er beginnt 
 <li>
 <p>Es gibt keinen eingehenden Datenverkehr zum Konnektor, es sei denn, Sie initiieren ihn.</p>
 <div class="paragraph">
-<p>HTTP (80) und HTTPS (443) bieten Zugriff auf die lokale Benutzeroberfläche, die Sie in seltenen Fällen verwenden werden. SSH (22) ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen.</p>
+<p>HTTP (80) und HTTPS (443) bieten Zugriff auf die lokale Benutzeroberfläche, die Sie in seltenen Fällen verwenden werden. SSH (22) ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen. In der Zwischenzeit sind eingehende Verbindungen über Port 3128 erforderlich, wenn Sie Cloud Volumes ONTAP-Systeme in einem Subnetz bereitstellen, in dem keine ausgehende Internetverbindung verfügbar ist.</p>
 </div>
 </li>
 </ul>
