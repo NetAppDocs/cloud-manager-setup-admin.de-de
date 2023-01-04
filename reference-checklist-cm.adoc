@@ -63,7 +63,7 @@ AWS-Services (amazonaws.com):
 
 
 | Die IP-Adresse des Connectors  a| 
-In den meisten Fällen sollten Sie mit BlueXP von der SaaS-UI arbeiten, aber link:concept-connectors.html#the-local-user-interface["Wenn Sie die lokale UI verwenden"], Dann müssen Sie die IP-Adresse des Hosts von einem Web-Browser eingeben.
+In den meisten Fällen sollten Sie mit BlueXP von der SaaS-UI arbeiten, aber link:concept-connectors.html#the-local-user-interface["Wenn Sie die lokale UI verwenden"], Dann müssen Sie die IP-Adresse des Hosts von einem Webbrowser eingeben.
 
 Verwenden Sie je nach Anbindung an Ihren Cloud-Provider die private IP oder eine dem Host zugewiesene öffentliche IP:
 
@@ -115,7 +115,7 @@ link:task-installing-linux.html["Überprüfen Sie die Liste der Endpunkte"].
 
 * Es gibt keinen eingehenden Datenverkehr zum Konnektor, es sei denn, Sie initiieren ihn.
 +
-HTTP (80) und HTTPS (443) bieten Zugriff auf die lokale Benutzeroberfläche, die Sie in seltenen Fällen verwenden werden. SSH (22) ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen.
+HTTP (80) und HTTPS (443) bieten Zugriff auf die lokale Benutzeroberfläche, die Sie in seltenen Fällen verwenden werden. SSH (22) ist nur erforderlich, wenn Sie eine Verbindung zum Host zur Fehlerbehebung herstellen müssen. In der Zwischenzeit sind eingehende Verbindungen über Port 3128 erforderlich, wenn Sie Cloud Volumes ONTAP-Systeme in einem Subnetz bereitstellen, in dem keine ausgehende Internetverbindung verfügbar ist.
 
 
 

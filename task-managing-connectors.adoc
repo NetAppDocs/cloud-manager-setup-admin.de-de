@@ -254,7 +254,7 @@ Der Online Connector enthält ein Deinstallationsskript, mit dem Sie die Softwar
 .Schritt
 . Führen Sie auf dem Linux-Host das Deinstallationsskript aus:
 +
-*/opt/Application/netapp/cloudmanager/bin/uninstall.sh [Silent]*
+*/opt/Application/netapp/Service-Manager-2/uninstall.sh [Silent]*
 
 +
 _Silent_ führt das Skript aus, ohne dass Sie zur Bestätigung aufgefordert werden.

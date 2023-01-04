@@ -18,6 +18,18 @@ Neue Funktionen bei der Administration von BlueXP (ehemals Cloud Manager): NetAp
 
 
 
+== Januar 2023
+
+
+
+=== Anschluss 3.9.25
+
+Diese Version des Connectors enthält Cloud Volumes ONTAP-Verbesserungen und Fehlerbehebungen.
+
+https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/whats-new.html#1-january-2023["Erfahren Sie mehr über Verbesserungen bei Cloud Volumes ONTAP"^]
+
+
+
 == Bis 4. Dezember 2022
 
 
