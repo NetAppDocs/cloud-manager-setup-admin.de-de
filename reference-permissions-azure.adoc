@@ -33,7 +33,7 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
 {
     "Name": "BlueXP Operator",
     "Actions": [
-                   "Microsoft.Compute/disks/delete",
+                    "Microsoft.Compute/disks/delete",
                     "Microsoft.Compute/disks/read",
                     "Microsoft.Compute/disks/write",
                     "Microsoft.Compute/locations/operations/read",
@@ -609,7 +609,7 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.MarketplaceOrdering/offertypes/Publisher/Offers/Plans/Agreements/write | Ja. | Ja. | Nein 
 
 
-.7+| Managen Sie einen Load Balancer für HA-Paare | Microsoft.Network/loadBalancers/read | Ja. | Ja. | Nein 
+.8+| Managen Sie einen Load Balancer für HA-Paare | Microsoft.Network/loadBalancers/read | Ja. | Ja. | Nein 
 
 
 | Microsoft.Network/loadBalancers/write | Ja. | Nein | Nein 
@@ -630,13 +630,13 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/loadBalancers/probes/read | Ja. | Nein | Nein 
 
 
-| Microsoft.Network/loadBalancers/probes/join/action | Ja. | Nein | Nein | Verwaltung von Sperren auf Azure Festplatten aktivieren 
+| Microsoft.Network/loadBalancers/probes/join/action | Ja. | Nein | Nein 
 
 
-| Microsoft.Authorization/Locks/* | Ja. | Ja. | Nein .10+| Aktivieren Sie private Endpunkte für HA-Paare, wenn sich keine Verbindung außerhalb des Subnetzes befindet 
+| Verwaltung von Sperren auf Azure Festplatten aktivieren | Microsoft.Authorization/Locks/* | Ja. | Ja. | Nein 
 
 
-| Microsoft.Network/privateEndpoints/write | Ja. | Ja. | Nein 
+.10+| Aktivieren Sie private Endpunkte für HA-Paare, wenn sich keine Verbindung außerhalb des Subnetzes befindet | Microsoft.Network/privateEndpoints/write | Ja. | Ja. | Nein 
 
 
 | Microsoft.Speicherung/Speicherkonten/PrivateEndpointConnectionsGenehmigung/Aktion | Ja. | Nein | Nein 
@@ -663,19 +663,19 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/privateDnsZones/read | Ja. | Ja. | Nein 
 
 
-| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Ja. | Ja. | Nein | Erforderlich für einige VM-Implementierungen, abhängig von der zugrunde liegenden physischen Hardware 
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Ja. | Ja. | Nein 
 
 
-| Microsoft.Ressourcen/Implementierungen/OperationStatuses/read | Ja. | Ja. | Nein .2+| Entfernen von Ressourcen aus einer Ressourcengruppe bei Ausfall oder Löschen der Bereitstellung 
+| Erforderlich für einige VM-Implementierungen, abhängig von der zugrunde liegenden physischen Hardware | Microsoft.Ressourcen/Implementierungen/OperationStatuses/read | Ja. | Ja. | Nein 
 
 
-| Microsoft.Network/privateEndpoints/delete | Ja. | Ja. | Nein 
+.2+| Entfernen von Ressourcen aus einer Ressourcengruppe bei Ausfall oder Löschen der Bereitstellung | Microsoft.Network/privateEndpoints/delete | Ja. | Ja. | Nein 
 
 
-| Microsoft.Compute/availabilitySets/delete | Ja. | Ja. | Nein .4+| Nutzen Sie die API, wenn Sie die vom Kunden gemanagten Schlüssel verwenden 
+| Microsoft.Compute/availabilitySets/delete | Ja. | Ja. | Nein 
 
 
-| Microsoft.Compute/diskEncryptionSets/read | Ja. | Ja. | Ja. 
+.4+| Nutzen Sie die API, wenn Sie die vom Kunden gemanagten Schlüssel verwenden | Microsoft.Compute/diskEncryptionSets/read | Ja. | Ja. | Ja. 
 
 
 | Microsoft.Compute/diskEncryptionSets/write | Ja. | Ja. | Nein 
@@ -684,10 +684,10 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.KeyVault/Vaults/Deploy/Action | Ja. | Nein | Nein 
 
 
-| Microsoft.Compute/diskEncryptionSets/delete | Ja. | Ja. | Ja. .6+| Konfigurieren Sie eine Applikationssicherheitsgruppe für ein HA-Paar, um die HA Interconnect- und Cluster-Netzwerk-NICs zu isolieren 
+| Microsoft.Compute/diskEncryptionSets/delete | Ja. | Ja. | Ja. 
 
 
-| Microsoft.Network/applicationSecurityGroups/write | Nein | Ja. | Nein 
+.6+| Konfigurieren Sie eine Applikationssicherheitsgruppe für ein HA-Paar, um die HA Interconnect- und Cluster-Netzwerk-NICs zu isolieren | Microsoft.Network/applicationSecurityGroups/write | Nein | Ja. | Nein 
 
 
 | Microsoft.Network/applicationSecurityGroups/read | Nein | Ja. | Ja. 
@@ -702,16 +702,19 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/applicationSecurityGroups/delete | Nein | Ja. | Nein 
 
 
-| Microsoft.Network/networkSecurityGroups/securityRules/delete | Nein | Ja. | Ja. .3+| Lesen, Schreiben und Löschen von Tags im Zusammenhang mit Cloud Volumes ONTAP Ressourcen 
+| Microsoft.Network/networkSecurityGroups/securityRules/delete | Nein | Ja. | Ja. 
 
 
-| Microsoft.Ressourcen/Tags/lesen | Nein | Ja. | Nein 
+.3+| Lesen, Schreiben und Löschen von Tags im Zusammenhang mit Cloud Volumes ONTAP Ressourcen | Microsoft.Ressourcen/Tags/lesen | Nein | Ja. | Nein 
 
 
 | Microsoft.Ressourcen/Tags/schreiben | Ja. | Ja. | Nein 
 
 
-| Microsoft.Ressourcen/Tags/delete | Ja. | Nein | Nein | Verschlüsselung von Speicherkonten bei der Erstellung 
+| Microsoft.Ressourcen/Tags/delete | Ja. | Nein | Nein 
+
+
+| Verschlüsselung von Speicherkonten bei der Erstellung | Microsoft.ManagedIdentity/userAssignetIdentities/assign/Action | Ja. | Ja. | Nein 
 |===
 
 
