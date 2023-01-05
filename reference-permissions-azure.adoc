@@ -81,6 +81,7 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Storage/storageAccounts/write",
                     "Microsoft.Storage/storageAccounts/blobServices/containers/read",
                     "Microsoft.Storage/storageAccounts/blobServices/containers/write",
+                    "Microsoft.Storage/storageAccounts/listAccountSas/action",
                     "Microsoft.Storage/usages/read",
                     "Microsoft.Compute/snapshots/write",
                     "Microsoft.Compute/snapshots/read",
@@ -93,6 +94,7 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Network/loadBalancers/write",
                     "Microsoft.Network/loadBalancers/delete",
                     "Microsoft.Network/loadBalancers/backendAddressPools/read",
+                    "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
                     "Microsoft.Network/loadBalancers/loadBalancingRules/read",
                     "Microsoft.Network/loadBalancers/probes/read",
                     "Microsoft.Network/loadBalancers/probes/join/action",
@@ -154,6 +156,7 @@ Außerdem müssen Sie sicherstellen, dass die Rolle auf dem neuesten Stand ist, 
                     "Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action",
                     "Microsoft.Synapse/workspaces/operationResults/read",
                     "Microsoft.Network/publicIPAddresses/delete",
+                    "Microsoft.Synapse/workspaces/privateEndpointConnectionsApproval/action",
                     "Microsoft.ManagedIdentity/userAssignedIdentities/assign/action"
     ],
     "NotActions": [],
@@ -208,6 +211,7 @@ Der Connector stellt die folgenden API-Anforderungen für Backup- und Wiederhers
 * Microsoft.Storage/StorageAccounts/Lesevorgang
 * Microsoft.Storage/StorageAccounts/write
 * Microsoft.Storage/StorageAccounts/blobServices/Container/Lesevorgang
+* Microsoft.Storage/storageAccounts/listeAccountActionSas/Action
 * Microsoft.KeyVault/Vaults/read
 * Microsoft.KeyVault/Vaults/accessPolicies/write
 * Microsoft.Network/networkInterfaces/read
@@ -246,6 +250,7 @@ Der Konnektor stellt folgende API-Anforderungen zur Verfügung, wenn Sie die Fun
 * Microsoft.Synapse/Workspaces/Firewall Regeln/lesen
 * Microsoft.Synapse/Workspaces/ersetzenAllIpFirewallRegeln/Aktion
 * Microsoft.Synapse/Workspaces/OperationResults/read
+* Microsoft.Synapse/Workspaces/private EndpointConnectionsGenehmigung/Aktion
 
 
 
@@ -616,19 +621,22 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/loadBalancers/backendAddressPools/read | Ja. | Ja. | Nein 
 
 
+| Microsoft.Network/loadBalancers/backendAddressPools/join/action | Ja. | Nein | Nein 
+
+
 | Microsoft.Network/loadBalancers/loadBalancingRules/read | Ja. | Nein | Nein 
 
 
 | Microsoft.Network/loadBalancers/probes/read | Ja. | Nein | Nein 
 
 
-| Microsoft.Network/loadBalancers/probes/join/action | Ja. | Nein | Nein 
+| Microsoft.Network/loadBalancers/probes/join/action | Ja. | Nein | Nein | Verwaltung von Sperren auf Azure Festplatten aktivieren 
 
 
-| Verwaltung von Sperren auf Azure Festplatten aktivieren | Microsoft.Authorization/Locks/* | Ja. | Ja. | Nein 
+| Microsoft.Authorization/Locks/* | Ja. | Ja. | Nein .10+| Aktivieren Sie private Endpunkte für HA-Paare, wenn sich keine Verbindung außerhalb des Subnetzes befindet 
 
 
-.10+| Aktivieren Sie private Endpunkte für HA-Paare, wenn sich keine Verbindung außerhalb des Subnetzes befindet | Microsoft.Network/privateEndpoints/write | Ja. | Ja. | Nein 
+| Microsoft.Network/privateEndpoints/write | Ja. | Ja. | Nein 
 
 
 | Microsoft.Speicherung/Speicherkonten/PrivateEndpointConnectionsGenehmigung/Aktion | Ja. | Nein | Nein 
@@ -655,19 +663,19 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/privateDnsZones/read | Ja. | Ja. | Nein 
 
 
-| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Ja. | Ja. | Nein 
+| Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | Ja. | Ja. | Nein | Erforderlich für einige VM-Implementierungen, abhängig von der zugrunde liegenden physischen Hardware 
 
 
-| Erforderlich für einige VM-Implementierungen, abhängig von der zugrunde liegenden physischen Hardware | Microsoft.Ressourcen/Implementierungen/OperationStatuses/read | Ja. | Ja. | Nein 
+| Microsoft.Ressourcen/Implementierungen/OperationStatuses/read | Ja. | Ja. | Nein .2+| Entfernen von Ressourcen aus einer Ressourcengruppe bei Ausfall oder Löschen der Bereitstellung 
 
 
-.2+| Entfernen von Ressourcen aus einer Ressourcengruppe bei Ausfall oder Löschen der Bereitstellung | Microsoft.Network/privateEndpoints/delete | Ja. | Ja. | Nein 
+| Microsoft.Network/privateEndpoints/delete | Ja. | Ja. | Nein 
 
 
-| Microsoft.Compute/availabilitySets/delete | Ja. | Ja. | Nein 
+| Microsoft.Compute/availabilitySets/delete | Ja. | Ja. | Nein .4+| Nutzen Sie die API, wenn Sie die vom Kunden gemanagten Schlüssel verwenden 
 
 
-.4+| Nutzen Sie die API, wenn Sie die vom Kunden gemanagten Schlüssel verwenden | Microsoft.Compute/diskEncryptionSets/read | Ja. | Ja. | Ja. 
+| Microsoft.Compute/diskEncryptionSets/read | Ja. | Ja. | Ja. 
 
 
 | Microsoft.Compute/diskEncryptionSets/write | Ja. | Ja. | Nein 
@@ -676,10 +684,10 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.KeyVault/Vaults/Deploy/Action | Ja. | Nein | Nein 
 
 
-| Microsoft.Compute/diskEncryptionSets/delete | Ja. | Ja. | Ja. 
+| Microsoft.Compute/diskEncryptionSets/delete | Ja. | Ja. | Ja. .6+| Konfigurieren Sie eine Applikationssicherheitsgruppe für ein HA-Paar, um die HA Interconnect- und Cluster-Netzwerk-NICs zu isolieren 
 
 
-.6+| Konfigurieren Sie eine Applikationssicherheitsgruppe für ein HA-Paar, um die HA Interconnect- und Cluster-Netzwerk-NICs zu isolieren | Microsoft.Network/applicationSecurityGroups/write | Nein | Ja. | Nein 
+| Microsoft.Network/applicationSecurityGroups/write | Nein | Ja. | Nein 
 
 
 | Microsoft.Network/applicationSecurityGroups/read | Nein | Ja. | Ja. 
@@ -694,19 +702,16 @@ Der Connector stellt die folgenden API-Anforderungen für die Implementierung un
 | Microsoft.Network/applicationSecurityGroups/delete | Nein | Ja. | Nein 
 
 
-| Microsoft.Network/networkSecurityGroups/securityRules/delete | Nein | Ja. | Ja. 
+| Microsoft.Network/networkSecurityGroups/securityRules/delete | Nein | Ja. | Ja. .3+| Lesen, Schreiben und Löschen von Tags im Zusammenhang mit Cloud Volumes ONTAP Ressourcen 
 
 
-.3+| Lesen, Schreiben und Löschen von Tags im Zusammenhang mit Cloud Volumes ONTAP Ressourcen | Microsoft.Ressourcen/Tags/lesen | Nein | Ja. | Nein 
+| Microsoft.Ressourcen/Tags/lesen | Nein | Ja. | Nein 
 
 
 | Microsoft.Ressourcen/Tags/schreiben | Ja. | Ja. | Nein 
 
 
-| Microsoft.Ressourcen/Tags/delete | Ja. | Nein | Nein 
-
-
-| Verschlüsselung von Speicherkonten bei der Erstellung | Microsoft.ManagedIdentity/userAssignetIdentities/assign/Action | Ja. | Ja. | Nein 
+| Microsoft.Ressourcen/Tags/delete | Ja. | Nein | Nein | Verschlüsselung von Speicherkonten bei der Erstellung 
 |===
 
 
@@ -747,6 +752,23 @@ Wenn Berechtigungen hinzugefügt und entfernt werden, werden wir diese in den fo
 
 
 
+=== 5. Januar 2023
+
+Die folgenden Berechtigungen wurden der JSON-Richtlinie hinzugefügt:
+
+* Microsoft.Storage/storageAccounts/listeAccountActionSas/Action
+* Microsoft.Synapse/Workspaces/private EndpointConnectionsGenehmigung/Aktion
++
+Diese Berechtigungen sind für Cloud Backup erforderlich.
+
+* Microsoft.Network/loadBalancers/backendAddressPools/join/action
++
+Diese Berechtigung ist für die Cloud Volumes ONTAP-Bereitstellung erforderlich.
+
+
+
+
+
 === Dezember 2022
 
 Die folgenden Berechtigungen wurden der JSON-Richtlinie hinzugefügt:
@@ -764,7 +786,6 @@ Diese Berechtigungen sind für Cloud Backup erforderlich.
 Die folgenden Berechtigungen wurden aus der JSON-Richtlinie entfernt, da sie nicht mehr erforderlich sind:
 
 * Microsoft.Compute/images/write
-* Microsoft.Network/loadBalancers/backendAddressPools/join/action
 * Microsoft.Network/loadBalancers/frontendIPConfigurations/read
 * Microsoft.Storage/StorageAccounts/Generationkey/Aktion
 
