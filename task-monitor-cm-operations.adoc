@@ -98,7 +98,7 @@ Sie können bestimmte Arten von Benachrichtigungen per E-Mail versenden, damit S
 
 [NOTE]
 ====
-* Derzeit senden nur Cloud Sync und Cloud Backup Benachrichtigungen per E-Mail. Weitere Services werden in zukünftigen Versionen hinzugefügt.
+* Derzeit senden nur Cloud Sync, Cloud-Backup und Ransomware-Schutz Benachrichtigungen per E-Mail. Weitere Services werden in zukünftigen Versionen hinzugefügt.
 * Das Senden von E-Mail-Benachrichtigungen wird nicht unterstützt, wenn der Connector auf einer Website ohne Internetzugang installiert ist.
 
 
