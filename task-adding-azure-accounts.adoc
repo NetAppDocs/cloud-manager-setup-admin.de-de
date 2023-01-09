@@ -153,11 +153,11 @@ In den folgenden Schritten wird beschrieben, wie die Rolle mithilfe von Bash in 
 +
 image:screenshot_azure_shell_upload.png["Einen Screenshot der Azure Cloud Shell, in dem Sie die Option zum Hochladen einer Datei auswählen können."]
 
-*** Geben Sie den folgenden Befehl der Azure CLI ein:
+*** Verwenden Sie die Azure CLI, um die benutzerdefinierte Rolle zu erstellen:
 +
 [source, azurecli]
 ----
-az role definition create --role-definition Policy_for_Setup_As_Service_Azure.json
+az role definition create --role-definition Connector_Policy.json
 ----
 +
 Sie sollten nun eine benutzerdefinierte Rolle namens BlueXP Operator haben, die Sie der virtuellen Connector-Maschine zuweisen können.

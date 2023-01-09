@@ -20,11 +20,7 @@ In den meisten Fällen muss ein BlueXP Account Admin einen _Connector_ in Ihrer 
 
 == Wenn ein Stecker erforderlich ist
 
-Für die Nutzung vieler Funktionen und Services in BlueXP ist ein Connector erforderlich.
-
-
-
-=== Services
+Für die folgenden Funktionen und Dienste in BlueXP ist ein Connector erforderlich:
 
 * Managementfunktionen von Amazon FSX für ONTAP
 * Ermittlung von Amazon S3
@@ -37,29 +33,37 @@ Für die Nutzung vieler Funktionen und Services in BlueXP ist ein Connector erfo
 * Globaler Datei-Cache
 * Erkennung von Google Cloud Storage
 * Kubernetes-Cluster
-* On-Premises ONTAP Cluster
+* On-Premises-ONTAP-Cluster-Integration in BlueXP-Datenservices
 * StorageGRID
 
 
 Für die folgenden Dienste ist ein Connector *_Not_* erforderlich:
 
 * Digital Advisor
-* Amazon FSX für die Erstellung von Arbeitsumgebungen durch ONTAP Obwohl für die Erstellung eines Connectors keine Arbeitsumgebung erforderlich ist, müssen Volumes erstellt und gemanagt, Daten repliziert und FSX für ONTAP in NetApp Cloud-Services wie Data Sense und Cloud Sync integriert werden.
++
+In fast allen Fällen können Sie eine Lizenz für das Digital Wallet ohne Connector hinzufügen.
+
++
+Der einzige Zeitpunkt, zu dem ein Konnektor erforderlich ist, um eine Lizenz zum digitalen Wallet hinzuzufügen, sind Cloud Volumes ONTAP_Node-basierte_-Lizenzen. In diesem Fall ist ein Connector erforderlich, da die Daten aus den auf Cloud Volumes ONTAP-Systemen installierten Lizenzen stammen.
+
+* Amazon FSX für die Erstellung von ONTAP-Arbeitsumgebungen
++
+Obwohl kein Connector zur Erstellung einer Arbeitsumgebung erforderlich ist, muss es dennoch erforderlich sein, Volumes zu erstellen und zu managen, Daten zu replizieren und FSX für ONTAP in NetApp Cloud-Services wie Data Sense und Cloud Sync zu integrieren.
+
 * Azure NetApp Dateien
 +
 Während kein Connector für die Einrichtung und Verwaltung von Azure NetApp Files erforderlich ist, ist für die Überprüfung von Azure NetApp Files-Daten ein Connector erforderlich.
 
 * Cloud Volumes Service für Google Cloud
 * Cloud-Synchronisierung
+* Direkte Erkennung von ONTAP Clustern vor Ort
++
+Ein Connector ist zwar nicht für die direkte Erkennung eines lokalen ONTAP-Clusters erforderlich, jedoch ist ein Connector erforderlich, wenn Sie zusätzliche BlueXP-Funktionen nutzen möchten.
+
++
+https://docs.netapp.com/us-en/cloud-manager-ontap-onprem/task-discovering-ontap.html["Weitere Informationen zu den Wiederauffindungs- und Managementoptionen für lokale ONTAP Cluster"^]
 
 
-
-
-=== Digital Wallet
-
-In fast allen Fällen können Sie eine Lizenz für das Digital Wallet ohne Connector hinzufügen.
-
-Der einzige Zeitpunkt, zu dem ein Konnektor erforderlich ist, um eine Lizenz zum digitalen Wallet hinzuzufügen, sind Cloud Volumes ONTAP_Node-basierte_-Lizenzen. In diesem Fall ist ein Connector erforderlich, da die Daten aus den auf Cloud Volumes ONTAP-Systemen installierten Lizenzen stammen.
 
 
 

@@ -817,8 +817,6 @@
   <block id="e6e80588e9fe7cf89218fea44300f7ca" category="doc">Erfahren Sie mehr über Steckverbinder</block>
   <block id="4ef3e263a8519b21e0d35c0289f980ec" category="paragraph">In den meisten Fällen muss ein BlueXP Account Admin einen _Connector_ in Ihrer Cloud oder Ihrem On-Premises-Netzwerk bereitstellen. Der Connector ist eine entscheidende Komponente für die tägliche Nutzung von BlueXP. BlueXP kann die Ressourcen und Prozesse innerhalb Ihrer Public Cloud-Umgebung verwalten.</block>
   <block id="098ba24e143dd197f509e41083f0103e" category="section-title">Wenn ein Stecker erforderlich ist</block>
-  <block id="d68d607d7912cfeb0caaf3df3be1ac25" category="paragraph">Für die Nutzung vieler Funktionen und Services in BlueXP ist ein Connector erforderlich.</block>
-  <block id="992a0f0542384f1ee5ef51b7cf4ae6c4" category="section-title">Services</block>
   <block id="234eb6bb27d592cbf06aa6537a33a380" category="list-text">Managementfunktionen von Amazon FSX für ONTAP</block>
   <block id="c3d36b4a46dce16b3ad60eecabc87582" category="list-text">Ermittlung von Amazon S3</block>
   <block id="bde43e83db72512f1aea47540264c8f0" category="list-text">Azure Blob-Erkennung</block>
@@ -829,11 +827,9 @@
   <block id="392d70ca39f31f10bd637936769788df" category="list-text">StorageGRID</block>
   <block id="d7c778975033347c9e67ffb83d3e7948" category="paragraph">Für die folgenden Dienste ist ein Connector *_Not_* erforderlich:</block>
   <block id="f079f17b0940258743d34e7b771c715f" category="list-text">Digital Advisor</block>
-  <block id="a8435d00af3d55ea03fdb027caa5b23b" category="list-text">Amazon FSX für die Erstellung von Arbeitsumgebungen durch ONTAP Obwohl für die Erstellung eines Connectors keine Arbeitsumgebung erforderlich ist, müssen Volumes erstellt und gemanagt, Daten repliziert und FSX für ONTAP in NetApp Cloud-Services wie Data Sense und Cloud Sync integriert werden.</block>
   <block id="d4f99f1852ac22c1cad9673e75e03dc1" category="paragraph">Während kein Connector für die Einrichtung und Verwaltung von Azure NetApp Files erforderlich ist, ist für die Überprüfung von Azure NetApp Files-Daten ein Connector erforderlich.</block>
   <block id="b0cee72642f5457a71ddd0b49efb6d93" category="list-text">Cloud Volumes Service für Google Cloud</block>
   <block id="e367efbc26bd12c0d6ae37dd6a55ef9b" category="list-text">Cloud-Synchronisierung</block>
-  <block id="986e1f3279b4d74444bd32d4f833afbd" category="section-title">Digital Wallet</block>
   <block id="cbe129909ca1b56ccace7cbd5ffca407" category="paragraph">In fast allen Fällen können Sie eine Lizenz für das Digital Wallet ohne Connector hinzufügen.</block>
   <block id="1ab568c31a52b2095bb19460f2f7bac6" category="paragraph">Der einzige Zeitpunkt, zu dem ein Konnektor erforderlich ist, um eine Lizenz zum digitalen Wallet hinzuzufügen, sind Cloud Volumes ONTAP_Node-basierte_-Lizenzen. In diesem Fall ist ein Connector erforderlich, da die Daten aus den auf Cloud Volumes ONTAP-Systemen installierten Lizenzen stammen.</block>
   <block id="ff0e00d64f60db5d99e55c6d706306cc" category="section-title">Unterstützte Standorte</block>
@@ -2825,4 +2821,13 @@
   <block id="267cfa5c9c91dc1d99dc797e89903dfa" category="paragraph">Diese Berechtigungen sind für Cloud Backup erforderlich.</block>
   <block id="b73f51f05a3d7aca4e9b86bf6b66c214" category="paragraph">Diese Berechtigung ist für die Cloud Volumes ONTAP-Bereitstellung erforderlich.</block>
   <block id="1d37387582eb7a955869d3991c1dab28" category="section-title">Dezember 2022</block>
+  <block id="5847199ca78e66e581ccd10e8e88b057" category="list-text">Verwenden Sie die Azure CLI, um die benutzerdefinierte Rolle zu erstellen:</block>
+  <block id="2878685a3c92cde3d19e546e9e7ed65b" category="paragraph">Für die folgenden Funktionen und Dienste in BlueXP ist ein Connector erforderlich:</block>
+  <block id="9fc1f8c97e791c3c5fa11f21f2c02740" category="list-text">On-Premises-ONTAP-Cluster-Integration in BlueXP-Datenservices</block>
+  <block id="68e3f4e356478210df0b83fb7c76a924" category="list-text">Amazon FSX für die Erstellung von ONTAP-Arbeitsumgebungen</block>
+  <block id="760c8ab5d3061033f77f7ded2f3cad11" category="paragraph">Obwohl kein Connector zur Erstellung einer Arbeitsumgebung erforderlich ist, muss es dennoch erforderlich sein, Volumes zu erstellen und zu managen, Daten zu replizieren und FSX für ONTAP in NetApp Cloud-Services wie Data Sense und Cloud Sync zu integrieren.</block>
+  <block id="184e70c253a2ad370c338775e7482497" category="list-text">Direkte Erkennung von ONTAP Clustern vor Ort</block>
+  <block id="ef67c5eab6f3bfee1596c3f8734a88c7" category="paragraph">Ein Connector ist zwar nicht für die direkte Erkennung eines lokalen ONTAP-Clusters erforderlich, jedoch ist ein Connector erforderlich, wenn Sie zusätzliche BlueXP-Funktionen nutzen möchten.</block>
+  <block id="eec3baeb5aa60415324495790bc2f136" category="inline-link">Weitere Informationen zu den Wiederauffindungs- und Managementoptionen für lokale ONTAP Cluster</block>
+  <block id="7a5dd38f95e02bff17a0b6c794d9ce2b" category="paragraph"><block ref="7a5dd38f95e02bff17a0b6c794d9ce2b" category="inline-link-rx"></block></block>
 </blocks>
